@@ -9,9 +9,13 @@ const planSchema: Schema = new Schema({
   },
   recipes: [
     {
-      imageURL: {
+      image: {
         type: String,
         required: true,
+      },
+      title: {
+        type: String,
+        required: true
       },
       recipeId: {
         type: Number,

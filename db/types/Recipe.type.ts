@@ -1,5 +1,6 @@
 export interface Recipe {
-  imageURL: string;
+  image: string;
+  title: string;
   quantity: number;
   recipeId: number;
   totalCost: number;
