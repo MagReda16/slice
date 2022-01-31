@@ -1,19 +1,35 @@
-import mongoose, { Schema } from '../index';
+import mongoose, { Schema } from 'mongoose';
 import { Plan } from '../types/';
 
 const planSchema: Schema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
   },
   recipes: [
     {
-      imageURL: String,
-      recipeId: Number,
-      quantity: Number,
-      totalCost: Number,
+      imageURL: {
+        type: String,
+        required: true,
+      },
+      recipeId: {
+        type: Number,
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
+      totalCost: {
+        type: Number,
+        required: true,
+      },
     },
   ],
 });
 
-export default mongoose.model<Plan>('Plan', planSchema);
+const planModel =
+  mongoose.models.Plan || mongoose.model<Plan>('Plan', planSchema);
+
+export default planModel;
