@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
-import Recipe from './Recipe.type';
+import { Recipe } from './Recipe.type';
 
-export default interface Plan extends Document {
+export interface Plan extends Document {
   userId: string;
   recipes: Recipe[];
 }

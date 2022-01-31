@@ -1,5 +1,5 @@
 import mongoose, { Schema } from '../index';
-import Plan from '../types/Plan.type';
+import { Plan } from '../types/';
 
 const planSchema: Schema = new Schema({
   userId: {

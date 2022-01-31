@@ -1,4 +1,4 @@
-export default interface Recipe {
+export interface Recipe {
   imageURL: string;
   quantity: number;
   recipeId: number;
