@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "dotenv": "^14.3.2",
+    "mongoose": "^6.1.8",
     "next": "latest",
     "next-pwa": "^5.4.1",
     "react": "^17.0.2",
