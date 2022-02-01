@@ -23,7 +23,7 @@ const authMiddleware = async (req: NextApiRequest, res: NextApiResponse, next: F
     req.body.user = user;
     next();
   } catch (e: any) {
-    console.error(e);
+    // console.error(e);
     res.status(403).send({ error: true, message: 'Unathorized request' });
   }
 }
