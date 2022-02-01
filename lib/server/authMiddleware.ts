@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken';
+import connectToDb from '../../db';
 import { User as IUser } from '../../db/types';
 import { User } from '../../db/models';
 
@@ -11,6 +12,7 @@ declare module 'jsonwebtoken' {
 }
 
 const authMiddleware = async (req: NextApiRequest, res: NextApiResponse, next: Function): Promise<void> => {
+  await connectToDb();
   try {
     const authorization = req.headers.authorization;
     if (!authorization) throw new Error();
