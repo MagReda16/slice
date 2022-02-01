@@ -5,10 +5,18 @@ import DoughnutChart from '../components/DoughnutChart';
 import styles from '../styles/Button.module.css';
 
 const Dashboard = () => {
+
+  const number1 = 750
+  const number2 = 12
+
+
   return (
     <div>
       <h1>Hello Santiago</h1>
-      <DoughnutChart />
+      <DoughnutChart 
+        remainingBudget={number1}
+        amountSpent={number2}
+      />
       <Link href='/viewPlan' passHref>
         <NavButton
         className={styles.dashboardBtn}

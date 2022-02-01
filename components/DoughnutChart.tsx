@@ -1,38 +1,37 @@
 import React from 'react';
-import { Chart, ArcElement, Legend  } from 'chart.js';
+import { Chart, ArcElement, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
 Chart.register(ArcElement, Legend);
 
-
-
-const DoughnutChart = () => {
-
-  const data = {
-    labels: ['Remaining budget', 'Amount spent'],
+type DoughnutChartProps = {
+  remainingBudget: Number,
+  amountSpent: Number
+}
+const DoughnutChart = ({remainingBudget, amountSpent}: DoughnutChartProps) => {
+  const chartData = {
+    labels: ['Amount spent', 'Remaining budget'],
     datasets: [
         {
-        data: [200, 100],
+        data: [amountSpent, remainingBudget],
         backgroundColor: [
-          "#FFAC3B",
-          "#FFD59C"
+          "#FFD59C",
+          "#FFAC3B"
         ]
       },
     ],
   };
 
-
-
   return(
     <div>
-    <div style={{width: "250px", margin: '0 auto'}}>
+      <div style={{width: "250px", margin: '0 auto'}}>
       <Doughnut 
         height={300}
         width={300}
-        data={data}
+        data={chartData}
         // plugins={plugins}
-     />
-    </div>
+        />
+      </div>
     </div>
   )
 }
