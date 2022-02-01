@@ -1,8 +1,8 @@
 import React from 'react';
-import { Chart, ArcElement, Legend } from 'chart.js';
+import { Chart, ArcElement, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-Chart.register(ArcElement, Legend);
+Chart.register(ArcElement, Legend, Tooltip);
 
 type DoughnutChartProps = {
   remainingBudget: Number,
@@ -29,7 +29,6 @@ const DoughnutChart = ({remainingBudget, amountSpent}: DoughnutChartProps) => {
         height={300}
         width={300}
         data={chartData}
-        // plugins={plugins}
         />
       </div>
     </div>

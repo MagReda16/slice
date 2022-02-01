@@ -6,16 +6,13 @@ import styles from '../styles/Button.module.css';
 
 const Dashboard = () => {
 
-  const number1 = 750
-  const number2 = 12
-
 
   return (
     <div>
       <h1>Hello Santiago</h1>
       <DoughnutChart 
-        remainingBudget={number1}
-        amountSpent={number2}
+        remainingBudget={300}
+        amountSpent={100}
       />
       <Link href='/viewPlan' passHref>
         <NavButton
