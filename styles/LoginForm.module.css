@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  margin-top: 200px;
+  width: 300px;
+  height: 300px;
+}
+
+.inputbox {
+  font-size: 18px;
+  height: 70px;
+  width: 280px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #ffff;
+  border-style: none;
+  box-shadow: 0px 2px 2px 0px #00000040;
+}
