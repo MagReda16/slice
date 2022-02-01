@@ -16,18 +16,21 @@ const viewPlan = () => {
         amountSpent={100} />
       <Link href='/editPlan' passHref>
         <NavButton
-        className={styles.dashboardBtn}
+        className={styles.loginBtn}
         type='button'
         children="Edit"
         /> 
       </Link>
-      <Link href='/setting' passHref>
+      <Link href='/viewShoppingList' passHref>
         <NavButton
-        className={styles.dashboardBtn}
+        className={styles.loginBtn}
         type='button'
         children='View my Shopping List'
         /> 
       </Link>
+      <div>
+        {/* recipe items here */}
+      </div>
     </div>
   )
 }
