@@ -1,5 +1,6 @@
 import React, {useState, FormEventHandler, FormEvent, ChangeEvent, ChangeEventHandler} from 'react';
 import styles from '../styles/Button.module.css';
+import { useRouter } from 'next/router';
 
 const initialState = {
   firstName: '',
@@ -11,8 +12,9 @@ const initialState = {
 
 const RegisterForm = () => {
 
-//onSubmit --> POST api/login, return accesstoken, POST api/register, GET api/user
+const router = useRouter();
 
+//onSubmit --> POST api/login, return accesstoken, POST api/register, GET api/user
 const [ formData, setFormData ] = useState(initialState)
  
 const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
@@ -22,27 +24,34 @@ const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
   };
   setFormData({...formData, [name]: value});
 }
+
+  
 const handleSubmit: FormEventHandler = (e: FormEvent) => {
   e.preventDefault();
-  console.log(formData);
+  if(formData.password !== formData.confirmPassword) {
+    alert('Passwords must match!')
+  } else {
+    router.push({ pathname: '/createBudget'})
+  }
 }
 
 
   return (
+  
     <form onSubmit={handleSubmit}>
       <input 
         required
         autoComplete="off"
         placeholder="First name..."
         type="text"
-        name="firstname"
+        name="firstName"
         onChange={handleChange} />
       <input
         required
         autoComplete="off"
         placeholder="Last name..."
         type="text"
-        name="lastname" 
+        name="lastName" 
         onChange={handleChange} />
       <input 
         required
@@ -50,7 +59,7 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
         placeholder="Email..."
         type="email"
         name="email"
-        onChange={handleChange}  />
+        onChange={handleChange} />
       <input
         required
         autoComplete="off"
@@ -63,11 +72,14 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
         autoComplete="off"
         placeholder="Confirm password..."
         type="password"
-        name="confirmpassword"
+        name="confirmPassword"
         onChange={handleChange}  />
-      <button className={styles.registerBtn} type="submit" value="Register"/>
+      <button className={styles.registerBtn} type="submit">Register</button>
   </form>
+
+   
   )
 }
+
 
 export default RegisterForm;
