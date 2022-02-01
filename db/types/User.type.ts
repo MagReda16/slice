@@ -6,4 +6,6 @@ export interface User extends Document {
   firstName: string;
   lastName: string;
   budget: number;
+  currentPlanId: string;
+  previousPlans: string[];
 }

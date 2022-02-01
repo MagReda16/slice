@@ -26,6 +26,12 @@ const userSchema: Schema = new Schema({
     type: Number,
     default: 0,
   },
+  previousPlans: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Plan',
+    }
+  ]
 });
 
 const userModel =
