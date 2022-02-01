@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
 import { errorHandler } from '../../../lib/server';
 import { User } from '../../../db/models/';
+import { User as IUser } from '../../../db/types/';
 import connectToDb from '../../../db';
 
 const userHandler = nc(errorHandler);
@@ -26,14 +27,18 @@ userHandler.put(
     await connectToDb();
 
     try {
-      const updatedUser = await User.findByIdAndUpdate(req.body._id, req.body, {
-        new: true,
-      });
+      const updatedUser: IUser = await User.findByIdAndUpdate(
+        req.body._id,
+        req.body,
+        {
+          new: true,
+        }
+      );
       if (!updatedUser) throw new Error('User cannot be found');
-      res.status(200).json(updatedUser);
+      res.status(200).json({ updatedUser });
     } catch (error: any) {
       console.error(error);
-      res.status(404).json({ error });
+      res.status(404).json({ error, message: error.message });
     }
   }
 );
