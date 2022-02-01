@@ -1,9 +1,10 @@
 import styles from '../styles/Button.module.css';
 import React, {useState, FormEventHandler, FormEvent, ChangeEvent, ChangeEventHandler} from 'react';
-
+import { useRouter } from 'next/router';
 
 
 const LoginForm = () => {
+  const router = useRouter();
 
 //onSubmit -->  POST api/login, return accesstoken; GET api/user return user object
 
@@ -18,6 +19,7 @@ const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
 }
 const handleSubmit: FormEventHandler = (e: FormEvent) => {
   e.preventDefault();
+  router.push({pathname: '/dashboard'})
 }
 
   return (

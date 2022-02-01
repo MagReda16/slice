@@ -1,7 +1,9 @@
 import React, {useState, FormEventHandler, FormEvent, ChangeEventHandler, ChangeEvent} from 'react';
+import { useRouter } from 'next/router';
 
 
 const CreateBudgetForm = () => {
+  const router = useRouter();
 
 const [ budget, setBudget ] = useState({budget:''}) 
 
@@ -15,6 +17,7 @@ const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
 
 const handleSubmit: FormEventHandler = (e: FormEvent) => {
   e.preventDefault();
+  router.push({pathname:'/dashboard'});
 }
 
   return (
