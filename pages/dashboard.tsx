@@ -2,7 +2,7 @@ import React from 'react';
 import NavButton from '../components/NavButton';
 import Link from 'next/link';
 import DoughnutChart from '../components/DoughnutChart';
-import styles from '../styles/Button.module.css';
+import styles from '../styles/Buttons.module.css';
 
 const Dashboard = () => {
 
@@ -13,7 +13,7 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Hello Santiago</h1>
-      <DoughnutChart 
+      <DoughnutChart
         remainingBudget={number1}
         amountSpent={number2}
       />
@@ -22,14 +22,14 @@ const Dashboard = () => {
         className={styles.dashboardBtn}
         type='button'
         children="View this week's plan"
-        /> 
+        />
       </Link>
       <Link href='/setting' passHref>
         <NavButton
         className={styles.dashboardBtn}
         type='button'
         children='Settings'
-        /> 
+        />
       </Link>
     </div>
   )

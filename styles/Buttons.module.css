@@ -22,14 +22,9 @@
   box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.regBtn {
-  margin-top: 30px;
-  color: #ffa927;
-  border-style: none;
-  text-decoration: underline;
-}
 
-.loginBtn {
+
+.Btn {
   background-color: #f37742;
   box-shadow: 0px 4px 4px 0px #00000040;
 
@@ -39,4 +34,25 @@
   border-radius: 8px;
   color: white;
   border-style: none;
+}
+.regBtn {
+  margin-top: 30px;
+  color: #ffa927;
+  border-style: none;
+  text-decoration: underline;
+}
+
+.registerBtn {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.continueBtn {
+  margin-top: 80px;
+}
+
+.logoutBtn {
+  background-color: #E75858;
+  margin-top: 60px;
+
 }

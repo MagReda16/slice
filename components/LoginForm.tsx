@@ -1,5 +1,5 @@
-import styles from '../styles/LoginForm.module.css';
-import stylesBtn from '../styles/Button.module.css';
+import styles from '../styles/Forms.module.css';
+import stylesBtn from '../styles/Buttons.module.css';
 import React, {
   useState,
   FormEventHandler,
@@ -55,7 +55,7 @@ const LoginForm = () => {
         onChange={handleChange}
         className={styles.inputbox}
       />
-      <button className={stylesBtn.loginBtn} type='submit' value='Login'>
+      <button className={stylesBtn.Btn} type='submit' value='Login'>
         Login
       </button>
     </form>

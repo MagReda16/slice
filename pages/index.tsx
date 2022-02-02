@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
-import stylesBtn from '../styles/Button.module.css';
+import stylesBtn from '../styles/Buttons.module.css';
 import Head from 'next/head';
 import Link from 'next/link';
 import NavButton from '../components/NavButton';
