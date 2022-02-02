@@ -1,6 +1,7 @@
 import React, {useState, FormEventHandler, FormEvent, ChangeEvent, ChangeEventHandler} from 'react';
-import styles from '../styles/Button.module.css';
 import { useRouter } from 'next/router';
+import stylesBtn from '../styles/Buttons.module.css';
+import styles from '../styles/Forms.module.css';
 
 const initialState = {
   firstName: '',
@@ -16,7 +17,7 @@ const router = useRouter();
 
 //onSubmit --> POST api/login, return accesstoken, POST api/register, GET api/user
 const [ formData, setFormData ] = useState(initialState)
- 
+
 const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
   const {name, value} = e.target as typeof e.target & {
     name: string,
@@ -25,7 +26,7 @@ const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
   setFormData({...formData, [name]: value});
 }
 
-  
+
 const handleSubmit: FormEventHandler = (e: FormEvent) => {
   e.preventDefault();
   if(formData.password !== formData.confirmPassword) {
@@ -37,10 +38,11 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
 
 
   return (
-  
-    <form onSubmit={handleSubmit}>
-      <input 
+
+    <form className={`${styles.form} ${styles.regForm}`} onSubmit={handleSubmit}>
+      <input
         required
+        className={styles.inputbox}
         autoComplete="off"
         placeholder="First name..."
         type="text"
@@ -48,13 +50,15 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
         onChange={handleChange} />
       <input
         required
+        className={styles.inputbox}
         autoComplete="off"
         placeholder="Last name..."
         type="text"
-        name="lastName" 
+        name="lastName"
         onChange={handleChange} />
-      <input 
+      <input
         required
+        className={styles.inputbox}
         autoComplete="off"
         placeholder="Email..."
         type="email"
@@ -62,6 +66,7 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
         onChange={handleChange} />
       <input
         required
+        className={styles.inputbox}
         autoComplete="off"
         placeholder="Password..."
         type="password"
@@ -69,15 +74,16 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
         onChange={handleChange}  />
       <input
         required
+        className={styles.inputbox}
         autoComplete="off"
         placeholder="Confirm password..."
         type="password"
         name="confirmPassword"
         onChange={handleChange}  />
-      <button className={styles.registerBtn} type="submit">Register</button>
+      <button className={`${stylesBtn.Btn} ${stylesBtn.registerBtn}`} type="submit">Register</button>
   </form>
 
-   
+
   )
 }
 

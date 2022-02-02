@@ -1,0 +1,20 @@
+.fadeText {
+  color: #B5B5B5;
+  font-size: 18px;
+  line-height: 22px;
+
+  position: relative;
+  bottom: 180px;
+
+}
+
+.budgetText1{
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 200px;
+}
+

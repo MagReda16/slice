@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
-import styles from '../styles/EmailLogin.module.css';
+import styles from '../styles/Containers.module.css';
 
 const emailLogin = () => {
   return (
