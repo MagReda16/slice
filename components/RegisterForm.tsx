@@ -32,7 +32,7 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
   if(formData.password !== formData.confirmPassword) {
     alert('Passwords must match!')
   } else {
-    router.push({ pathname: '/createBudget'})
+    router.push({ pathname: '/user/createbudget'})
   }
 }
 

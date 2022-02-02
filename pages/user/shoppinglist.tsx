@@ -1,8 +1,8 @@
 import React from 'react';
-import DoughnutChart from '../components/DoughnutChart';
+import DoughnutChart from '../../components/DoughnutChart';
 
 
-const viewShoppingList = () => {
+const ViewShoppingList = () => {
 
   return (
     <div>
@@ -17,4 +17,4 @@ const viewShoppingList = () => {
   )
 }
 
-export default viewShoppingList;
+export default ViewShoppingList;

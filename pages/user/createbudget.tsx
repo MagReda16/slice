@@ -1,10 +1,10 @@
 import React from 'react';
-import CreateBudgetForm from '../components/CreateBudgetForm';
-import styles from '../styles/Containers.module.css'
-import stylesFont from '../styles/Fonts.module.css'
+import CreateBudgetForm from '../../components/CreateBudgetForm';
+import styles from '../../styles/Containers.module.css'
+import stylesFont from '../../styles/Fonts.module.css'
 
 
-const createBudget = () => {
+const CreateBudget = () => {
   return (
     <div className={styles.container}>
       <h1 className={stylesFont.budgetText1}>What is your weekly grocery budget?</h1>
@@ -14,4 +14,4 @@ const createBudget = () => {
   )
 }
 
-export default createBudget;
+export default CreateBudget;

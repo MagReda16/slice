@@ -31,7 +31,7 @@ const LoginForm = () => {
 
   const handleSubmit: FormEventHandler = (e: FormEvent) => {
     e.preventDefault();
-    router.push({ pathname: '/dashboard' });
+    router.push({ pathname: '/user' });
     setFormData(initialState);
   };
 

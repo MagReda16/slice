@@ -54,5 +54,38 @@
 .logoutBtn {
   background-color: #E75858;
   margin-top: 60px;
+}
 
+.addRecipeBtn {
+  background-color: #f37742;
+  box-shadow: 0px 4px 4px 0px #00000040;
+
+  height: 50px;
+  width: 50px;
+  font-size: 18px;
+  border-radius: 8px;
+  color: white;
+  border-style: none;
+}
+
+.addQuantityBtn {
+  color: white;
+    width: 0px;
+    height: 0px;
+    border: 88px solid black;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #ffa927;
+    border-left-color: transparent;
+}
+
+.subtractQuantityBtn {
+  color: white;
+    width: 0px;
+    height: 0px;
+    border: 88px solid black;
+    border-top-color: #ffa927;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
 }

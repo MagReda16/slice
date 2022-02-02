@@ -19,7 +19,7 @@ const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
 
 const handleSubmit: FormEventHandler = (e: FormEvent) => {
   e.preventDefault();
-  router.push({pathname:'/dashboard'});
+  router.push({pathname:'/user'});
 }
 
   return (

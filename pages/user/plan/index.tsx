@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import DoughnutChart from '../components/DoughnutChart';
-import NavButton from '../components/NavButton';
-import styles from '../styles/Button.module.css'
+import DoughnutChart from '../../../components/DoughnutChart';
+import NavButton from '../../../components/NavButton';
+import styles from '../../../styles/Buttons.module.css';
 
 
-const viewPlan = () => {
-  //logic for 
+const ViewPlan = () => {
 
   return(
     <div>
@@ -14,14 +13,14 @@ const viewPlan = () => {
       <DoughnutChart
         remainingBudget={300}
         amountSpent={100} />
-      <Link href='/editPlan' passHref>
+      <Link href='/user/plan/edit' passHref>
         <NavButton
         className={styles.loginBtn}
         type='button'
         children="Edit"
         /> 
       </Link>
-      <Link href='/viewShoppingList' passHref>
+      <Link href='/user/shoppinglist' passHref>
         <NavButton
         className={styles.loginBtn}
         type='button'
@@ -35,4 +34,4 @@ const viewPlan = () => {
   )
 }
 
-export default viewPlan;
+export default ViewPlan;

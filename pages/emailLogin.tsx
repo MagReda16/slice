@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from '../components/LoginForm';
 import styles from '../styles/Containers.module.css';
 
-const emailLogin = () => {
+const EmailLogin = () => {
   return (
     <div className={styles.container}>
       <h1>Slice</h1>
@@ -12,4 +12,4 @@ const emailLogin = () => {
   );
 };
 
-export default emailLogin;
+export default EmailLogin;
