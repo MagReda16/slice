@@ -6,7 +6,7 @@ const viewShoppingList = () => {
 
   return (
     <div>
-      <h1>Shopping List</h1>
+      <h1>My Shopping List</h1>
       <DoughnutChart 
         remainingBudget={300}
         amountSpent={100}/>
