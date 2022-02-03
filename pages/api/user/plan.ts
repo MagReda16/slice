@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
-import { errorHandler, authMiddleware } from '../../../lib/server/';
+import { errorHandler, authMiddleware, UserRequest } from '../../../lib/server/';
 import { User, Plan } from '../../../db/models/';
 import connectToDb from '../../../db';
 import { User as IUser, Plan as IPlan } from '../../../db/types';
@@ -9,10 +9,10 @@ const planHandler = nc(errorHandler);
 
 planHandler.use(authMiddleware);
 
-planHandler.get(async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+planHandler.get(async (req: UserRequest, res: NextApiResponse): Promise<void> => {
   await connectToDb();
   try {
-    const plan: IPlan = await Plan.findOne({ _id: req.body.user.currentPlanId });
+    const plan: IPlan = await Plan.findOne({ _id: req.user.currentPlanId });
     plan.totalPlanCost = plan.recipes
       .map(recipe => recipe.quantity * recipe.totalCost)
       .reduce((acc: number, recipeTotalCost: number) => acc += recipeTotalCost, 0);
@@ -24,10 +24,10 @@ planHandler.get(async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   }
 });
 
-planHandler.put(async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+planHandler.put(async (req: UserRequest, res: NextApiResponse): Promise<void> => {
   await connectToDb();
   try {
-    const plan: IPlan = await Plan.findOne({ _id: req.body.user.currentPlanId });
+    const plan: IPlan = await Plan.findOne({ _id: req.user.currentPlanId });
     plan.totalPlanCost = plan.recipes
       .map(recipe => recipe.quantity * recipe.totalCost)
       .reduce((acc: number, recipeTotalCost: number) => acc += recipeTotalCost, 0);
@@ -40,11 +40,11 @@ planHandler.put(async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   }
 });
 
-planHandler.post(async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+planHandler.post(async (req: UserRequest, res: NextApiResponse): Promise<void> => {
   await connectToDb();
   try {
-    const newPlan: IPlan = await Plan.create({ userId: req.body.user._id });
-    const user: IUser = await User.findOne({ _id: req.body.user._id });
+    const newPlan: IPlan = await Plan.create({ userId: req.user._id });
+    const user: IUser = await User.findOne({ _id: req.user._id });
     user.previousPlans.push(user.currentPlanId);
     user.currentPlanId = newPlan._id;
     await user.save();
