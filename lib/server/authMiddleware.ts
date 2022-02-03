@@ -11,10 +11,13 @@ declare module 'jsonwebtoken' {
   }
 }
 
+// extend user interface and save user to req.user instead of req.body
+
 const authMiddleware = async (req: NextApiRequest, res: NextApiResponse, next: Function): Promise<void> => {
   await connectToDb();
   try {
     const authorization = req.headers.authorization;
+    console.log(req.headers);
     if (!authorization) throw new Error();
     const accessToken: string = authorization.split(' ')[1];
     const { userId } = <jwt.JwtPayload>jwt.verify(accessToken, JWT_SECRET);
@@ -23,7 +26,7 @@ const authMiddleware = async (req: NextApiRequest, res: NextApiResponse, next: F
     req.body.user = user;
     next();
   } catch (e: any) {
-    // console.error(e);
+    console.error(e);
     res.status(403).send({ error: true, message: 'Unathorized request' });
   }
 }

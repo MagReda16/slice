@@ -7,7 +7,7 @@ const planSchema: Schema = new Schema({
     ref: 'User',
     required: true,
   },
-  totalRecipeCost: {
+  totalPlanCost: {
     type: Number,
     default: 0
   },

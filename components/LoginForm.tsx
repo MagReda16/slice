@@ -31,6 +31,9 @@ const LoginForm = () => {
 
   const handleSubmit: FormEventHandler = (e: FormEvent) => {
     e.preventDefault();
+    // loginMethod which will return accessToken
+    // add to localstorage
+
     router.push({ pathname: '/user' });
     setFormData(initialState);
   };

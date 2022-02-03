@@ -13,9 +13,10 @@ planHandler.get(async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   await connectToDb();
   try {
     const plan: IPlan = await Plan.findOne({ _id: req.body.user.currentPlanId });
-    const totalCost = plan.recipes
+    plan.totalPlanCost = plan.recipes
       .map(recipe => recipe.quantity * recipe.totalCost)
-      .reduce((acc: number, nextRecipe: number) => acc += nextRecipe, 0);
+      .reduce((acc: number, recipeTotalCost: number) => acc += recipeTotalCost, 0);
+    await plan.save();
     res.status(200).json({ plan });
   } catch (e: any) {
     console.error(e);
@@ -27,6 +28,9 @@ planHandler.put(async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   await connectToDb();
   try {
     const plan: IPlan = await Plan.findOne({ _id: req.body.user.currentPlanId });
+    plan.totalPlanCost = plan.recipes
+      .map(recipe => recipe.quantity * recipe.totalCost)
+      .reduce((acc: number, recipeTotalCost: number) => acc += recipeTotalCost, 0);
     plan.recipes = [...req.body];
     await plan.save();
     res.status(200).json({ plan });

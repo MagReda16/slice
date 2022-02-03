@@ -4,7 +4,7 @@ import stylesBtn from '../styles/Button.module.css'
 const AdjustQuantityBtn = () => {
 
   const add = () => {
-    
+
   }
 
   const subtract = () => {
