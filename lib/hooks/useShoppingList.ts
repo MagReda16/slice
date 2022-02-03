@@ -7,9 +7,9 @@ const formatSearchString = (plan: Plan) => {
   return recipes.map(recipe => recipe.recipeId).join();
 }
 
-const fetcher = (key: string, plan: Plan) => spoonacularApiClient.get(key, {
+const fetcher = (key: string, ids: string) => spoonacularApiClient.get(key, {
   params: {
-    ids: formatSearchString(plan)
+    ids
   }
 }).then(res => res.data.map((recipe: any)=> recipe.extendedIngredients.map((ingredient: any) => {
   return {
@@ -21,8 +21,14 @@ const fetcher = (key: string, plan: Plan) => spoonacularApiClient.get(key, {
 )));
 
 
-const useShoppingList = (ids: string) => {
-  const {data, error} = useSWR(['informationBulk', ids], fetcher);
+const useShoppingList = (plan?: Plan) => {
+  // const mockPlan = {
+  //   recipes: [
+  //     { recipeId: 716429 },
+  //     { recipeId: 715538 },
+  //   ]
+  // };
+  const {data, error} = useSWR(plan ? ['informationBulk', formatSearchString(plan)] : null, fetcher);
 
 
   return {

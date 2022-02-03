@@ -19,7 +19,7 @@ const Home = () => {
             children='Login with Gmail'
           />
         </Link>
-        <Link href='/emaillogin' passHref>
+        <Link href='/emailLogin' passHref>
           <NavButton
             className={stylesBtn.loginWithEmailBtn}
             type='button'
