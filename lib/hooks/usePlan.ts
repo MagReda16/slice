@@ -21,11 +21,6 @@ const fetcher = async (key: string) => {
 const usePlan = () => {
   const { data, error, mutate } = useSWR('user/plan', fetcher);
 
-  // const updateCache = (newRecipe: any) => {
-  //   const updatedData = [...data, newRecipe];
-  //   mutate(updatedData, false);
-  // }
-
   const addRecipeToPlan = (recipe: Recipe) => {
     const updatedRecipes = [...data.recipes, recipe];
     const updatedCost = data.totalPlanCost + Math.round(recipe.totalCost) / 100;
@@ -39,13 +34,16 @@ const usePlan = () => {
     mutate({ totalPlanCost: updatedCost, recipes: updatedRecipes }, false);
   };
 
-  const persist = async () => {
+  const confirmPlan = async () => {
     mutate(await updatePlan(data), true);
   };
 
   return {
     plan: data,
     error,
+    addRecipeToPlan,
+    removeRecipeFromPlan,
+    confirmPlan,
     isLoading: !data && !error,
   };
 };
