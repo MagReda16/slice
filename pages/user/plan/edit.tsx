@@ -44,6 +44,7 @@ const EditPlan = () => {
     <div>Error or something, idk</div>
   )
 
+  // if (isLoading) return null
 
 
   return (

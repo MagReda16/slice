@@ -7,10 +7,12 @@ import { Recipe } from '../db/types';
 
 type ShowEditPlanProps = {
   toggleSearch: MouseEventHandler,
-  recipes: Recipe[]
+  recipes: Recipe[],
 }
 
 const ShowEditPlan = ({ recipes, toggleSearch }: ShowEditPlanProps) => {
+
+  const confirm = () => {}
 
   return (
     <>
@@ -20,8 +22,8 @@ const ShowEditPlan = ({ recipes, toggleSearch }: ShowEditPlanProps) => {
         amountSpent={100}
       />
       <button className={styles.loginBtn} type='button' onClick={toggleSearch}>Add recipe</button>
-      <RecipeList recipes={recipes} />
-      <button className={styles.loginBtn} type='submit'>Confirm plan</button>
+      <RecipeList recipes={recipes} btnType={'subtract'} />
+      <button className={styles.loginBtn} type='submit' onClick={confirm}>Confirm plan</button>
     </>
   )
 }

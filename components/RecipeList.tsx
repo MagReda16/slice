@@ -3,12 +3,15 @@ import { Recipe } from "../db/types";
 
 type RecipeListProps = {
   recipes: Recipe[]
+  btnType: string
 }
 
-const RecipeList = ({ recipes }: RecipeListProps) => {
+const RecipeList = ({ recipes, btnType }: RecipeListProps) => {
+
+
   return (
     <div className="">
-      {recipes.map(recipe => <RecipeListItem key={recipe.recipeId} recipe={recipe} />)}
+      {recipes.map(recipe => <RecipeListItem key={recipe.recipeId} recipe={recipe} btnType={btnType}/>)}
     </div>
   );
 };
