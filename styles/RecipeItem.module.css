@@ -1,7 +1,11 @@
 .recipeItemContainer {
   display: flex;
   flex-direction: row;
-  max-height: 140px;
+  justify-content: center;
+
+  margin-top: 2rem;
+  margin-left: 1rem;
+  max-height: 6rem;
   background-color: white;
   max-width: 90%;
   border-radius: 4px;
@@ -34,7 +38,15 @@
   font-size: 12px;
 }
 
+<<<<<<< HEAD
 .recipePicture {
   width: 80%;
 }
 
+=======
+.recipeImage {
+  border-radius: 4px;
+  max-width: 100px;
+  max-height: 80px;
+}
+>>>>>>> 7791728ec6ba327e9ab81d357528ca8f8ce5943c
