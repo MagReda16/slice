@@ -12,18 +12,20 @@ declare module 'jsonwebtoken' {
 }
 
 // extend user interface and save user to req.user instead of req.body
+export interface UserRequest extends NextApiRequest {
+  user: IUser
+};
 
-const authMiddleware = async (req: NextApiRequest, res: NextApiResponse, next: Function): Promise<void> => {
+const authMiddleware = async (req: UserRequest, res: NextApiResponse, next: Function): Promise<void> => {
   await connectToDb();
   try {
     const authorization = req.headers.authorization;
-    console.log(req.headers);
     if (!authorization) throw new Error();
     const accessToken: string = authorization.split(' ')[1];
     const { userId } = <jwt.JwtPayload>jwt.verify(accessToken, JWT_SECRET);
     const user: IUser = await User.findOne({ _id: userId });
     if (!user) throw new Error();
-    req.body.user = user;
+    req.user = user;
     next();
   } catch (e: any) {
     console.error(e);
