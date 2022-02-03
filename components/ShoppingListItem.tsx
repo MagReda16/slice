@@ -8,9 +8,9 @@ type ShoppingListItemProps = {
 
 const ShoppingListItem = ({ingredient} : ShoppingListItemProps) => {
   return (
-    <div className={styles.itemContainer}>
-      <h4>{ingredient.name}</h4>
-      <h6>{ingredient.amount} {ingredient.unit}</h6>
+    <div className={styles.itemContainer} >
+      <p>{ingredient.name}</p>
+      <p>{ingredient.amount} {ingredient.unit}</p>
     </div>
   )
 }

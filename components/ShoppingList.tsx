@@ -10,7 +10,7 @@ const ShoppingList = ({data}: ShoppingListProps) => {
 
   return (
     <div>
-      {data.map((ingredient: Ingredient) => <ShoppingListItem key={ingredient.id} ingredient={ingredient} />)}
+      {data.map((ingredient: Ingredient) => <ShoppingListItem key={ingredient.id}   ingredient={ingredient} />)}
     </div>
   )
 }

@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: white;
   justify-content: space-between;
   margin: 20px;
   padding: 10px;
@@ -11,3 +10,13 @@
   border: 1px solid rgba(0, 0, 0, 0.31);
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
 }
+
+.itemContainer:nth-child(odd) {
+  background-color: white;
+  
+}
+.itemContainer:nth-child(even) {
+  background-color: #F37742;
+  color: white;
+}
+
