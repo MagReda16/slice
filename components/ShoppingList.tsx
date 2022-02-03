@@ -1,10 +1,22 @@
 import React from "react";
+import ShoppingListItem from "./ShoppingListItem";
 
-const ShoppingList = () => {
+
+interface Ingredient {
+  id: number
+  name: string,
+  amount: number,
+  unit: string
+}
+
+type ShoppingListProps = {
+  data: Ingredient[]
+}
+const ShoppingList = ({data}: ShoppingListProps) => {
 
   return (
     <div>
-      <h2>Shopping list</h2>
+      {data.map((ingredient: Ingredient) => <ShoppingListItem key={ingredient.id} ingredient={ingredient} />)}
     </div>
   )
 }
