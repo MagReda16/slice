@@ -15,10 +15,9 @@ type ShowSearchProps = {
 const ShowSearch = ({ toggleSearch, data, changeQuery, querySearch, submitSearch }: ShowSearchProps) => {
   return (
     <>
-      <form className={stylesForm.searchbar}>
-        <button onClick={toggleSearch}>Go back</button>
+      <button onClick={toggleSearch}>Go back</button>
+      <form className={stylesForm.searchbar} onSubmit={submitSearch}>
         <input className={stylesForm.searchInput} type="text" placeholder='search...' value={querySearch} onChange={changeQuery} />
-        <input type="submit" name='search' onClick={submitSearch} />
       </form>
       <RecipeList btnType={'add'} recipes={data} />
     </>

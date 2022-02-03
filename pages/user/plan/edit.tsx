@@ -17,8 +17,8 @@ const EditPlan = () => {
   const [readyToSubmit, setReadyToSubmit] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [recipeResults, setRecipeResults] = useState([]);
-  const { data, error, isLoading } = useSearch(querySearch, readyToSubmit);
-  const { plan } = usePlan();
+  const { data, error } = useSearch(querySearch, readyToSubmit);
+  const { plan, isLoading } = usePlan();
 
   // console.log('recipes from backend', plan.recipe);
   // console.log('testestest');
@@ -45,7 +45,10 @@ const EditPlan = () => {
   if (error) return (
     <div>Error or something, idk</div>
   )
-  console.log(plan.recipes, 'HERE ARE PLAN RECIPES 😇')
+  if (isLoading) return (
+    <div>Loading</div>
+  )
+  // console.log(plan, 'HERE ARE PLAN RECIPES 😇')
 
   // if (isLoading) return null
 
