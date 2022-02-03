@@ -1,8 +1,14 @@
 import React from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
+import ShoppingList from '../../components/ShoppingList';
+import { useShoppingList } from '../../lib/hooks/useShoppingList';
 
 
 const ViewShoppingList = () => {
+
+  const { data, error, isLoading} = useShoppingList('715538,716429');
+
+  // console.log(data.extendedIngredients);
 
   return (
     <div>
@@ -11,7 +17,7 @@ const ViewShoppingList = () => {
         remainingBudget={300}
         amountSpent={100}/>
         <div>
-          {/* shopping list items here */}
+       <ShoppingList />
         </div>
     </div>
   )

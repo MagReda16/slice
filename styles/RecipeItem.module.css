@@ -25,11 +25,16 @@
 .recipeInfo {
   margin-left: 15px;
 }
+
 .recipeInfo h3 {
   font-size: 18px;
 }
 
 .recipeInfo h6 {
   font-size: 12px;
+}
+
+.recipePicture {
+  width: 80%;
 }
 
