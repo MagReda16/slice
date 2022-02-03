@@ -5,10 +5,22 @@ const fetcher = (key: string, ids: string) => spoonacularApiClient.get(key, {
   params: {
     ids: ids
   }
-}).then(res => res.data);
+}).then(res => res.data.map((recipe: any)=> recipe.extendedIngredients.map((ingredient: any) => {
+  return {
+    id: ingredient.id,
+    name: ingredient.name,
+    amount: ingredient.amount,
+    unit: ingredient.unit
+  }}
+)));
+
+// .then(res => res.data.map((recipe: any) => recipe.extendedIngredients.map((ingredient: any) =>  ingredient.name) ));
+
+
 
 const useShoppingList = (ids: string) => {
   const {data, error} = useSWR(['/informationBulk', ids], fetcher);
+
 
   return {
     data,

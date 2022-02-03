@@ -6,9 +6,10 @@ import { useShoppingList } from '../../lib/hooks/useShoppingList';
 
 const ViewShoppingList = () => {
 
-  const { data, error, isLoading} = useShoppingList('715538,716429');
+  const { data, error, isLoading} = useShoppingList('715536,716429');
 
-  // console.log(data.extendedIngredients);
+  console.log(data);
+
 
   return (
     <div>
@@ -17,7 +18,7 @@ const ViewShoppingList = () => {
         remainingBudget={300}
         amountSpent={100}/>
         <div>
-       <ShoppingList />
+       <ShoppingList data={data} />
         </div>
     </div>
   )
