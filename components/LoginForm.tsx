@@ -1,6 +1,4 @@
-import styles from '../styles/Forms.module.css';
-import stylesBtn from '../styles/Buttons.module.css';
-import React, {
+import {
   useState,
   FormEventHandler,
   FormEvent,
@@ -8,6 +6,10 @@ import React, {
   ChangeEventHandler,
 } from 'react';
 import { useRouter } from 'next/router';
+import { login } from '../lib/methods';
+import styles from '../styles/Forms.module.css';
+import stylesBtn from '../styles/Buttons.module.css';
+
 
 const initialState = {
   email: '',
@@ -29,13 +31,18 @@ const LoginForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit: FormEventHandler = (e: FormEvent) => {
+  const handleSubmit: FormEventHandler = async (e: FormEvent) => {
     e.preventDefault();
-    // loginMethod which will return accessToken
-    // add to localstorage
-
-    router.push({ pathname: '/user' });
-    setFormData(initialState);
+    try {
+      const res = await login(formData);
+      localStorage.setItem('accessToken', res.data.accessToken);
+      router.push('/user');
+      setFormData(initialState);
+    } catch (e: any) {
+      console.log(e.response.data.message);
+      // create a better error display
+      alert(e.response.data.message);
+    }
   };
 
   return (
