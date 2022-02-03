@@ -16,13 +16,18 @@ loginHandler.post(async (req: NextApiRequest, res: NextApiResponse) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) throw new Error();
-    const isValidPassword: boolean = await bcrypt.compare(password, user.password);
+    const isValidPassword: boolean = await bcrypt.compare(
+      password,
+      user.password
+    );
     if (!isValidPassword) throw new Error();
     const accessToken: string = jwt.sign({ userId: user._id }, JWT_SECRET);
     res.status(200).send({ accessToken });
   } catch (e: any) {
     console.error(e);
-    res.status(402).send({error: true, message: 'Email or password is incorrect'});
+    res
+      .status(401)
+      .send({ error: true, message: 'Email or password is incorrect' });
   }
 });
 

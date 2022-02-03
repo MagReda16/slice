@@ -1,12 +1,12 @@
 import { backendApiClient } from '../clients';
-import { Recipe } from '../../db/types';
+import { Plan } from '../../db/types';
 
-const updatePlan = async (recipeList: Recipe[]) => {
-  return backendApiClient.put('user/plan', recipeList, {
+const updatePlan = async (plan: Plan) => {
+  return backendApiClient.put('user/plan', plan, {
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    },
   });
-}
+};
 
 export { updatePlan };
