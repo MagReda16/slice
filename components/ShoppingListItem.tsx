@@ -9,6 +9,7 @@ interface Ingredient {
 type ShoppingListItemProps = {
   ingredient: Ingredient
 }
+
 const ShoppingListItem = ({ingredient} : ShoppingListItemProps) => {
   return (
     <div>

@@ -1,9 +1,15 @@
 import useSWR from "swr";
 import { spoonacularApiClient } from "../clients";
+import { Plan, Recipe } from '../../db/types/';
 
-const fetcher = (key: string, ids: string) => spoonacularApiClient.get(key, {
+const formatSearchString = (plan: Plan) => {
+  const recipes: Recipe[] = plan.recipes;
+  return recipes.map(recipe => recipe.recipeId).join();
+}
+
+const fetcher = (key: string, plan: Plan) => spoonacularApiClient.get(key, {
   params: {
-    ids: ids
+    ids: formatSearchString(plan)
   }
 }).then(res => res.data.map((recipe: any)=> recipe.extendedIngredients.map((ingredient: any) => {
   return {
@@ -16,7 +22,7 @@ const fetcher = (key: string, ids: string) => spoonacularApiClient.get(key, {
 
 
 const useShoppingList = (ids: string) => {
-  const {data, error} = useSWR(['/informationBulk', ids], fetcher);
+  const {data, error} = useSWR(['informationBulk', ids], fetcher);
 
 
   return {

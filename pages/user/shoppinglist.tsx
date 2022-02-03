@@ -6,9 +6,9 @@ import { useShoppingList } from '../../lib/hooks/useShoppingList';
 
 const ViewShoppingList = () => {
 
-  // const { data, error, isLoading} = useShoppingList('715536,716429');
+  const { data, error, isLoading} = useShoppingList('715536,716429');
 
-  // console.log('IN PAGE', data);
+  console.log('IN PAGE', data);
 
 
   return (
@@ -18,7 +18,7 @@ const ViewShoppingList = () => {
         remainingBudget={300}
         amountSpent={100}/>
         <div>
-       <ShoppingList data={[]} />
+       <ShoppingList data={data.flat()} />
         </div>
     </div>
   )
