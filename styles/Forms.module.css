@@ -29,3 +29,13 @@
   border-style: none;
   box-shadow: 0px 2px 2px 0px #00000040;
 }
+
+.searchbar {
+  margin: 1rem;
+
+}
+
+.searchInput {
+  font-size: 20px;
+  height: 3rem;
+}

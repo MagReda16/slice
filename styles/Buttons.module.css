@@ -66,6 +66,9 @@
   border-radius: 8px;
   color: white;
   border-style: none;
+
+  margin-top: 1.2rem;
+  margin-right: 1rem;
 }
 
 .addQuantityBtn {
