@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-// import useUser 
+import { useUser } from '../lib/hooks';
+// import useUser
 
 // this is for additional stuff, not needed at the moment, but good to keep in mind
 // array of site pages that user shouldnt see if loggedIn
@@ -9,13 +10,13 @@ import type { AppProps } from 'next/app';
 // in dependecy of useEffect add router.pathname and isLoggedIn
 
 
-// call for the hook useUser=> check if localStorage.getItem('accessToken') exists => fetch user data // handle the error (if error remove accessToken from localStorage) 
-// Auth context props = user, isLoggedIn(bool), 
+// call for the hook useUser=> check if localStorage.getItem('accessToken') exists => fetch user data // handle the error (if error remove accessToken from localStorage)
+// Auth context props = user, isLoggedIn(bool),
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  useUser();
+  // console.log('islogged in from the app', isLoggedIn);
   return (
-    <>
-      <Component {...pageProps} />
-    </>
+    <Component {...pageProps} />
   );
 }
