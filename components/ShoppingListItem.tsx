@@ -1,18 +1,14 @@
 import React from "react";
+import styles from '../styles/ShoppingListItem.module.css';
+import { Ingredient } from '../lib/types'
 
-interface Ingredient {
-  id: number
-  name: string,
-  amount: number,
-  unit: string
-}
 type ShoppingListItemProps = {
   ingredient: Ingredient
 }
 
 const ShoppingListItem = ({ingredient} : ShoppingListItemProps) => {
   return (
-    <div>
+    <div className={styles.itemContainer}>
       <h4>{ingredient.name}</h4>
     </div>
   )

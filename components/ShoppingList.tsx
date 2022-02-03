@@ -1,13 +1,7 @@
 import React from "react";
 import ShoppingListItem from "./ShoppingListItem";
+import {Ingredient} from '../lib/types';
 
-
-interface Ingredient {
-  id: number
-  name: string,
-  amount: number,
-  unit: string
-}
 
 type ShoppingListProps = {
   data: Ingredient[]

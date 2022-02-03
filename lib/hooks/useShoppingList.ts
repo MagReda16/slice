@@ -22,15 +22,8 @@ const fetcher = (key: string, ids: string) => spoonacularApiClient.get(key, {
 
 
 const useShoppingList = (plan?: Plan) => {
-  // const mockPlan = {
-  //   recipes: [
-  //     { recipeId: 716429 },
-  //     { recipeId: 715538 },
-  //   ]
-  // };
   const {data, error} = useSWR(plan ? ['informationBulk', formatSearchString(plan)] : null, fetcher);
-
-
+  
   return {
     data,
     error,
