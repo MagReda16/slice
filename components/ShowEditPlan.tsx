@@ -1,9 +1,9 @@
 import { MouseEventHandler } from "react";
 import DoughnutChart from "./DoughnutChart";
 import styles from '../styles/Buttons.module.css';
-import { useRecipes } from '../lib/hooks';
 import RecipeList from './RecipeList';
 import { Recipe } from '../db/types';
+import { usePlan } from '../lib/hooks/usePlan';
 
 type ShowEditPlanProps = {
   toggleSearch: MouseEventHandler,
@@ -12,7 +12,8 @@ type ShowEditPlanProps = {
 
 const ShowEditPlan = ({ recipes, toggleSearch }: ShowEditPlanProps) => {
 
-  const confirm = () => {}
+  const { confirmPlan } = usePlan();
+
 
   return (
     <>
@@ -22,8 +23,8 @@ const ShowEditPlan = ({ recipes, toggleSearch }: ShowEditPlanProps) => {
         amountSpent={100}
       />
       <button className={styles.loginBtn} type='button' onClick={toggleSearch}>Add recipe</button>
-      <RecipeList recipes={recipes} btnType={'subtract'} />
-      <button className={styles.loginBtn} type='submit' onClick={confirm}>Confirm plan</button>
+      <RecipeList recipes={recipes} btnType={'subtract'}  />
+      <button className={styles.loginBtn} type='submit' onClick={() => {confirm()}}>Confirm plan</button>
     </>
   )
 }

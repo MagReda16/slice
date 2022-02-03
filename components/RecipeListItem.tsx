@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Recipe } from '../db/types/Recipe.type'
+import { Recipe } from '../db/types/Recipe.type';
+import { usePlan } from '../lib/hooks/usePlan';
 
 import styles from '../styles/RecipeItem.module.css';
 import stylesBtn from '../styles/Buttons.module.css';
@@ -8,12 +9,13 @@ import stylesBtn from '../styles/Buttons.module.css';
 type RecipeListProps = {
   recipe: Recipe
   btnType: string
+  index: number
 }
 
-const RecipeListItem = ({ recipe, btnType }: RecipeListProps) => {
+const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
 
-  const addRecipe = () => {}
-  const subtractRecipe = () => {}
+  const { addRecipeToPlan, removeRecipeFromPlan} = usePlan();
+
 
   return (
 
@@ -29,8 +31,8 @@ const RecipeListItem = ({ recipe, btnType }: RecipeListProps) => {
       </Link>
       <div>
         {
-        btnType === 'add' ?  <button className={stylesBtn.addRecipeBtn} type="button" onClick={(addRecipe) => console.log('clicked')}>Add</button> :
-        btnType === 'subtract' ? <button className={stylesBtn.addRecipeBtn} type="button" onClick={(subtractRecipe) => console.log('clicked')}>Subtract</button> :
+        btnType === 'add' ?  <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {addRecipeToPlan(recipe)}}>Add</button> :
+        btnType === 'subtract' ? <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {removeRecipeFromPlan(index)}}>Subtract</button> :
         <h1>Info Here</h1>
         }
       </div>
