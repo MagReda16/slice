@@ -16,6 +16,13 @@ const ViewPlan = () => {
 
   return (
     <div className={styles.container}>
+       <Link href='/user'>
+        <NavButton
+        className={stylesBtn.backArrowBtn}
+        type='button'
+        children='⬅'
+      />
+      </Link>
       <h1>This week's plan</h1>
       <DoughnutChart />
       <Link href="/user/plan/edit" passHref>

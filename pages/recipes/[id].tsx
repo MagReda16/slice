@@ -1,15 +1,21 @@
 import { useEffect } from "react";
 import { useRecipe } from "../../lib/hooks";
-import styles from '../../styles/RecipeInfo.module.css'
-
+import styles from '../../styles/RecipeInfo.module.css';
+import stylesBtn from '../../styles/Buttons.module.css';
+import { useRouter } from 'next/router'
 
 const RecipeDetails = () => {
   const { data, recipeError, isRecipeLoading } = useRecipe();
+
+  const router = useRouter()
 
   if(isRecipeLoading) return null;
 
   return (
     <div className={styles.container}>
+       <button onClick={() => {router.back()}} className={stylesBtn.backArrowBtn}>
+        ⬅
+      </button>
       <h1>{data.title}</h1>
 
 
