@@ -31,11 +31,12 @@
 }
 
 .searchbar {
-  margin: 1rem;
+  margin-left: 5rem;
 
 }
 
 .searchInput {
   font-size: 20px;
   height: 3rem;
+  width: 75vw;
 }

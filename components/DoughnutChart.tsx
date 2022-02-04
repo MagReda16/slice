@@ -5,11 +5,8 @@ import { usePlan, useUser } from '../lib/hooks';
 
 Chart.register(ArcElement, Legend, Tooltip);
 
-type DoughnutChartProps = {
-  remainingBudget: Number,
-  amountSpent: Number
-}
-const DoughnutChart = ({ remainingBudget, amountSpent }: DoughnutChartProps) => {
+
+const DoughnutChart = () => {
 
   const { plan, isPlanLoading } = usePlan();
   const { user, isUserLoading } = useUser();
@@ -17,6 +14,8 @@ const DoughnutChart = ({ remainingBudget, amountSpent }: DoughnutChartProps) => 
   if (isPlanLoading || isUserLoading) return <div>laoding...</div>
 
   const remaining = user.budget - plan.totalPlanCost;
+  console.log(user.budget, remaining)
+  console.log(plan)
 
   const chartData = {
     labels: ['Amount spent', 'Remaining budget'],

@@ -49,7 +49,7 @@ const RegisterForm = () => {
         });
         const res = await login({ email: formData.email, password: formData.password });
         localStorage.setItem('accessToken', res.data.accessToken);
-        router.push({ pathname: '/user' });
+        router.push({ pathname: '/user/createbudget' });
         setFormData(initialState);
       } catch (e: any) {
         alert(e.response.data.message);

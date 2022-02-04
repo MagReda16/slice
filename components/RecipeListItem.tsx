@@ -20,20 +20,31 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
   return (
 
     <div className={styles.recipeItemContainer}>
-      <Link href=''>
+      <Link href={`/recipes/${recipe.recipeId}`} >
         <a>
           <img className={styles.recipeImage} src={recipe.image} alt="recipe image" />
             <div className={styles.recipeInfo}>
-              <h3>{recipe.title}</h3>
+              {
+                (btnType === '') ?  <h3 className={styles.title}>{recipe.title}</h3> : <h3 className={styles.title2}>{recipe.title}</h3>
+              }
+              {
+               (btnType !== '') &&
               <h6>Total cost: $ {recipe.totalCost}</h6>
+              }
+
             </div>
         </a>
       </Link>
       <div>
         {
-        btnType === 'add' ?  <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {addRecipeToPlan(recipe)}}>Add</button> :
-        btnType === 'subtract' ? <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {removeRecipeFromPlan(index)}}>Subtract</button> :
-        <h1>Info Here</h1>
+        btnType === 'add' ?  <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {addRecipeToPlan(recipe)}}>+</button> :
+        btnType === 'subtract' ? <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {removeRecipeFromPlan(index)}}>-</button> :
+        <div>
+          <h3 className={styles.totalCost}>Total Cost: </h3>
+          <h2 className={styles.dollarCost}>
+            ${recipe.totalCost}
+          </h2>
+        </div>
         }
       </div>
     </div>
