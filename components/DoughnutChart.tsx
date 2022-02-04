@@ -1,6 +1,7 @@
 import React from 'react';
 import { Chart, ArcElement, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { usePlan, useUser } from '../lib/hooks';
 
 Chart.register(ArcElement, Legend, Tooltip);
 
@@ -8,12 +9,20 @@ type DoughnutChartProps = {
   remainingBudget: Number,
   amountSpent: Number
 }
-const DoughnutChart = ({remainingBudget, amountSpent}: DoughnutChartProps) => {
+const DoughnutChart = ({ remainingBudget, amountSpent }: DoughnutChartProps) => {
+
+  const { plan, isPlanLoading } = usePlan();
+  const { user, isUserLoading } = useUser();
+
+  if (isPlanLoading || isUserLoading) return <div>laoding...</div>
+
+  const remaining = user.budget - plan.totalPlanCost;
+
   const chartData = {
     labels: ['Amount spent', 'Remaining budget'],
     datasets: [
-        {
-        data: [amountSpent, remainingBudget],
+      {
+        data: [plan.totalPlanCost, remaining],
         backgroundColor: [
           "#FFD59C",
           "#FFAC3B"
@@ -22,13 +31,13 @@ const DoughnutChart = ({remainingBudget, amountSpent}: DoughnutChartProps) => {
     ],
   };
 
-  return(
+  return (
     <div>
-      <div style={{width: "250px", margin: '0 auto'}}>
-      <Doughnut 
-        height={300}
-        width={300}
-        data={chartData}
+      <div style={{ width: "250px", margin: '0 auto' }}>
+        <Doughnut
+          height={300}
+          width={300}
+          data={chartData}
         />
       </div>
     </div>
@@ -38,7 +47,7 @@ const DoughnutChart = ({remainingBudget, amountSpent}: DoughnutChartProps) => {
 export default DoughnutChart;
 
 
-  //from tutorial, adds text to center of chart 
+  //from tutorial, adds text to center of chart
   // const plugins = [{
   //   beforeDraw: function(chart:any) {
   //    let width = chart.width,
@@ -53,5 +62,5 @@ export default DoughnutChart;
   //        textY = height / 2;
   //        ctx.fillText(text, textX, textY);
   //        ctx.save();
-  //   } 
+  //   }
   // }]

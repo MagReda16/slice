@@ -11,11 +11,11 @@ import styles from '../../../styles/Containers.module.css';
 import stylesBtn from '../../../styles/Buttons.module.css'
 
 const ViewPlan = () => {
-  const { plan, isLoading, error } = usePlan()
+  const { plan, isPlanLoading, planError } = usePlan()
 
-  if (isLoading) return <div>Loading....</div>
+  if (isPlanLoading) return <div>Loading....</div>
 
-  if (error) return <div>Some crazy stuff went wrong</div>
+  if (planError) return <div>Some crazy stuff went wrong</div>
 
   return (
     <div className={styles.container}>
