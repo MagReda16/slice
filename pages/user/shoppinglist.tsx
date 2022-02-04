@@ -15,9 +15,7 @@ const ViewShoppingList = () => {
   return (
     <div>
       <h1>My Shopping List</h1>
-      <DoughnutChart 
-        remainingBudget={300}
-        amountSpent={100}/>
+      <DoughnutChart />
         <div>
        <ShoppingList data={data.flat()} />
         </div>

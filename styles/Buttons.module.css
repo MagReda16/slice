@@ -139,3 +139,9 @@
     border-left-color: transparent;
 }
 
+.backArrowBtn {
+  color: #ffa927;
+  background-color: #FCFBF5;
+  border: none;
+  font-size: 40px;
+}
