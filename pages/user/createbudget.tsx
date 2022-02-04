@@ -8,7 +8,7 @@ const CreateBudget = () => {
   return (
     <div className={styles.container}>
       <h1 className={stylesFont.budgetText1}>What is your weekly grocery budget?</h1>
-      <CreateBudgetForm/>
+      <CreateBudgetForm isNew={true}/>
       <h3 className={stylesFont.fadeText}>(You can always change this later)</h3>
     </div>
   )
