@@ -19,7 +19,7 @@ const ShowSearch = ({ toggleSearch, data, changeQuery, querySearch, submitSearch
       <form className={stylesForm.searchbar} onSubmit={submitSearch}>
         <input className={stylesForm.searchInput} type="text" placeholder='search...' value={querySearch} onChange={changeQuery} />
       </form>
-      <RecipeList btnType={'add'} recipes={data} />
+      <RecipeList btnType={'add'} recipes={data}/>
     </>
   );
 };

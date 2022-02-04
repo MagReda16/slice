@@ -4,7 +4,11 @@ import DoughnutChart from '../../../components/DoughnutChart'
 import NavButton from '../../../components/NavButton'
 import RecipeList from '../../../components/RecipeList'
 import { usePlan } from '../../../lib/hooks'
-import styles from '../../../styles/Buttons.module.css'
+import { createPlan } from '../../../lib/methods/createPlan'
+
+
+import styles from '../../../styles/Containers.module.css';
+import stylesBtn from '../../../styles/Buttons.module.css'
 
 const ViewPlan = () => {
   const { plan, isLoading, error } = usePlan()
@@ -14,15 +18,15 @@ const ViewPlan = () => {
   if (error) return <div>Some crazy stuff went wrong</div>
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>This week's plan</h1>
       <DoughnutChart remainingBudget={300} amountSpent={100} />
       <Link href="/user/plan/edit" passHref>
-        <NavButton className={styles.loginBtn} type="button" children="Edit" />
+        <NavButton className={stylesBtn.Btn2} type="button" children="Edit" />
       </Link>
       <Link href="/user/shoppinglist" passHref>
         <NavButton
-          className={styles.loginBtn}
+          className={stylesBtn.Btn3}
           type="button"
           children="View my Shopping List"
         />
@@ -30,6 +34,7 @@ const ViewPlan = () => {
       <div>
         <RecipeList recipes={plan.recipes} btnType={''} />
       </div>
+      <button className={`${stylesBtn.Btn3} ${stylesBtn.deletePlanBtn}`} onClick={() => {createPlan}}>Finished with this week!</button>
     </div>
   )
 }

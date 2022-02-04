@@ -5,7 +5,7 @@ const API_KEY: string = process.env.NEXT_PUBLIC_SPOONACULAR_KEY!;
 const spoonacularApiClient = axios.create({
   baseURL: 'https://api.spoonacular.com/recipes/',
   params: {
-    apiKey: '974890968f524b0eaf067e4b5fce880e' //Ian's Key
+    apiKey: 'ff38de94a3c2426e8b86faf1acb87225' //Ian's Key
   }
 });
 

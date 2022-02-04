@@ -27,18 +27,41 @@
 }
 
 .recipeInfo {
-  margin-left: 15px;
 }
+
 .recipeInfo h3 {
-  font-size: 18px;
+  font-size: 14px;
+  margin-right: .5rem;
+  margin-bottom: .5rem;
 }
 
 .recipeInfo h6 {
   font-size: 12px;
+
 }
 
 .recipeImage {
   border-radius: 4px;
-  max-width: 100px;
-  max-height: 80px;
+  max-width: 120px;
+  max-height: 85px;
+  margin: .3rem;
+}
+
+.title {
+  font-size:large;
+  margin-bottom: 2rem;
+}
+
+.title2 {
+  margin-top: 2rem;
+
+}
+
+.totalCost {
+  font-size: 12px;
+  margin-left: 1.2rem;
+}
+
+.dollarCost {
+  margin: 1rem;
 }
