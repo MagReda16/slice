@@ -7,19 +7,6 @@
   width: 100vw;
 }
 
-.recipeItemContainer {
-  display: flex;
-  flex-direction: row;
-  background-color: aqua;
-}
 
-.recipeImageContainer img {
-  height: 130px;
-  width: 130px;
-}
-
-.recipeInfoContainer {
-
-}
 
 

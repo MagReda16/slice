@@ -1,13 +1,20 @@
 import React, {useState, FormEventHandler, FormEvent, ChangeEventHandler, ChangeEvent} from 'react';
 import { useRouter } from 'next/router';
+import { useUser } from '../lib/hooks';
 import styles from '../styles/Forms.module.css';
 import stylesBtn from '../styles/Buttons.module.css';
 
+const initialState = {budget: ''}
 
-const CreateBudgetForm = () => {
+type CreateBudgetFormProps ={
+  isNew?: boolean
+}
+
+const CreateBudgetForm = ({isNew}: CreateBudgetFormProps) => {
   const router = useRouter();
+  const { user, updateUserInfo, isLoggedIn } = useUser();
 
-const [ budget, setBudget ] = useState({budget:''})
+  const [ budget, setBudget ] = useState(initialState)
 
 const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
   const {name, value} = e.target as typeof e.target & {
@@ -17,10 +24,19 @@ const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
   setBudget({...budget, [name] : value});
 }
 
+
+
 const handleSubmit: FormEventHandler = (e: FormEvent) => {
   e.preventDefault();
-  router.push({pathname:'/user'});
+  if (updateUserInfo) updateUserInfo(budget)
+  setBudget(initialState);
+  if (isNew) router.push('/user')
 }
+
+
+if (!isLoggedIn) return <div>...</div>
+
+console.log(user.budget);
 
   return (
     <form className={`${styles.form} ${styles.budgetForm}`} onSubmit={handleSubmit}>
@@ -31,6 +47,7 @@ const handleSubmit: FormEventHandler = (e: FormEvent) => {
       placeholder="Weekly budget..."
       type="number"
       name="budget"
+      value={budget.budget}
       onChange={handleChange} />
 
     <button className={`${stylesBtn.Btn} ${stylesBtn.continueBtn}`} type="submit" value="Continue">Continue</button>

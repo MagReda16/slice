@@ -1,8 +1,16 @@
 import React from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
+import ShoppingList from '../../components/ShoppingList';
+import { useShoppingList } from '../../lib/hooks/';
+import { usePlan } from '../../lib/hooks';
 
 
 const ViewShoppingList = () => {
+
+  const { plan } = usePlan();
+  const { data, error, isLoading } = useShoppingList(plan);
+
+  if (isLoading) return null;
 
   return (
     <div>
@@ -11,7 +19,7 @@ const ViewShoppingList = () => {
         remainingBudget={300}
         amountSpent={100}/>
         <div>
-          {/* shopping list items here */}
+       <ShoppingList data={data.flat()} />
         </div>
     </div>
   )

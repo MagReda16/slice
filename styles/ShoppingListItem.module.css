@@ -1,0 +1,21 @@
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 10px;
+  max-height: 45px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.31);
+}
+
+.itemContainer:nth-child(odd) {
+  background-color: white;
+  
+}
+.itemContainer:nth-child(even) {
+  background-color: #F37742;
+  color: white;
+}
+
