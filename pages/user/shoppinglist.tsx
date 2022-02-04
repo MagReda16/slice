@@ -1,20 +1,14 @@
 import React from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
 import ShoppingList from '../../components/ShoppingList';
-import { useShoppingList } from '../../lib/hooks/useShoppingList';
+import { useShoppingList } from '../../lib/hooks/';
 import { usePlan } from '../../lib/hooks';
 
 
 const ViewShoppingList = () => {
 
   const { plan } = usePlan();
-
-  // if (isLoading) return []
- 
-  // if (!isLoading) console.log(plan);
-  const { data, error, isLoading } = useShoppingList(plan); 
-
-  console.log('IN PAGE', data);
+  const { data, error, isLoading } = useShoppingList(plan);
 
   if (isLoading) return null;
 

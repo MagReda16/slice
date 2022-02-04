@@ -1,6 +1,5 @@
 import React, {useState, FormEventHandler, FormEvent, ChangeEventHandler, ChangeEvent} from 'react';
 import { useRouter } from 'next/router';
-import { updateUser } from '../lib/methods';
 import { useUser } from '../lib/hooks';
 import styles from '../styles/Forms.module.css';
 import stylesBtn from '../styles/Buttons.module.css';
@@ -13,6 +12,7 @@ type CreateBudgetFormProps ={
 
 const CreateBudgetForm = ({isNew}: CreateBudgetFormProps) => {
   const router = useRouter();
+  const { user, updateUserInfo, isLoggedIn } = useUser();
 
   const [ budget, setBudget ] = useState(initialState)
 
@@ -24,17 +24,19 @@ const handleChange: ChangeEventHandler = (e: ChangeEvent) => {
   setBudget({...budget, [name] : value});
 }
 
+
+
 const handleSubmit: FormEventHandler = (e: FormEvent) => {
   e.preventDefault();
-  updateUser(budget);
+  if (updateUserInfo) updateUserInfo(budget)
   setBudget(initialState);
   if (isNew) router.push('/user')
 }
-const { user, isLoggedIn } = useUser();
+
 
 if (!isLoggedIn) return <div>...</div>
 
-console.log(user.user.budget);
+console.log(user.budget);
 
   return (
     <form className={`${styles.form} ${styles.budgetForm}`} onSubmit={handleSubmit}>
