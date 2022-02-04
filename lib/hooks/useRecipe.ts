@@ -12,8 +12,8 @@ const useRecipe = () => {
 
   return {
     data,
-    error,
-    isLoading: !data && !error
+    recipeError: error,
+    isRecipeLoading: !data && !error,
   }
 }
 

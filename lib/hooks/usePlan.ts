@@ -1,29 +1,27 @@
 import { backendApiClient } from '../clients'
 import useSWR from 'swr'
-import { updatePlan } from '../methods'
+import { updatePlan, createPlan } from '../methods'
 import { Recipe } from '../../db/types'
 
 const fetcher = async (key: string) => {
   try {
-    console.log('fetching the plan from backend')
     const res = await backendApiClient.get(key, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
       data: {},
-    })
-    return res.data.plan
-  } catch (e) {
-    console.error('Could not fetch user plan', e)
+    });
+    return res.data.plan;
+  } catch (e: any) {
+    const error: any = new Error(e.response.data.message);
+    error.status = e.response.status;
+    throw error;
   }
 }
 
 const usePlan = () => {
   const { data, error, mutate } = useSWR('user/plan', fetcher)
-  // {
-  //   dedupingInterval: 10000000,
-  // }
 
   const addRecipeToPlan = async (recipe: Recipe) => {
     const updatedRecipes = [...data.recipes, recipe]
@@ -40,7 +38,7 @@ const usePlan = () => {
   const removeRecipeFromPlan = async (recipeIndex: number) => {
     const updatedCost = data.totalPlanCost - data.recipes[recipeIndex].totalCost
     const updatedRecipes = data.recipes.filter(
-      (recipe: Recipe, index: number) => index !== recipeIndex,
+      (_: Recipe, index: number) => index !== recipeIndex,
     )
     const updatedData = {
       ...data,
@@ -51,17 +49,18 @@ const usePlan = () => {
     mutate()
   }
 
-  const confirmPlan = async () => {
-    mutate(await updatePlan(data), true)
+  const createNewPlan = async () => {
+    await createPlan();
+    mutate();
   }
 
   return {
     plan: data,
-    error,
+    planError: error,
     addRecipeToPlan,
     removeRecipeFromPlan,
-    confirmPlan,
-    isLoading: !data && !error,
+    isPlanLoading: !data && !error,
+    createNewPlan
   }
 }
 
