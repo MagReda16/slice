@@ -35,8 +35,8 @@ const useSearch = (searchTerm: string, readyToSubmit: boolean) => {
 
   return {
     data,
-    error,
-    isLoading: !data && !error
+    searchError: error,
+    isSearchLoading: !data && !error
   }
 }
 
