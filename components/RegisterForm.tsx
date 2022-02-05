@@ -102,7 +102,7 @@ const RegisterForm = () => {
         type="password"
         name="confirmPassword"
         onChange={handleChange} />
-      <button className={`${stylesBtn.Btn} ${stylesBtn.registerBtn}`} type="submit">Register</button>
+      <button className={`${stylesBtn.btn} ${stylesBtn.small}`} type="submit">Register</button>
     </form>
 
 

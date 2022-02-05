@@ -3,19 +3,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height:100vh;
 }
 .createBudgetHeader {
   display: flex;
   flex-direction: column;
- align-items: center;
+  align-items: center;
 }
 
 .createBudgetHeader h1 {
   text-align: center;
   font-size: 30px;
   letter-spacing: .06em;
-  margin: 0;
+  margin: 10px;
 }
 
 .container h3 {
@@ -23,13 +23,14 @@
   font-weight: 400;
 }
 
+
 .updateSettingsHeader {
   text-align: center;
   font-size: 30px;
   letter-spacing: .06em;
 }
 .updateSettingsHeader h1{
-  margin: 0
+  margin: 0;
 }
 
 .titleBar {

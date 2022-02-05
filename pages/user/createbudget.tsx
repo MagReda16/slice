@@ -10,8 +10,9 @@ const CreateBudget = () => {
         <h1>What is your weekly grocery budget?</h1>
         <h3>(You can always change this later)</h3>
       </header>
+      <div className={styles.createBudgetContainer}>
         <CreateBudgetForm isNew={true}/>
-     
+      </div>
     </div>
   )
 }

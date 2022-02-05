@@ -46,7 +46,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className={`${styles.form} ${styles.loginForm}`}>
       <input
         required
         autoComplete='off'
@@ -65,7 +65,7 @@ const LoginForm = () => {
         onChange={handleChange}
         className={styles.inputbox}
       />
-      <button className={stylesBtn.Btn} type='submit' value='Login'>
+      <button className={`${stylesBtn.btn} ${stylesBtn.small}`} type='submit' value='Login'>
         Login
       </button>
     </form>

@@ -49,8 +49,7 @@ console.log(user.budget);
       name="budget"
       value={budget.budget}
       onChange={handleChange} />
-
-    <button className={`${stylesBtn.Btn} ${stylesBtn.continueBtn}`} type="submit" value="Continue">Continue</button>
+    <button className={`${stylesBtn.btn} ${stylesBtn.small}`} type="submit" value="Continue">Continue</button>
   </form>
 
   )
