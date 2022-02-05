@@ -2,7 +2,6 @@ import React from 'react';
 import NavButton from '../../components/NavButton';
 import Link from 'next/link';
 import DoughnutChart from '../../components/DoughnutChart';
-import containerStyles from '../../styles/Containers.module.css';
 import styles from '../../styles/Buttons.module.css';
 import { useUser } from '../../lib/hooks';
 
@@ -13,11 +12,11 @@ const Dashboard = () => {
  if (!isLoggedIn) return <div>...</div>
 
   return (
-    <div className={containerStyles.container}>
+    <div>
       <h1>Hello, {user.firstName}</h1>
       <DoughnutChart
       />
-      <div className={containerStyles.dashboardLinksContainer}>
+      <div>
       <Link href='/user/plan' passHref>
         <NavButton
         className={styles.Btn3}

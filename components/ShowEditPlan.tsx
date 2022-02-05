@@ -1,7 +1,6 @@
 import { MouseEventHandler } from "react";
 import DoughnutChart from "./DoughnutChart";
 import stylesBtn from '../styles/Buttons.module.css';
-import stylesContainer from '../styles/Containers.module.css'
 import Link from 'next/link';
 import RecipeList from './RecipeList';
 import { Recipe } from '../db/types';
@@ -17,17 +16,25 @@ type ShowEditPlanProps = {
 
 const ShowEditPlan = ({ recipes, toggleSearch }: ShowEditPlanProps) => {
   return (
-    <div className={stylesContainer.container}>
-       <Link href='/user/plan'>
-        <NavButton
-        className={stylesBtn.backArrowBtn}
-        type='button'
-        children='⬅'
-      />
-      </Link>
-      <h1>Edit my Plan</h1>
+    <div className={styles.container}>
+      <div className={styles.titleBar}>
+        <Link href='/user/plan'>
+          <NavButton
+          className={stylesBtn.backArrowBtn}
+          type='button'
+          children='⬅'
+        />
+        </Link>
+        <h1>Edit my Plan</h1>
+      </div>
       <DoughnutChart />
-      <button className={stylesBtn.btn} type='button' onClick={toggleSearch}>Add recipe</button>
+      <button
+        className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}
+        type="button"
+        onClick={toggleSearch}
+      >
+        Add recipe
+      </button>
       <RecipeList recipes={recipes} btnType={'subtract'} />
       <Link href="/user/plan" passHref>
         <NavButton
