@@ -1,54 +1,48 @@
-import {
-  useState,
-  FormEvent,
-  ChangeEvent,
-  ChangeEventHandler,
-  FormEventHandler,
-} from 'react';
-import ShowEditPlan from '../../../components/ShowEditPlan';
-import ShowSearch from '../../../components/ShowSearch';
-import { useSearch, usePlan } from '../../../lib/hooks';
+import { usePlan } from '../../../lib/hooks';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import buttonStyles from '../../../styles/Buttons.module.css';
+import styles from '../../../styles/EditPlan.module.css';
+import NavButton from '../../../components/NavButton';
+import RecipeList from '../../../components/RecipeList';
+import DoughnutChart from '../../../components/DoughnutChart';
 
 const EditPlan = () => {
-  const [querySearch, setQuerySearch] = useState('');
-  const [readyToSubmit, setReadyToSubmit] = useState(false);
-  const [displaySearch, setDisplaySearch] = useState(false);
-  const { data, searchError } = useSearch(querySearch, readyToSubmit);
   const { plan, isPlanLoading } = usePlan();
-
-  const toggleSearch = () => {
-    setDisplaySearch(!displaySearch);
-  };
-
-  const submitSearch: FormEventHandler = async (e: FormEvent) => {
-    e.preventDefault();
-    setReadyToSubmit(true);
-  };
-
-  const changeQuery: ChangeEventHandler = (e: ChangeEvent) => {
-    const { value } = e.target as typeof e.target & {
-      value: string;
-    };
-    setReadyToSubmit(false);
-    setQuerySearch(value);
-  };
-
-  if (searchError) return <div>Error or something, idk</div>;
+  const router = useRouter();
   if (isPlanLoading) return <div>Loading</div>;
 
+  const addQuantity = () => {};
+  const subtractQuantity = () => {};
+
   return (
-    <div>
-      {!displaySearch ? (
-        <ShowEditPlan toggleSearch={toggleSearch} recipes={plan.recipes} />
-      ) : (
-        <ShowSearch
-          toggleSearch={toggleSearch}
-          data={data}
-          changeQuery={changeQuery}
-          querySearch={querySearch}
-          submitSearch={submitSearch}
+    <div className={styles.container}>
+      <div className={styles.titleBar}>
+        <Link href="/user/plan">
+          <NavButton
+            className={buttonStyles.backArrowBtn}
+            type="button"
+            children="⬅"
+          />
+        </Link>
+        <h1>Edit my Plan</h1>
+      </div>
+      <DoughnutChart />
+      <button
+        className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}
+        type="button"
+        onClick={() => router.push('/user/plan/searchrecipes')}
+      >
+        Add recipe
+      </button>
+      <RecipeList recipes={plan.recipes} btnType={'edit'} />
+      <Link href="/user/plan" passHref>
+        <NavButton
+          className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}
+          type="button"
+          children="Confirm"
         />
-      )}
+      </Link>
     </div>
   );
 };
