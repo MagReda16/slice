@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 import Link from "next/link";
 import { Recipe } from '../db/types/Recipe.type';
 import { usePlan } from '../lib/hooks/usePlan';
 
-import styles from '../styles/RecipeItem.module.css';
-import stylesBtn from '../styles/Buttons.module.css';
+import styles from '../styles/RecipeList.module.css';
 
 type RecipeListProps = {
   recipe: Recipe
@@ -14,41 +12,38 @@ type RecipeListProps = {
 
 const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
 
-  const { addRecipeToPlan, removeRecipeFromPlan} = usePlan();
+  const { addRecipeToPlan, removeRecipeFromPlan } = usePlan();
 
+  const displayButton = () => {
+    if (btnType === 'add') {
+      return <button className={styles.addRecipeBtn} type="button" onClick={() => { addRecipeToPlan(recipe) }}>+</button>
+    } else if (btnType === 'subtract') {
+      return <button className={styles.addRecipeBtn} type="button" onClick={() => { removeRecipeFromPlan(index) }}>−</button>
+    } else {
+      return (
+        <div className={styles.costInfo}>
+          <p className={styles.totalCost}>Total Cost:</p>
+          <p className={styles.dollarCost}>
+            ${recipe.totalCost}
+          </p>
+        </div>
+      )
+    }
+  }
 
   return (
-
     <div className={styles.recipeItemContainer}>
       <Link href={`/recipes/${recipe.recipeId}`} >
         <a>
-          <img className={styles.recipeImage} src={recipe.image} alt="recipe image" />
-            <div className={styles.recipeInfo}>
-              {
-                (btnType === '') ?  <h3 className={styles.title}>{recipe.title}</h3> : <h3 className={styles.title2}>{recipe.title}</h3>
-              }
-              {
-               (btnType !== '') &&
-              <h6>Total cost: $ {recipe.totalCost}</h6>
-              }
-
-            </div>
+          <img className={styles.recipeImage} src={recipe.image} alt={recipe.title} />
+          <div className={styles.recipeInfo}>
+            <p className={styles.title}>{recipe.title}</p>
+            {btnType !== '' && <p>Total cost: $ {recipe.totalCost}</p>}
+          </div>
         </a>
       </Link>
-      <div>
-        {
-        btnType === 'add' ?  <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {addRecipeToPlan(recipe)}}>+</button> :
-        btnType === 'subtract' ? <button className={stylesBtn.addRecipeBtn} type="button" onClick={() => {removeRecipeFromPlan(index)}}>-</button> :
-        <div>
-          <h3 className={styles.totalCost}>Total Cost: </h3>
-          <h2 className={styles.dollarCost}>
-            ${recipe.totalCost}
-          </h2>
-        </div>
-        }
-      </div>
+      {displayButton()}
     </div>
-
   )
 }
 
