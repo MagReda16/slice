@@ -45,15 +45,17 @@ const fetcher = async (
     return acc;
   }, []);
 
-  return combinedList.map((ingredient: any) => {
+  const filteredIngredients = combinedList.filter((ingredient: any) => {
+    if (ingredient.id) return ingredient;
+  }).map((ingredient: any) => {
     return {
       id: ingredient.id,
-      name: ingredient.name[0].toUpperCase() + ingredient.name.slice(1),
-      amount: `${Math.round(ingredient.measures.amount * 2) / 2} ${
-        ingredient.measures.unitShort
-      }`,
-    };
+      name: ingredient.name[0].toUpperCase() + ingredient.name.substring(1),
+      amount: Math.round(ingredient.measures.amount * 2) / 2,
+      unit: ingredient.measures.unitShort
+    }
   });
+  return filteredIngredients
 };
 
 const useShoppingList = (plan?: Plan) => {
@@ -61,8 +63,6 @@ const useShoppingList = (plan?: Plan) => {
     plan ? ['informationBulk', formatSearchString(plan)] : null,
     fetcher
   );
-
-  console.log(data);
 
   return {
     data,

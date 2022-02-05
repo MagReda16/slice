@@ -7,6 +7,7 @@ import Link from 'next/link'
 import NavButton from '../../components/NavButton';
 import stylesBtn from '../../styles/Buttons.module.css';
 import styles from '../../styles/ShoppingList.module.css';
+import Spinner from '../../components/Spinner';
 
 
 const ViewShoppingList = () => {
@@ -14,7 +15,7 @@ const ViewShoppingList = () => {
   const { plan } = usePlan();
   const { data, error, isLoading } = useShoppingList(plan);
 
-  if (isLoading) return <div>...</div>
+  if (isLoading) return <Spinner />
   if (!data) return <h1>No items yet! Add some recipes</h1>
 
 
