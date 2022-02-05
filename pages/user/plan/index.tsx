@@ -4,8 +4,8 @@ import DoughnutChart from '../../../components/DoughnutChart'
 import NavButton from '../../../components/NavButton'
 import RecipeList from '../../../components/RecipeList'
 import { usePlan } from '../../../lib/hooks'
-import styles from '../../../styles/Containers.module.css';
-import stylesBtn from '../../../styles/Buttons.module.css'
+import stylesBtn from '../../../styles/Buttons.module.css';
+import styles from '../../../styles/EditPlan.module.css';
 
 const ViewPlan = () => {
   const { plan, isPlanLoading, planError, createNewPlan } = usePlan()
@@ -16,14 +16,16 @@ const ViewPlan = () => {
 
   return (
     <div className={styles.container}>
-       <Link href='/user'>
-        <NavButton
-        className={stylesBtn.backArrowBtn}
-        type='button'
-        children='⬅'
-      />
-      </Link>
-      <h1>This week's plan</h1>
+      <div className={styles.titleBar}>
+        <Link href='/user'>
+          <NavButton
+          className={stylesBtn.backArrowBtn}
+          type='button'
+          children='⬅'
+        />
+        </Link>
+        <h1>This week's plan</h1>
+      </div>
       <DoughnutChart />
       <Link href="/user/plan/edit" passHref>
         <NavButton className={stylesBtn.Btn2} type="button" children="Edit" />
