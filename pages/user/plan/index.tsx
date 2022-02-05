@@ -28,9 +28,7 @@ const ViewPlan = () => {
           children="View my Shopping List"
         />
       </Link>
-      <div>
-        <RecipeList recipes={plan.recipes} btnType={''} />
-      </div>
+      <RecipeList recipes={plan.recipes} btnType={''} />
       <button className={`${stylesBtn.Btn3} ${stylesBtn.deletePlanBtn}`} onClick={() => {createNewPlan}}>Finished with this week!</button>
     </div>
   )
