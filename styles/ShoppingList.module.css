@@ -1,3 +1,9 @@
+.shoppingListTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .itemContainer {
   display: flex;
   flex-direction: row;
@@ -18,4 +24,3 @@
   background-color: #F37742;
   color: white;
 }
-

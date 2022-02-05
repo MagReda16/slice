@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
+.container, .registerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 50vh;
+}
+
+.mainHeader h1, .registerHeader h1{
+  letter-spacing: .23em;
+  font-size: 96px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  font-style: normal;
+}
+
+.mainHeader h4{
+  font-family: 'Amatic SC', cursive;
+  font-size: 22px;
+}
+
+.mainLoginContainer {
+  display: flex;
+  height: 50vh;
+  margin-top: 25px;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emailLoginContainer {
+  display: flex;
+  margin-top: 0;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
