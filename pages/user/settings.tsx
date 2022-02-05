@@ -1,7 +1,6 @@
 import React from 'react';
 import CreateBudgetForm from '../../components/CreateBudgetForm';
-import styles from '../../styles/Containers.module.css';
-import stylesFont from '../../styles/Fonts.module.css';
+import styles from '../../styles/Settings.module.css';
 import stylesBtn from '../../styles/Buttons.module.css';
 
 const Settings = () => {
@@ -10,11 +9,10 @@ const Settings = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={stylesFont.budgetText1}>Weekly Budget</h1>
+      <header className={styles.updateSettingsHeader}>
+        <h1>Weekly Budget</h1>
+      </header>
       <CreateBudgetForm/>
-
-
-
       <button className={`${stylesBtn.Btn} ${stylesBtn.logoutBtn}`}>Logout</button>
     </div>
   )

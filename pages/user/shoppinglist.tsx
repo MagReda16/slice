@@ -3,6 +3,7 @@ import DoughnutChart from '../../components/DoughnutChart';
 import ShoppingList from '../../components/ShoppingList';
 import { useShoppingList } from '../../lib/hooks/';
 import { usePlan } from '../../lib/hooks';
+import styles from '../../styles/ShoppingList.module.css';
 
 
 const ViewShoppingList = () => {
@@ -10,15 +11,19 @@ const ViewShoppingList = () => {
   const { plan } = usePlan();
   const { data, error, isLoading } = useShoppingList(plan);
 
-  if (isLoading) return null;
+  if (isLoading) return <div>...</div>
+  if (!data) return <h1>No items yet! Add some recipes</h1>
+
 
   return (
     <div>
-      <h1>My Shopping List</h1>
-      <DoughnutChart />
-        <div>
-       <ShoppingList data={data.flat()} />
-        </div>
+      <div className={styles.shoppingListTitle}>
+        <h1>Shopping List</h1>
+        <DoughnutChart />
+      </div>
+      <div>
+        <ShoppingList data={data.flat()} />
+      </div>
     </div>
   )
 }
