@@ -8,21 +8,21 @@ import NavButton from '../../components/NavButton';
 const Settings = () => {
 
   return (
-    <div className={styles.container}>
-      <div className={styles.titleBar}>
+    <div className={styles.wrapper}>
         <Link href='/user'>
           <NavButton
-          className={stylesBtn.backArrowBtn}
+          className={`${stylesBtn.backArrowBtn} ${styles.arrow}`}
           type='button'
           children='⬅'
         />
         </Link>
+    <div className={styles.container}>
         <header className={styles.updateSettingsHeader}>
           <h1>Weekly Budget</h1>
         </header>
-      </div>
-      <CreateBudgetForm/>
-      <button className={`${stylesBtn.Btn} ${stylesBtn.logoutBtn}`}>Logout</button>
+        <CreateBudgetForm/>
+      <button className={`${stylesBtn.btn} ${stylesBtn.secondary} ${stylesBtn.small}`}>Logout</button>
+    </div>
     </div>
   )
 }
