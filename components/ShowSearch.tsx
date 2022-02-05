@@ -24,14 +24,6 @@ const ShowSearch = ({ toggleSearch, data, changeQuery, querySearch, submitSearch
         ⬅
       </button>
 
-      <Link href='/user/plan/edit'>
-        <NavButton
-        className={stylesBtn.backArrowBtn}
-        type='button'
-        children='⬅'
-      />
-      </Link>
-
       <form className={stylesForm.searchbar} onSubmit={submitSearch}>
         <input className={stylesForm.searchInput} type="text" placeholder='search...' value={querySearch} onChange={changeQuery} />
       </form>
