@@ -12,14 +12,16 @@ const Settings = () => {
 
   return (
     <div className={styles.container}>
-      <Link href='/user'>
-        <NavButton
-        className={stylesBtn.backArrowBtn}
-        type='button'
-        children='⬅'
-      />
-      </Link>
-      <h1 className={stylesFont.budgetText1}>Weekly Budget</h1>
+      <div>
+        <Link href='/user'>
+          <NavButton
+          className={stylesBtn.backArrowBtn}
+          type='button'
+          children='⬅'
+        />
+        </Link>
+        <h1 className={stylesFont.budgetText1}>Weekly Budget</h1>
+      </div>
       <CreateBudgetForm/>
 
 
