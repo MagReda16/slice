@@ -181,4 +181,8 @@
   background-color: #fcfbf5;
   border: none;
   font-size: 40px;
+
+  position: absolute;
+  top: 0;
+  left: 25px;
 }

@@ -12,29 +12,28 @@ import Spinner from '../../components/Spinner';
 
 const ViewShoppingList = () => {
 
-  const { plan } = usePlan();
+  const { plan, isPlanLoading } = usePlan();
   const { data, error, isLoading } = useShoppingList(plan);
 
-  if (isLoading) return <Spinner />
-  if (!data) return <h1>No items yet! Add some recipes</h1>
-
+  if (isLoading || isPlanLoading) return <Spinner />
 
   return (
     <div>
       <div className={styles.shoppingListTitle}>
-      <Link href='/user/plan'>
-        <NavButton
-        className={stylesBtn.backArrowBtn}
-        type='button'
-        children='⬅'
-      />
-      </Link>
+        <Link href='/user/plan'>
+          <NavButton
+            className={stylesBtn.backArrowBtn}
+            type='button'
+            children='⬅'
+          />
+        </Link>
         <h1>Shopping List</h1>
         <DoughnutChart />
       </div>
-      <div>
-        <ShoppingList data={data.flat()} />
-      </div>
+      {data.length === 0
+        ? <p className={styles.noRecipes}>No items here yet!</p>
+        : <ShoppingList data={data} />
+      }
     </div>
   )
 }

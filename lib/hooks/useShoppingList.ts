@@ -60,9 +60,13 @@ const fetcher = async (
 
 const useShoppingList = (plan?: Plan) => {
   const { data, error } = useSWR(
-    plan ? ['informationBulk', formatSearchString(plan)] : null,
-    fetcher
+    plan && plan.recipes.length !== 0 ? ['informationBulk', formatSearchString(plan)] : null,
+    fetcher, {
+      fallbackData: []
+    }
   );
+
+  console.log('data in useshopping list', data);
 
   return {
     data,
