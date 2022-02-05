@@ -8,7 +8,6 @@ import {
 import ShowEditPlan from '../../../components/ShowEditPlan';
 import ShowSearch from '../../../components/ShowSearch';
 import { useSearch, usePlan } from '../../../lib/hooks';
-import containerStyles from '../../../styles/Containers.module.css';
 
 const EditPlan = () => {
   const [querySearch, setQuerySearch] = useState('');
@@ -38,7 +37,7 @@ const EditPlan = () => {
   if (isPlanLoading) return <div>Loading</div>;
 
   return (
-    <div className={containerStyles.container}>
+    <div>
       {!displaySearch ? (
         <ShowEditPlan toggleSearch={toggleSearch} recipes={plan.recipes} />
       ) : (

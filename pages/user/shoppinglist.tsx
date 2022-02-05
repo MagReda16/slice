@@ -3,6 +3,9 @@ import DoughnutChart from '../../components/DoughnutChart';
 import ShoppingList from '../../components/ShoppingList';
 import { useShoppingList } from '../../lib/hooks/';
 import { usePlan } from '../../lib/hooks';
+import Link from 'next/link'
+import NavButton from '../../components/NavButton';
+import stylesBtn from '../../styles/Buttons.module.css';
 import styles from '../../styles/ShoppingList.module.css';
 
 
@@ -18,6 +21,13 @@ const ViewShoppingList = () => {
   return (
     <div>
       <div className={styles.shoppingListTitle}>
+      <Link href='/user/plan'>
+        <NavButton
+        className={stylesBtn.backArrowBtn}
+        type='button'
+        children='⬅'
+      />
+      </Link>
         <h1>Shopping List</h1>
         <DoughnutChart />
       </div>

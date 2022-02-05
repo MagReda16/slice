@@ -1,9 +1,10 @@
 import { MouseEventHandler, ChangeEventHandler, FormEventHandler } from 'react';
-import RecipeList from './RecipeList';
-import { Recipe } from '../db/types';
+import RecipeList from "./RecipeList";
+import { Recipe } from "../db/types";
 import styles from '../styles/EditPlan.module.css';
 import stylesBtn from '../styles/Buttons.module.css';
 import stylesForm from '../styles/Forms.module.css';
+
 
 type ShowSearchProps = {
   toggleSearch: MouseEventHandler;
