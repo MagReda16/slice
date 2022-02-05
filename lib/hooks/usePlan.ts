@@ -25,7 +25,6 @@ const fetcher = async (key: string) => {
 
 function calculatePlanCost(recipes: Recipe[]) {
   return recipes.reduce((acc: any, recipe) => {
-    console.log(recipe);
     return (acc = acc + Number(recipe.quantity) * Number(recipe.totalCost));
   }, 0);
 }
