@@ -1,0 +1,11 @@
+.searchBarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 1rem 1rem;
+}
+
+.btn {
+  margin: 1rem 0;
+}
