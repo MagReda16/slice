@@ -1,7 +1,7 @@
-import { backendApiClient } from '../clients'
-import useSWR from 'swr'
-import { updatePlan, createPlan } from '../methods'
-import { Recipe } from '../../db/types'
+import { backendApiClient } from '../clients';
+import useSWR from 'swr';
+import { updatePlan, createPlan } from '../methods';
+import { Recipe } from '../../db/types';
 
 const fetcher = async (key: string) => {
   try {
@@ -12,56 +12,74 @@ const fetcher = async (key: string) => {
       },
       data: {},
     });
-    return res.data.plan;
+    return {
+      ...res.data.plan,
+      totalPlanCost: calculatePlanCost(res.data.plan.recipes),
+    };
   } catch (e: any) {
     const error: any = new Error(e.response.data.message);
     error.status = e.response.status;
     throw error;
   }
+};
+
+function calculatePlanCost(recipes: Recipe[]) {
+  return recipes.reduce((acc: any, recipe) => {
+    console.log(recipe);
+    return (acc = acc + Number(recipe.quantity) * Number(recipe.totalCost));
+  }, 0);
 }
 
 const usePlan = () => {
-  const { data, error, mutate } = useSWR('user/plan', fetcher)
+  const { data, error, mutate } = useSWR('user/plan', fetcher);
 
   const addRecipeToPlan = async (recipe: Recipe) => {
-    const updatedRecipes = [...data.recipes, recipe]
-    const updatedCost = data.totalPlanCost + recipe.totalCost
-    const updatedData = {
-      ...data,
-      totalPlanCost: updatedCost,
-      recipes: updatedRecipes,
-    }
-    await updatePlan(updatedData)
-    mutate()
-  }
+    const existingRecipeIndex = data.recipes.findIndex(
+      (el: any) => el.recipeId === recipe.recipeId
+    );
 
-  const removeRecipeFromPlan = async (recipeIndex: number) => {
-    const updatedCost = data.totalPlanCost - data.recipes[recipeIndex].totalCost
-    const updatedRecipes = data.recipes.filter(
-      (_: Recipe, index: number) => index !== recipeIndex,
-    )
-    const updatedData = {
-      ...data,
-      totalPlanCost: updatedCost,
-      recipes: updatedRecipes,
+    if (existingRecipeIndex >= 0) {
+      data.recipes[existingRecipeIndex].quantity++;
+    } else {
+      data.recipes.push(recipe);
     }
-    await updatePlan(updatedData)
-    mutate()
-  }
+
+    await updatePlan(data);
+    mutate();
+  };
+
+  const decrementRecipeQuantity = async (recipeIndex: number) => {
+    data.recipes[recipeIndex].quantity--;
+
+    if (data.recipes[recipeIndex].quantity <= 0) {
+      data.recipes.splice(recipeIndex, 1);
+    }
+
+    await updatePlan(data);
+    mutate();
+  };
+
+  const incrementRecipeQuantity = async (recipeIndex: number) => {
+    data.recipes[recipeIndex].quantity++;
+
+    await updatePlan(data);
+    mutate();
+  };
 
   const createNewPlan = async () => {
     await createPlan();
     mutate();
-  }
+  };
 
   return {
     plan: data,
     planError: error,
     addRecipeToPlan,
-    removeRecipeFromPlan,
+    incrementRecipeQuantity,
+    decrementRecipeQuantity,
     isPlanLoading: !data && !error,
-    createNewPlan
-  }
-}
+    createNewPlan,
+  };
+};
 
-export { usePlan }
+export { usePlan };

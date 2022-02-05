@@ -9,10 +9,11 @@ import DoughnutChart from '../../../components/DoughnutChart';
 
 const EditPlan = () => {
   const { plan, isPlanLoading } = usePlan();
-
   const router = useRouter();
-
   if (isPlanLoading) return <div>Loading</div>;
+
+  const addQuantity = () => {};
+  const subtractQuantity = () => {};
 
   return (
     <div className={styles.container}>
@@ -34,7 +35,7 @@ const EditPlan = () => {
       >
         Add recipe
       </button>
-      <RecipeList recipes={plan.recipes} btnType={'subtract'} />
+      <RecipeList recipes={plan.recipes} btnType={'edit'} />
       <Link href="/user/plan" passHref>
         <NavButton
           className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}

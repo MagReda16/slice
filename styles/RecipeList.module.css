@@ -78,3 +78,11 @@
   border-style: none;
   margin: auto;
 }
+
+.quantityContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2rem;
+}
