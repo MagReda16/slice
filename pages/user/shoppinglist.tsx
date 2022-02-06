@@ -17,6 +17,14 @@ const ViewShoppingList = () => {
 
   if (isLoading || isPlanLoading) return <Spinner />
 
+  const displayIngredients = () => {
+    if (plan.recipes.length !== 0 && data.length === 0) {
+      return <Spinner />
+    } else {
+      return <ShoppingList data={data} />
+    }
+  }
+
   return (
     <div>
       <div className={styles.shoppingListTitle}>
@@ -30,10 +38,7 @@ const ViewShoppingList = () => {
         <h1>Shopping List</h1>
         <DoughnutChart />
       </div>
-      {data.length === 0
-        ? <p className={styles.noRecipes}>No items here yet!</p>
-        : <ShoppingList data={data} />
-      }
+      {displayIngredients()}
     </div>
   )
 }

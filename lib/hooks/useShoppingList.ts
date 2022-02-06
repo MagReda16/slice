@@ -66,8 +66,6 @@ const useShoppingList = (plan?: Plan) => {
     }
   );
 
-  console.log('data in useshopping list', data);
-
   return {
     data,
     error,

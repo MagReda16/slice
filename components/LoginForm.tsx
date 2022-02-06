@@ -59,30 +59,30 @@ const LoginForm = () => {
 
   return (
     <>
-      <ToastContainer />
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          required
-          autoComplete='off'
-          placeholder='Email...'
-          type='email'
-          name='email'
-          onChange={handleChange}
-          className={styles.inputbox}
-        />
-        <input
-          required
-          autoComplete='off'
-          placeholder='Password...'
-          type='password'
-          name='password'
-          onChange={handleChange}
-          className={styles.inputbox}
-        />
-        <button className={stylesBtn.Btn} type='submit' value='Login'>
-          Login
-        </button>
-      </form>
+    <ToastContainer />
+    <form onSubmit={handleSubmit} className={`${styles.form} ${styles.loginForm}`}>
+      <input
+        required
+        autoComplete='off'
+        placeholder='Email...'
+        type='email'
+        name='email'
+        onChange={handleChange}
+        className={styles.inputbox}
+      />
+      <input
+        required
+        autoComplete='off'
+        placeholder='Password...'
+        type='password'
+        name='password'
+        onChange={handleChange}
+        className={styles.inputbox}
+      />
+      <button className={`${stylesBtn.btn} ${stylesBtn.small}`} type='submit' value='Login'>
+        Login
+      </button>
+    </form>
     </>
   );
 };

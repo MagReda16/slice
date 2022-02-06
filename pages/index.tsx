@@ -15,20 +15,20 @@ const Home = () => {
       <div className={styles.mainLoginContainer}>
         <Link href='/oAuthLogin' passHref>
           <NavButton
-            className={stylesBtn.loginWithOauthBtn}
+            className={`${stylesBtn.btn} ${stylesBtn.login}`}
             type='button'
             children='Login with Gmail'
           />
         </Link>
         <Link href='/emailLogin' passHref>
           <NavButton
-            className={stylesBtn.loginWithEmailBtn}
+            className={`${stylesBtn.btn} ${stylesBtn.login}`}
             type='button'
             children='Login with email'
           />
         </Link>
       <Link href='/register'>
-        <button className={stylesBtn.regBtn}>New here? Register</button>
+        <button className={stylesBtn.register}>New here? Register</button>
       </Link>
       </div>
     </div>
