@@ -8,14 +8,10 @@ Chart.register(ArcElement, Legend, Tooltip);
 
 const DoughnutChart = () => {
 
-  const { plan, isPlanLoading } = usePlan();
-  const { user, isUserLoading } = useUser();
-
-  if (isPlanLoading || isUserLoading) return <div>laoding...</div>
+  const { plan } = usePlan();
+  const { user } = useUser();
 
   const remaining = user.budget - plan.totalPlanCost;
-  console.log(user.budget, remaining)
-  console.log(plan)
 
   const chartData = {
     labels: ['Amount spent', 'Remaining budget'],

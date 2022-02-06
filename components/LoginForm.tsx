@@ -7,6 +7,8 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import { login } from '../lib/methods';
+import { toast, ToastContainer, Zoom, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import styles from '../styles/Forms.module.css';
 import stylesBtn from '../styles/Buttons.module.css';
 
@@ -18,8 +20,6 @@ const initialState = {
 
 const LoginForm = () => {
   const router = useRouter();
-
-  //onSubmit -->  POST api/login, return accesstoken; GET api/user return user object
 
   const [formData, setFormData] = useState(initialState);
 
@@ -33,6 +33,8 @@ const LoginForm = () => {
 
   const handleSubmit: FormEventHandler = async (e: FormEvent) => {
     e.preventDefault();
+    toast.dismiss()
+    // toast('is it working??');
     try {
       const res = await login(formData);
       localStorage.setItem('accessToken', res.data.accessToken);
@@ -41,11 +43,23 @@ const LoginForm = () => {
     } catch (e: any) {
       console.log(e.response.data.message);
       // create a better error display
-      alert(e.response.data.message);
+      // alert(e.response.data.message);
+      toast.error(e.response.data.message, {
+        position: 'top-center',
+        theme: 'colored',
+        autoClose: false,
+        draggable: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        progress: undefined,
+        transition: Slide
+      })
     }
   };
 
   return (
+    <>
+    <ToastContainer />
     <form onSubmit={handleSubmit} className={`${styles.form} ${styles.loginForm}`}>
       <input
         required
@@ -69,6 +83,7 @@ const LoginForm = () => {
         Login
       </button>
     </form>
+    </>
   );
 };
 

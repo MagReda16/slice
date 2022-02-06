@@ -15,8 +15,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
-  height: 35vh;
+  justify-content: flex-end;
+  height: 50vh;
 }
 
 .mainHeader h1, .registerHeader h1{

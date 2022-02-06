@@ -1,8 +1,10 @@
 .container {
-  height: 100vh;
+  /* height: 100vh; */
+  margin-top: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fcfbf5;
 }
 
 .slice {

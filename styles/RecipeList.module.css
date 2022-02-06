@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 1rem;
 
-  margin-top: 25px;
+  margin: 25px 0;
 }
 
 .recipeItemContainer {
@@ -60,13 +60,13 @@
   align-items: center;
   gap: 1rem;
   padding: 5px;
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
+  margin-right: 5px;
 }
 
 .costInfo > :last-child {
   font-size: 20px;
-  /* font-weight: 400; */
 }
 
  .addRecipeBtn {

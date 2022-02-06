@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Recipe } from '../db/types/Recipe.type';
 import { usePlan } from '../lib/hooks/usePlan';
-
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/RecipeList.module.css';
 import buttonStyles from '../styles/Buttons.module.css';
 
@@ -23,6 +24,16 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
           type="button"
           onClick={() => {
             addRecipeToPlan(recipe);
+            toast.success('Recipe Added', {
+              position: 'top-center',
+              theme: 'light',
+              autoClose: 400,
+              draggable: false,
+              hideProgressBar: true,
+              closeOnClick: true,
+              progress: undefined,
+              transition: Slide
+            })
           }}
         >
           +
@@ -52,7 +63,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
       return (
         <div className={styles.costInfo}>
           <p className={styles.totalCost}>Total Cost:</p>
-          <p className={styles.dollarCost}>${recipe.totalCost}</p>
+          <p className={styles.dollarCost}>${Math.round(recipe.totalCost * recipe.quantity * 100) / 100}</p>
         </div>
       );
     }
@@ -69,7 +80,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
           />
           <div className={styles.recipeInfo}>
             <p className={styles.title}>{recipe.title}</p>
-            {btnType !== '' && <p>Total cost: $ {recipe.totalCost}</p>}
+            {btnType !== '' && <p>Total cost: $ {Math.round(recipe.totalCost * recipe.quantity * 100) / 100}</p>}
           </div>
         </a>
       </Link>

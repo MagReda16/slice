@@ -7,10 +7,12 @@ import {
 } from 'react';
 import RecipeList from '../../../components/RecipeList';
 import { usePlan, useSearch } from '../../../lib/hooks';
+import { useRouter } from 'next/router';
+import { ToastContainer } from 'react-toastify';
+
 import styles from '../../../styles/EditPlan.module.css';
 import formStyles from '../../../styles/Forms.module.css';
 import buttonStyles from '../../../styles/Buttons.module.css';
-import { useRouter } from 'next/router';
 
 const SearchRecipes = () => {
   const router = useRouter();
@@ -36,6 +38,7 @@ const SearchRecipes = () => {
 
   return (
     <main>
+      <ToastContainer />
       <div className={styles.searchBarContainer}>
         <button
           onClick={() => router.push('/user/plan/edit')}
