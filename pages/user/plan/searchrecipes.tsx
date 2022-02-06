@@ -45,17 +45,15 @@ const SearchRecipes = () => {
       >
         ⬅
       </button>
-      <div className={styles.searchBarContainer}>
-        <form className={formStyles.searchbar} onSubmit={submitSearch}>
-          <input
-            className={formStyles.searchInput}
-            type="text"
-            placeholder="search..."
-            value={querySearch}
-            onChange={changeQuery}
-          />
-        </form>
-      </div>
+      <form className={formStyles.searchbar} onSubmit={submitSearch}>
+        <input
+          className={formStyles.searchInput}
+          type="text"
+          placeholder="search..."
+          value={querySearch}
+          onChange={changeQuery}
+        />
+      </form>
       <RecipeList btnType={'add'} recipes={data} />
     </main>
   );
