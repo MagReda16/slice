@@ -37,15 +37,15 @@ const SearchRecipes = () => {
   };
 
   return (
-    <main>
+    <main className={styles.container}>
       <ToastContainer />
+      <button
+        onClick={() => router.push('/user/plan/edit')}
+        className={buttonStyles.backArrowBtn}
+      >
+        ⬅
+      </button>
       <div className={styles.searchBarContainer}>
-        <button
-          onClick={() => router.push('/user/plan/edit')}
-          className={buttonStyles.backArrowBtn}
-        >
-          ⬅
-        </button>
         <form className={formStyles.searchbar} onSubmit={submitSearch}>
           <input
             className={formStyles.searchInput}

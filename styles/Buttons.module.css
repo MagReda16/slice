@@ -2,11 +2,12 @@
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
   color: white;
   background-color: #f37742;
-  height: 3.3rem;
+  min-height: 3.3rem;
   font-size: 1rem;
   border-radius: 8px;
   border-style: none;
   transition: 0.3s;
+  margin: 5px 0;
 }
 
 .btn:hover,
@@ -72,18 +73,6 @@
 .editPlanBtn {
   height: 2.6rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .addQuantityBtn {
   color: white;

@@ -27,7 +27,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
             toast.success('Recipe Added', {
               position: 'top-center',
               theme: 'light',
-              autoClose: 400,
+              autoClose: 200,
               draggable: false,
               hideProgressBar: true,
               closeOnClick: true,
