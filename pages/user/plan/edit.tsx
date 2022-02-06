@@ -1,16 +1,18 @@
 import { usePlan } from '../../../lib/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import buttonStyles from '../../../styles/Buttons.module.css';
-import styles from '../../../styles/EditPlan.module.css';
 import NavButton from '../../../components/NavButton';
 import RecipeList from '../../../components/RecipeList';
 import DoughnutChart from '../../../components/DoughnutChart';
+import Spinner from '../../../components/Spinner';
+import buttonStyles from '../../../styles/Buttons.module.css';
+import styles from '../../../styles/EditPlan.module.css';
 
 const EditPlan = () => {
   const { plan, isPlanLoading } = usePlan();
   const router = useRouter();
-  if (isPlanLoading) return <div>Loading</div>;
+
+  if (isPlanLoading) return <Spinner />
 
   const addQuantity = () => {};
   const subtractQuantity = () => {};

@@ -15,11 +15,13 @@ const ViewShoppingList = () => {
   const { plan, isPlanLoading } = usePlan();
   const { data, error, isLoading } = useShoppingList(plan);
 
-  if (isLoading || isPlanLoading) return <Spinner />
+  if (isPlanLoading) return <Spinner />
+
+  if (data.length === 0 && plan.recipes.length !== 0) return <Spinner />
 
   const displayIngredients = () => {
-    if (plan.recipes.length !== 0 && data.length === 0) {
-      return <Spinner />
+    if (data.length === 0) {
+      return <p className={styles.noRecipes}>Add recipes to see a list of ingredients</p>
     } else {
       return <ShoppingList data={data} />
     }

@@ -4,18 +4,19 @@ import DoughnutChart from '../../../components/DoughnutChart'
 import NavButton from '../../../components/NavButton'
 import RecipeList from '../../../components/RecipeList'
 import { usePlan } from '../../../lib/hooks'
+import Spinner from '../../../components/Spinner'
 import stylesBtn from '../../../styles/Buttons.module.css';
 import styles from '../../../styles/EditPlan.module.css';
 
 const ViewPlan = () => {
   const { plan, isPlanLoading, planError, createNewPlan } = usePlan()
 
-  if (isPlanLoading) return <div>Loading....</div>
+  if (isPlanLoading) return <Spinner />
 
   if (planError) return <div>Some crazy stuff went wrong</div>
 
   return (
-    
+
     <div className={styles.container}>
       <div className={styles.heading}>
         <Link href='/user'>
