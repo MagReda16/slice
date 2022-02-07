@@ -1,6 +1,8 @@
 import { useState, FormEventHandler, FormEvent, ChangeEvent, ChangeEventHandler } from 'react';
 import { useRouter } from 'next/router';
 import { login, register } from '../lib/methods';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import stylesBtn from '../styles/Buttons.module.css';
 import styles from '../styles/Forms.module.css';
 
@@ -37,8 +39,18 @@ const RegisterForm = () => {
 
   const handleSubmit: FormEventHandler = async (e: FormEvent) => {
     e.preventDefault();
+    toast.dismiss();
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords must match!')
+      toast.info('Passwords must match!', {
+        position: 'top-center',
+        theme: 'colored',
+        autoClose: 4000,
+        draggable: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        progress: undefined,
+        transition: Slide
+      })
     } else {
       try {
         await register({
@@ -52,60 +64,68 @@ const RegisterForm = () => {
         router.push({ pathname: '/user/createbudget' });
         setFormData(initialState);
       } catch (e: any) {
-        alert(e.response.data.message);
-        console.log(e.response.data.message);
+        toast.error(e.response.data.message, {
+          position: 'top-center',
+          theme: 'colored',
+          autoClose: false,
+          draggable: false,
+          hideProgressBar: true,
+          closeOnClick: true,
+          progress: undefined,
+          transition: Slide
+        })
       }
     }
   }
 
 
   return (
-
-    <form className={`${styles.form} ${styles.regForm}`} onSubmit={handleSubmit}>
-      <input
-        required
-        className={styles.inputbox}
-        autoComplete="off"
-        placeholder="First name..."
-        type="text"
-        name="firstName"
-        onChange={handleChange} />
-      <input
-        required
-        className={styles.inputbox}
-        autoComplete="off"
-        placeholder="Last name..."
-        type="text"
-        name="lastName"
-        onChange={handleChange} />
-      <input
-        required
-        className={styles.inputbox}
-        autoComplete="off"
-        placeholder="Email..."
-        type="email"
-        name="email"
-        onChange={handleChange} />
-      <input
-        required
-        className={styles.inputbox}
-        autoComplete="off"
-        placeholder="Password..."
-        type="password"
-        name="password"
-        onChange={handleChange} />
-      <input
-        required
-        className={styles.inputbox}
-        autoComplete="off"
-        placeholder="Confirm password..."
-        type="password"
-        name="confirmPassword"
-        onChange={handleChange} />
-      <button className={`${stylesBtn.btn} ${stylesBtn.small}`} type="submit">Register</button>
-    </form>
-
-
+    <>
+      <ToastContainer />
+      <form className={`${styles.form} ${styles.regForm}`} onSubmit={handleSubmit}>
+        <input
+          required
+          className={styles.inputbox}
+          autoComplete="off"
+          placeholder="First name..."
+          type="text"
+          name="firstName"
+          onChange={handleChange} />
+        <input
+          required
+          className={styles.inputbox}
+          autoComplete="off"
+          placeholder="Last name..."
+          type="text"
+          name="lastName"
+          onChange={handleChange} />
+        <input
+          required
+          className={styles.inputbox}
+          autoComplete="off"
+          placeholder="Email..."
+          type="email"
+          name="email"
+          onChange={handleChange} />
+        <input
+          required
+          className={styles.inputbox}
+          autoComplete="off"
+          placeholder="Password..."
+          type="password"
+          name="password"
+          onChange={handleChange} />
+        <input
+          required
+          className={styles.inputbox}
+          autoComplete="off"
+          placeholder="Confirm password..."
+          type="password"
+          name="confirmPassword"
+          onChange={handleChange} />
+        <button className={`${stylesBtn.btn} ${stylesBtn.small}`} type="submit">Register</button>
+      </form>
+    </>
   )
 }
 

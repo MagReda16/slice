@@ -7,10 +7,12 @@ import {
 } from 'react';
 import RecipeList from '../../../components/RecipeList';
 import { usePlan, useSearch } from '../../../lib/hooks';
+import { useRouter } from 'next/router';
+import { ToastContainer } from 'react-toastify';
+
 import styles from '../../../styles/EditPlan.module.css';
 import formStyles from '../../../styles/Forms.module.css';
 import buttonStyles from '../../../styles/Buttons.module.css';
-import { useRouter } from 'next/router';
 
 const SearchRecipes = () => {
   const router = useRouter();
@@ -35,24 +37,23 @@ const SearchRecipes = () => {
   };
 
   return (
-    <main>
-      <div className={styles.searchBarContainer}>
-        <button
-          onClick={() => router.push('/user/plan/edit')}
-          className={buttonStyles.backArrowBtn}
-        >
-          ⬅
-        </button>
-        <form className={formStyles.searchbar} onSubmit={submitSearch}>
-          <input
-            className={formStyles.searchInput}
-            type="text"
-            placeholder="search..."
-            value={querySearch}
-            onChange={changeQuery}
-          />
-        </form>
-      </div>
+    <main className={styles.container}>
+      <ToastContainer />
+      <button
+        onClick={() => router.push('/user/plan/edit')}
+        className={buttonStyles.backArrowBtn}
+      >
+        ⬅
+      </button>
+      <form className={formStyles.searchbar} onSubmit={submitSearch}>
+        <input
+          className={formStyles.searchInput}
+          type="text"
+          placeholder="search..."
+          value={querySearch}
+          onChange={changeQuery}
+        />
+      </form>
       <RecipeList btnType={'add'} recipes={data} />
     </main>
   );
