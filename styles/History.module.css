@@ -42,6 +42,8 @@
 
 .cost p {
   margin-left: 60px;
+  color: #F37742;
+  font-weight: 700;
 }
 
 .cost p, .cost h3 {

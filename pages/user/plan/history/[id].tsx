@@ -11,8 +11,6 @@ const Plan = () => {
   const { plan, isPlanLoading } = usePlan();
   if (isPlanLoading) return <Spinner />
 
-  console.log(plan);
-
   return (
     <div className={styles.container}>
       <Link href='/user/plan/history'>
