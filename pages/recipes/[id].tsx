@@ -3,22 +3,23 @@ import { useRecipe } from "../../lib/hooks";
 import styles from '../../styles/RecipeInfo.module.css';
 import stylesBtn from '../../styles/Buttons.module.css';
 import { useRouter } from 'next/router'
+import Spinner from "../../components/Spinner";
 
 const RecipeDetails = () => {
   const { data, recipeError, isRecipeLoading } = useRecipe();
 
   const router = useRouter()
 
-  if(isRecipeLoading) return null;
+  if(isRecipeLoading) return <Spinner/>;
 
   return (
     <div className={styles.container}>
-      <div>
+
         <button onClick={() => {router.back()}} className={stylesBtn.backArrowBtn}>
           ⬅
         </button>
         <h1 className={styles.title}>{data.title}</h1>
-      </div>
+
 
       <img className={styles.recipeImg} src={data.image} />
 
