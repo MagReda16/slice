@@ -1,13 +1,26 @@
-.shoppingListTitle {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.shoppingListTitle {
+  display: flex;
+  margin-right: 4rem;
+}
+
+.shoppingListTitle h1{
+  margin-left: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.shoppingListContainer {
+  width: 90vw;
+}
+
 .itemContainer {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   margin: 20px;
   padding: 10px;

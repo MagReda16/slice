@@ -20,7 +20,7 @@ const ViewShoppingList = () => {
 
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.shoppingListTitle}>
       <Link href='/user/plan'>
         <NavButton
@@ -30,8 +30,8 @@ const ViewShoppingList = () => {
       />
       </Link>
         <h1>Shopping List</h1>
-        <DoughnutChart />
       </div>
+      <DoughnutChart />
       <div>
         <ShoppingList data={data.flat()} />
       </div>

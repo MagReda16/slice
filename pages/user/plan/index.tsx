@@ -17,7 +17,7 @@ const ViewPlan = () => {
   return (
     
     <div className={styles.container}>
-      <div className={styles.heading}>
+      <div className={styles.titleBar}>
         <Link href='/user'>
           <NavButton
           className={`${stylesBtn.backArrowBtn} ${styles.arrow}}`}

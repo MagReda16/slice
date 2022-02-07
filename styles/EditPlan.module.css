@@ -3,11 +3,6 @@
   flex-direction: column;
   align-items: center;
 }
-.heading {
-  display: flex;
-  flex-direction: row;
-  margin: 20px
-}
 
 .searchBarContainer {
   display: flex;
@@ -28,6 +23,7 @@
 
 .titleBar h1 {
   margin-left: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .viewPlanBtnContainer {
