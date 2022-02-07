@@ -14,8 +14,6 @@ const EditPlan = () => {
 
   if (isPlanLoading) return <Spinner />
 
-  const addQuantity = () => {};
-  const subtractQuantity = () => {};
 
   return (
     <div className={styles.container}>
