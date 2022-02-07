@@ -20,7 +20,9 @@ const Dashboard = () => {
     <div className={styles.dashContainer}>
       <header className={styles.dashHeaderContainer}>
         <h1>Hello, {user.firstName}</h1>
+        <p className={styles.weeklyBudget}>Your weekly budget</p>
         <DoughnutChart
+        isMain={true}
         />
       </header>
       <div className={styles.dashButtonContainer}>

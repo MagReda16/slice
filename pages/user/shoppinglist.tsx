@@ -29,7 +29,6 @@ const ViewShoppingList = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.shoppingListTitle}>
         <Link href='/user/plan'>
           <NavButton
             className={stylesBtn.backArrowBtn}
@@ -38,8 +37,6 @@ const ViewShoppingList = () => {
           />
         </Link>
         <h1>Shopping List</h1>
-      </div>
-      <DoughnutChart />
       {displayIngredients()}
     </div>
   )
