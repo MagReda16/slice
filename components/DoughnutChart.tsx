@@ -33,7 +33,12 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
   };
 
   const options = {
-    cutout: isMain ? 100 : 65
+    cutout: isMain ? 100 : 65,
+    plugins: {
+      tooltip: {
+        backgroundColor: '#e75858'
+      }
+    }
   }
   const containerClasses = `${styles.chart} ${isMain ? styles.main : ''}`
   const infoClasses = `${styles.chartInfo} ${isMain ? styles.mainInfo: ''}`
