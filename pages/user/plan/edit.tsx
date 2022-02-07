@@ -14,19 +14,22 @@ const EditPlan = () => {
 
   if (isPlanLoading) return <Spinner />
 
+<<<<<<< HEAD
+=======
+  const addQuantity = () => { };
+  const subtractQuantity = () => { };
+>>>>>>> de6f67ee1fca58647bd3acf6d0032a0fb87925ab
 
   return (
     <div className={styles.container}>
-      <div className={styles.titleBar}>
-        <Link href="/user/plan">
-          <NavButton
-            className={buttonStyles.backArrowBtn}
-            type="button"
-            children="⬅"
-          />
-        </Link>
-        <h1>Edit my Plan</h1>
-      </div>
+      <Link href="/user/plan">
+        <NavButton
+          className={buttonStyles.backArrowBtn}
+          type="button"
+          children="⬅"
+        />
+      </Link>
+      <h1>Edit my Plan</h1>
       <DoughnutChart />
       <button
         className={`${buttonStyles.btn} ${buttonStyles.small} ${buttonStyles.narrow}`}

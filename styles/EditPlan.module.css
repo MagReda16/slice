@@ -10,10 +10,6 @@
   margin: 1rem 0;
 }
 
-.titleBar {
-  display: flex;
-}
-
 .viewPlanBtnContainer {
   display: flex;
   flex-direction: column;

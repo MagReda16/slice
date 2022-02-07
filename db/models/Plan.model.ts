@@ -35,6 +35,8 @@ const planSchema: Schema = new Schema({
       },
     },
   ],
+}, {
+  timestamps: true
 });
 
 const planModel =
