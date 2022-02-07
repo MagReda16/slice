@@ -23,7 +23,7 @@ const Plan = () => {
       <h1>Week of 1/4</h1>
       <div className={styles.cost}>
         <h3>Total cost:</h3>
-        <p>${plan.totalPlanCost}</p>
+        <p>${Math.round(plan.totalPlanCost * 100)/100}</p>
       </div>
       <h3 className={styles.recipes}>Recipes:</h3>
       <RecipeList recipes={plan.recipes} btnType={''} />

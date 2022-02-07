@@ -8,6 +8,7 @@
   border-style: none;
   transition: 0.3s;
   margin: 5px 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn:hover,
