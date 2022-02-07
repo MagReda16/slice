@@ -1,0 +1,36 @@
+.chart {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+ 
+}
+.main {
+  width: 250px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.chartInfo {
+  width: 95px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 73px;
+  left: 52px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.mainInfo {
+  width: 95px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 100px;
+  left: 75px;
+  text-align: center;
+  font-size: 25px;
+}
+
+
+
