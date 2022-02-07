@@ -21,7 +21,7 @@ const ViewPlan = () => {
       <div className={styles.titleBar}>
         <Link href='/user'>
           <NavButton
-          className={`${stylesBtn.backArrowBtn} ${styles.arrow}}`}
+          className={stylesBtn.backArrowBtn}
           type='button'
           children='⬅'
         />
@@ -31,18 +31,18 @@ const ViewPlan = () => {
           <DoughnutChart />
       <div className={styles.viewPlanBtnContainer}>
       <Link href="/user/plan/edit" passHref>
-        <NavButton className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.editPlanBtn}`} type="button" children="Edit" />
+        <NavButton className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.narrow}`} type="button" children="Edit" />
       </Link>
       <Link href="/user/shoppinglist" passHref>
         <NavButton
-          className={`${stylesBtn.btn} ${stylesBtn.medium} ${stylesBtn.editPlanBtn}`}
+          className={`${stylesBtn.btn} ${stylesBtn.large} ${stylesBtn.narrow}`}
           type="button"
           children="View my Shopping List"
         />
       </Link>
       </div>
       <RecipeList recipes={plan.recipes} btnType={''} />
-      <button className={`${stylesBtn.btn} ${stylesBtn.medium} $`} onClick={() => {createNewPlan}}>Finished with this week!</button>
+      <button className={`${stylesBtn.btn} ${stylesBtn.large} ${stylesBtn.narrow} ${stylesBtn.secondary}`} onClick={() => {createNewPlan}}>Finished with this week!</button>
     </div>
   )
 }

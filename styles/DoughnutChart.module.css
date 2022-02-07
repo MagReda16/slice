@@ -3,34 +3,44 @@
   height: auto;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 10px;
  
 }
 .main {
-  width: 250px;
+  width: 300px;
   height: auto;
   margin: 0 auto;
   position: relative;
 }
 
 .chartInfo {
-  width: 95px;
+  width: 90px;
   word-wrap: break-word;
   position: absolute;
   top: 73px;
   left: 52px;
   text-align: center;
-  font-size: 25px;
+  font-size: 16px;
 }
 
 .mainInfo {
   width: 95px;
   word-wrap: break-word;
   position: absolute;
-  top: 100px;
-  left: 75px;
+  top: 115px;
+  left: 100px;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
 }
 
+.chartInfo span {
+  color: orange;
+  font-size: 23px;
+}
+
+.mainInfo span {
+  color: orange;
+  font-size: 30px;
+}
 
 

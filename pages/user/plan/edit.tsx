@@ -31,7 +31,7 @@ const EditPlan = () => {
       </div>
       <DoughnutChart />
       <button
-        className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}
+        className={`${buttonStyles.btn} ${buttonStyles.small} ${buttonStyles.narrow}`}
         type="button"
         onClick={() => router.push('/user/plan/searchrecipes')}
       >
@@ -40,7 +40,7 @@ const EditPlan = () => {
       <RecipeList recipes={plan.recipes} btnType={'edit'} />
       <Link href="/user/plan" passHref>
         <NavButton
-          className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}
+          className={`${buttonStyles.btn} ${buttonStyles.small} ${buttonStyles.secondary} ${styles.btn}`}
           type="button"
           children="Confirm"
         />
