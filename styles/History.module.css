@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  /* padding-bottom: 10px; */
+}
+
+.container h1 {
+  margin-bottom: 40px;
+}
+
+.planItem {
+  width: 90%;
+  min-height: 45px;
+  line-height: 45px;
+  margin: 10px 0;
+  border-radius: 4px;
+  vertical-align: middle;
+  border: 1px solid rgba(0, 0, 0, 0.31);
+  background-color: #ffffff;
+  color: #F37742;
+}
+
+.planItem:active   {
+  background-color: #F37742;;
+}
+
+.planItem p {
+  font-size: 20px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.cost {
+  width: 90%;
+  display: flex;
+  font-size: 18px;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.cost p {
+  margin-left: 60px;
+}
+
+.cost p, .cost h3 {
+  font-size: 18px;
+}
+
+.recipes {
+  width: 90%;
+  font-size: 18px;
+}

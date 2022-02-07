@@ -4,10 +4,10 @@ import {
   errorHandler,
   authMiddleware,
   UserRequest,
-} from '../../../lib/server/';
-import { User, Plan } from '../../../db/models/';
-import connectToDb from '../../../db';
-import { User as IUser, Plan as IPlan } from '../../../db/types';
+} from '../../../../lib/server/';
+import { User, Plan } from '../../../../db/models/';
+import connectToDb from '../../../../db';
+import { User as IUser, Plan as IPlan } from '../../../../db/types';
 
 const planHandler = nc(errorHandler);
 
