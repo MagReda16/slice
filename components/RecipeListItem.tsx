@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { Recipe } from '../db/types/Recipe.type';
 import { usePlan } from '../lib/hooks/usePlan';
 import { ToastContainer, toast, Slide } from 'react-toastify';
@@ -15,6 +16,13 @@ type RecipeListProps = {
 const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
   const { addRecipeToPlan, decrementRecipeQuantity, incrementRecipeQuantity } =
     usePlan();
+  
+  const initialState = '+'
+  const [addBtnText, setAddBtnText] = useState(initialState)
+  const changeBtnText = (text: string) => {
+    setAddBtnText(text);
+    setTimeout(()=> setAddBtnText(initialState), 900);
+  }
 
   const displayButton = () => {
     if (btnType === 'add') {
@@ -24,6 +32,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
           type="button"
           onClick={() => {
             addRecipeToPlan(recipe);
+            changeBtnText('✓')
             toast.success('Recipe Added', {
               position: 'top-center',
               theme: 'light',
@@ -36,7 +45,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
             })
           }}
         >
-          +
+          {addBtnText}
         </button>
       );
     } else if (btnType === 'edit') {
