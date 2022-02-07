@@ -11,7 +11,7 @@ const ShoppingList = ({data}: ShoppingListProps) => {
 
   return (
     <div className={styles.shoppingListContainer}>
-      {data.map((ingredient: Ingredient) => <ShoppingListItem key={ingredient.id}   ingredient={ingredient} />)}
+      {data.map((ingredient: Ingredient, indx: number) => <ShoppingListItem key={indx}   ingredient={ingredient} />)}
     </div>
   )
 }
