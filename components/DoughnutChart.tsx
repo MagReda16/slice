@@ -36,7 +36,9 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
     cutout: isMain ? 100 : 65,
     plugins: {
       tooltip: {
-        backgroundColor: '#e75858'
+        backgroundColor: '#e75858',
+        yAlign: 'bottom',
+        position: 'nearest'
       }
     }
   }
