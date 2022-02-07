@@ -24,8 +24,9 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
       {
         data: [plan.totalPlanCost, remaining],
         backgroundColor: [
-          "#FFD59C",
-          "#FFAC3B"
+          "#FFAC3B",
+          "#FFD59C"
+          
         ],
       },
     ],
@@ -48,7 +49,7 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
         />
         <div className={infoClasses}>
           <p>${displaySpent}</p>
-          <span><p>/${user.budget}</p></span>
+          <span><p>${user.budget}</p></span>
         </div>
       </div>
     </div>

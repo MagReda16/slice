@@ -37,6 +37,9 @@ const EditPlan = () => {
       >
         Add recipe
       </button>
+      {plan.recipes.length === 0 && <div className={styles.noRecipes}>
+          <p>No recipes yet!</p>
+        </div>}
       <RecipeList recipes={plan.recipes} btnType={'edit'} />
       <Link href="/user/plan" passHref>
         <NavButton

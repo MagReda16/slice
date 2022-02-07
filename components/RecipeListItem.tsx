@@ -64,6 +64,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
         <div className={styles.costInfo}>
           <p className={styles.totalCost}>Total Cost:</p>
           <p className={styles.dollarCost}>${Math.round(recipe.totalCost * recipe.quantity * 100) / 100}</p>
+          {recipe.quantity > 1 && <p className={styles.quantity}>Qty: {recipe.quantity}</p>}
         </div>
       );
     }
