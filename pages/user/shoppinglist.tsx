@@ -39,6 +39,7 @@ const ViewShoppingList = () => {
         </Link>
         <h1>Shopping List</h1>
       </div>
+      <DoughnutChart />
       {displayIngredients()}
     </div>
   )
