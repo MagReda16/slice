@@ -1,8 +1,6 @@
-import React from 'react';
+import Image from 'next/image';
 import CreateBudgetForm from '../../components/CreateBudgetForm';
-import Link from 'next/link';
 import { logout } from '../../lib/methods';
-import NavButton from '../../components/NavButton';
 import styles from '../../styles/Settings.module.css';
 import stylesBtn from '../../styles/Buttons.module.css';
 import {useRouter} from 'next/router';
@@ -18,13 +16,9 @@ const Settings = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Link href='/user'>
-        <NavButton
-          className={`${stylesBtn.backArrowBtn} ${styles.arrow}`}
-          type='button'
-          children='⬅'
-        />
-      </Link>
+      <button onClick={() => { router.push('/user') }} className={stylesBtn.backArrowBtn}>
+        <Image src='/back_arrow.svg' alt='Back button' width={45} height={45} />
+      </button>
       <div className={styles.container}>
         <header className={styles.updateSettingsHeader}>
           <h1>Weekly Budget</h1>

@@ -1,17 +1,15 @@
-import React from 'react';
-import DoughnutChart from '../../components/DoughnutChart';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import ShoppingList from '../../components/ShoppingList';
 import { useShoppingList } from '../../lib/hooks/';
 import { usePlan } from '../../lib/hooks';
-import Link from 'next/link'
-import NavButton from '../../components/NavButton';
 import stylesBtn from '../../styles/Buttons.module.css';
 import styles from '../../styles/ShoppingList.module.css';
 import Spinner from '../../components/Spinner';
 
 
 const ViewShoppingList = () => {
-
+  const router = useRouter();
   const { plan, isPlanLoading } = usePlan();
   const { data, error, isLoading } = useShoppingList(plan);
 
@@ -29,14 +27,10 @@ const ViewShoppingList = () => {
 
   return (
     <div className={styles.container}>
-        <Link href='/user/plan'>
-          <NavButton
-            className={stylesBtn.backArrowBtn}
-            type='button'
-            children='⬅'
-          />
-        </Link>
-        <h1>Shopping List</h1>
+      <button onClick={() => { router.push('/user/plan') }} className={stylesBtn.backArrowBtn}>
+        <Image src='/back_arrow.svg' alt='Back button' width={45} height={45} />
+      </button>
+      <h1>Shopping List</h1>
       {displayIngredients()}
     </div>
   )

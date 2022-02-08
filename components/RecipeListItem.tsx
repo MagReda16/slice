@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Recipe } from '../db/types/Recipe.type';
 import { usePlan } from '../lib/hooks/usePlan';
+import Image from 'next/image';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/RecipeList.module.css';
@@ -16,10 +17,10 @@ type RecipeListProps = {
 const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
   const { addRecipeToPlan, decrementRecipeQuantity, incrementRecipeQuantity } =
     usePlan();
-  
-  const initialState = '+'
+
+  const initialState = <Image src='/plus.svg' alt='Add button' width={25} height={25}/>
   const [addBtnText, setAddBtnText] = useState(initialState)
-  const changeBtnText = (text: string) => {
+  const changeBtnText = (text: any) => {
     setAddBtnText(text);
     setTimeout(()=> setAddBtnText(initialState), 900);
   }
@@ -32,7 +33,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
           type="button"
           onClick={() => {
             addRecipeToPlan(recipe);
-            changeBtnText('✓')
+            changeBtnText(<Image src='/check.svg' alt='Check' width={25} height={25}/>)
             toast.success('Recipe Added', {
               position: 'top-center',
               theme: 'light',

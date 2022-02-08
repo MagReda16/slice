@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import moment from 'moment';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useUser } from '../../../../lib/hooks';
 import { Plan } from '../../../../db/types';
 import Spinner from '../../../../components/Spinner';
@@ -9,19 +11,17 @@ import styles from '../../../../styles/History.module.css';
 
 const index = () => {
 
+  const router = useRouter();
+
   const { user, isUserLoading } = useUser();
 
   if (isUserLoading || !user) return <Spinner />
 
   return (
     <div className={styles.container}>
-      <Link href='/user'>
-        <NavButton
-          className={stylesBtn.backArrowBtn}
-          type='button'
-          children='⬅'
-        />
-      </Link>
+      <button onClick={() => { router.push('/user') }} className={stylesBtn.backArrowBtn}>
+        <Image src='/back_arrow.svg' alt='Back button' width={45} height={45} />
+      </button>
       <h1>Past Plans</h1>
       {user.previousPlans.map((plan: Plan) => (<Link href={`/user/plan/history/${plan._id}`} key={plan._id}>
         <a className={styles.planItem}>

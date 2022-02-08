@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import DoughnutChart from '../../../components/DoughnutChart'
 import NavButton from '../../../components/NavButton'
 import RecipeList from '../../../components/RecipeList'
 import { usePlan } from '../../../lib/hooks'
 import Spinner from '../../../components/Spinner'
+import Image from 'next/image'
 import stylesBtn from '../../../styles/Buttons.module.css';
 import styles from '../../../styles/EditPlan.module.css';
 
 const ViewPlan = () => {
+  const router = useRouter()
   const { plan, isPlanLoading, planError, createNewPlan } = usePlan()
 
   if (isPlanLoading) return <Spinner />
@@ -17,13 +19,9 @@ const ViewPlan = () => {
 
   return (
     <div className={styles.container}>
-      <Link href='/user'>
-        <NavButton
-          className={stylesBtn.backArrowBtn}
-          type='button'
-          children='⬅'
-        />
-      </Link>
+      <button onClick={() => { router.push('/user') }} className={stylesBtn.backArrowBtn}>
+        <Image src='/back_arrow.svg' alt='Back button' width={45} height={45} />
+      </button>
       <h1>This week's plan</h1>
       <DoughnutChart />
       <div className={styles.viewPlanBtnContainer}>

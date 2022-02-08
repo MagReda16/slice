@@ -10,6 +10,7 @@ import { usePlan, useSearch } from '../../../lib/hooks';
 import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
 import Spinner from '../../../components/Spinner';
+import Image from 'next/image';
 import styles from '../../../styles/EditPlan.module.css';
 import formStyles from '../../../styles/Forms.module.css';
 import buttonStyles from '../../../styles/Buttons.module.css';
@@ -44,7 +45,7 @@ const SearchRecipes = () => {
         onClick={() => router.push('/user/plan/edit')}
         className={buttonStyles.backArrowBtn}
       >
-        ⬅
+        <Image src='/back_arrow.svg' alt='Back button' width={45} height={45}/>
       </button>
       <form className={formStyles.searchbar} onSubmit={submitSearch}>
         <input
