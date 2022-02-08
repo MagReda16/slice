@@ -26,6 +26,9 @@ const index = () => {
           <p>Week of 1/4</p>
         </a>
       </Link>))}
+      {user.previousPlans.length === 0 && <div className={styles.noPlans}>
+          <p>No previous plans</p>
+        </div>}
     </div>
   );
 };

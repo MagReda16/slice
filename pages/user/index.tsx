@@ -32,6 +32,13 @@ const Dashboard = () => {
             children="View this week's plan"
           />
         </Link>
+        <Link href='/user/plan/history' passHref>
+          <NavButton
+            className={`${stylesBtn.btn} ${stylesBtn.large}`}
+            type='button'
+            children="View past plans"
+          />
+        </Link>
         <Link href='/user/settings' passHref>
           <NavButton
             className={`${stylesBtn.btn} ${stylesBtn.large}`}
