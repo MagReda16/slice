@@ -22,16 +22,15 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
     labels: ['Amount spent', 'Remaining budget'],
     datasets: [
       {
-        data: [plan.totalPlanCost, remaining],
-        backgroundColor: [
+        data: remaining > 0 ? [plan.totalPlanCost, remaining] : [plan.totalPlanCost],
+        backgroundColor: remaining > 0 ? [
           "#FFAC3B",
-          "#FFD59C"
-          
-        ],
+          "#FFD59C",
+        ] : ["#E75858"],
       },
     ],
   };
- 
+
   const options: any= {
     cutout: isMain ? 100 : 65,
     plugins: {
@@ -58,7 +57,7 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
           options={options}
         />
         <div className={infoClasses}>
-          <p>${displaySpent}</p>
+          <p style={remaining < 0 ? { color: "#E75858" } : {} }>${displaySpent}</p>
           <span><p>${user.budget}</p></span>
         </div>
       </div>

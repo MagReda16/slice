@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useRecipe } from "../../lib/hooks";
 import styles from '../../styles/RecipeInfo.module.css';
 import stylesBtn from '../../styles/Buttons.module.css';

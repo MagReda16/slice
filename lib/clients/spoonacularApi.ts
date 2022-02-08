@@ -7,4 +7,6 @@ const spoonacularApiClient = axios.create({
   }
 });
 
+
+
 export { spoonacularApiClient };

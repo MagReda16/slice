@@ -13,7 +13,7 @@ const Settings = () => {
 
   const handleLogout = () => {
     logout();
-    router.push('/');
+    router.push('/api/auth/logout');
   }
 
   return (

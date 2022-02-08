@@ -5,6 +5,8 @@ import { useUser } from '../lib/hooks';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
+import React from 'react';
+import { UserProvider } from '@auth0/nextjs-auth0';
 // this is for additional stuff, not needed at the moment, but good to keep in mind
 // array of site pages that user shouldnt see if loggedIn
 // is useEffect if array includes router.pathname and isLoggedIn then router.push to /dashboard??
@@ -34,6 +36,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   // }, [router.pathname, isLoggedIn])
   // console.log('islogged in from the app', isLoggedIn);
   return (
-    <Component {...pageProps} />
+    <UserProvider>
+        <Component {...pageProps} />
+    </UserProvider>
   );
 }
