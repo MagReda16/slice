@@ -13,7 +13,7 @@ const Settings = () => {
 
   const handleLogout = () => {
     logout();
-    router.push('/');
+    router.push('/api/auth/logout');
   }
 
   return (
@@ -31,7 +31,6 @@ const Settings = () => {
         </header>
         <CreateBudgetForm />
         <button className={`${stylesBtn.btn} ${stylesBtn.secondary} ${stylesBtn.small}`} onClick={handleLogout}>Logout</button>
-        <a href="/api/auth/logout">Logout</a>
       </div>
     </div>
   )
