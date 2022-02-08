@@ -7,7 +7,7 @@ import {
 } from '../../../../lib/server/';
 import { User, Plan } from '../../../../db/models/';
 import connectToDb from '../../../../db';
-import { User as IUser, Plan as IPlan } from '../../../../db/types';
+import { User as IUser, Plan as IPlan } from '../../../../lib/types';
 
 const planHandler = nc(errorHandler);
 

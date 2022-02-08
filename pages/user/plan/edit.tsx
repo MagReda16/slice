@@ -13,6 +13,7 @@ const EditPlan = () => {
   const router = useRouter();
 
   if (isPlanLoading) return <Spinner />
+  console.log(plan.recipes)
 
 
   return (

@@ -10,6 +10,6 @@ export interface Recipe {
   quantity: number;
   image: string;
   totalCost: number;
-  pricePerServing: number;
   nutrients: NutrientsInfo[];
+  servings: number
 }

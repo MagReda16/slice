@@ -1,5 +1,5 @@
 import RecipeListItem from "./RecipeListItem";
-import { Recipe } from "../db/types";
+import { Recipe } from "../lib/types";
 import styles from '../styles/RecipeList.module.css';
 
 type RecipeListProps = {
