@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, ArcElement, Legend, Tooltip } from 'chart.js';
+import { Chart, ArcElement,  Tooltip, DoughnutControllerDatasetOptions } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { usePlan, useUser } from '../lib/hooks';
 import styles from '../styles/DoughnutChart.module.css';
@@ -31,17 +31,20 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
       },
     ],
   };
-
-  const options = {
+ 
+  const options: any= {
     cutout: isMain ? 100 : 65,
     plugins: {
       tooltip: {
-        backgroundColor: '#e75858',
+        mode: 'nearest',
         yAlign: 'bottom',
-        position: 'nearest'
+        padding: 10,
+        caretPadding: 90,
+        caretSize: 0
       }
     }
   }
+
   const containerClasses = `${styles.chart} ${isMain ? styles.main : ''}`
   const infoClasses = `${styles.chartInfo} ${isMain ? styles.mainInfo: ''}`
 
