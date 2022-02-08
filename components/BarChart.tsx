@@ -1,8 +1,8 @@
 import React from "react";
-import { Chart, CategoryScale, LinearScale, Legend, Tooltip, BarElement } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, Tooltip, BarElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-Chart.register(Tooltip, Legend, CategoryScale, LinearScale, BarElement)
+Chart.register(Tooltip, CategoryScale, LinearScale, BarElement)
 
 const BarChart = () => {
 
@@ -11,10 +11,10 @@ const BarChart = () => {
     labels: ['Carbs', 'Fat', 'Protein'],
     datasets: [
       {
-        label: 'Grams in Meal plan',
+        label: 'Grams',
         data: [22, 13, 51],
         backgroundColor: [
-          "#FFAC3B"
+          "#e75858"
         ],
         yAxisID: 'grams',
         barThickness: 40

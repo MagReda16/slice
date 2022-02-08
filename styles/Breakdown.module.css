@@ -3,5 +3,22 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-  padding-bottom: 10px;
 }
+
+.budgetContainer {
+  height: 40vh;
+  width: 95vw;
+}
+
+.nutrientContainer {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 95vw;
+}
+
+.nutrientContainer p{
+ font-style: italic;
+ font-size: 12px;
+}
+
