@@ -5,10 +5,11 @@ interface NutrientsInfo {
 }
 
 export interface Recipe {
-  id: number;
+  recipeId: number;
   title: string;
-  servings: number;
+  quantity: number;
   image: string;
+  totalCost: number;
   pricePerServing: number;
   nutrients: NutrientsInfo[];
 }

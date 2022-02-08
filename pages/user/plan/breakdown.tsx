@@ -1,21 +1,54 @@
-import DoughnutChart from "../../../components/DoughnutChart"
-import NavButton from '../../../components/NavButton';
 import Link from 'next/link';
-import BarChart from "../../../components/BarChart";
-import { usePlan } from "../../../lib/hooks";
+import { usePlan, useUser } from "../../../lib/hooks";
 import Spinner from "../../../components/Spinner";
+import NavButton from '../../../components/NavButton';
+import BarChart from "../../../components/BarChart";
+import DoughnutChart from "../../../components/DoughnutChart"
+import { calcNutrients } from '../../../lib/helpers';
 import styles from '../../../styles/Breakdown.module.css'
 import stylesBtn from '../../../styles/Buttons.module.css';
 
 const Breakdown = () => {
 
-const {plan, isPlanLoading} = usePlan();
+  const { plan, isPlanLoading } = usePlan();
+  const { user, isUserLoading } = useUser();
 
-if (isPlanLoading) return <Spinner />
+  if (isPlanLoading || isUserLoading) return <Spinner />
+
+
+  const dispalyInfo = () => {
+    if (plan.recipes.length === 0) {
+      return <div className={styles.noRecipes}>No recipes yet! Add some to see your plan breakdown</div>
+    } else {
+      const totalBudget = user.budget.toFixed(0);
+      const amountSpent = plan.totalPlanCost.toFixed(2);
+      const remaining = (user.budget - plan.totalPlanCost).toFixed(2);
+
+      const res = calcNutrients(plan.recipes);
+      const planCalories = res.Calories.amount.toFixed(0);
+      return <>
+        <div className={styles.budgetContainer}>
+          <h4>Budget</h4>
+          <div className={styles.budgetInfo}>
+            <p><span>Total Budget</span>: ${totalBudget}</p>
+            <p><span>Amount Spent</span>: ${amountSpent}</p>
+            <p><span>Amount Remaining</span>: ${remaining}</p>
+          </div>
+          <DoughnutChart />
+        </div>
+        <div className={styles.nutrientContainer}>
+          <h4>Nutritional Info</h4>
+          <p>Based on 1 serving of each recipe in your plan</p>
+          <p><span>Total Calories</span>: {planCalories}</p>
+          <BarChart />
+        </div>
+      </>
+    }
+  }
 
   return (
     <div className={styles.container}>
-       <Link href="/user">
+      <Link href="/user">
         <NavButton
           className={stylesBtn.backArrowBtn}
           type="button"
@@ -23,21 +56,7 @@ if (isPlanLoading) return <Spinner />
         />
       </Link>
       <h1>Plan Breakdown</h1>
-      <div className={styles.budgetContainer}>
-        <h4>Budget:</h4>
-        <p>Total Budget: $200</p>
-        <p>Amount Spent: $41.04</p>
-        <p>Amount Remaining: $158.96</p>
-        
-        <DoughnutChart/>
-      </div>
-      <div className={styles.nutrientContainer}>
-        <h4>Nutritional Info:</h4>
-        <p>per 1 serving of each recipe in your plan</p>
-        <p>Total Calories: 560</p>
-        <BarChart/>
-      </div>
-
+      {dispalyInfo()}
     </div>
   )
 

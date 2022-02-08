@@ -30,8 +30,6 @@ const useSearch = (searchTerm: string, readyToSubmit: boolean) => {
     fallbackData: []
   });
 
-  console.log(data);
-
   return {
     data,
     searchError: error,

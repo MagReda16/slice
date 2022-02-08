@@ -9,7 +9,7 @@ import RecipeList from '../../../components/RecipeList';
 import { usePlan, useSearch } from '../../../lib/hooks';
 import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
-
+import Spinner from '../../../components/Spinner';
 import styles from '../../../styles/EditPlan.module.css';
 import formStyles from '../../../styles/Forms.module.css';
 import buttonStyles from '../../../styles/Buttons.module.css';
@@ -19,9 +19,10 @@ const SearchRecipes = () => {
 
   const [querySearch, setQuerySearch] = useState('');
   const [readyToSubmit, setReadyToSubmit] = useState(false);
-  const { data, searchError } = useSearch(querySearch, readyToSubmit);
+  const { data, searchError, isSearchLoading } = useSearch(querySearch, readyToSubmit);
 
   if (searchError) return <div>Error or something, idk</div>;
+  if (isSearchLoading) return <Spinner/>
 
   const submitSearch: FormEventHandler = async (e: FormEvent) => {
     e.preventDefault();
