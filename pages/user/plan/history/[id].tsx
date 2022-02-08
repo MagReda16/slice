@@ -5,11 +5,18 @@ import NavButton from "../../../../components/NavButton";
 import stylesBtn from '../../../../styles/Buttons.module.css';
 import styles from '../../../../styles/History.module.css';
 import RecipeList from "../../../../components/RecipeList";
+import { useRouter } from "next/router";
 
 
 const Plan = () => {
-  const { plan, isPlanLoading } = usePlan();
+  const router = useRouter();
+  const { plan, planError, isPlanLoading } = usePlan();
   if (isPlanLoading) return <Spinner />
+
+  if (planError) {
+    router.push('/user/plan/history');
+    return null
+  }
 
   return (
     <div className={styles.container}>
