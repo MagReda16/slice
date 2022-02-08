@@ -33,6 +33,13 @@ const planSchema: Schema = new Schema({
         type: Number,
         required: true,
       },
+      nutrients: [
+        {
+          name: String,
+          amount: Number,
+          unit: String
+        }
+      ]
     },
   ],
 }, {

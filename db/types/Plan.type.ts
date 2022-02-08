@@ -1,5 +1,5 @@
 import { Document } from 'mongoose';
-import { Recipe } from './Recipe.type';
+import { Recipe } from '../../lib/types';
 
 export interface Plan extends Document {
   userId: string;
