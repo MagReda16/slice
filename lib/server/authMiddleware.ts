@@ -23,7 +23,7 @@ const authMiddleware = async (req: UserRequest, res: NextApiResponse, next: Func
     if (!authorization) throw new Error();
     const accessToken: string = authorization.split(' ')[1];
     const { userId } = <jwt.JwtPayload>jwt.verify(accessToken, JWT_SECRET);
-    const user: IUser = await User.findOne({ _id: userId });
+    const user: IUser = await User.findOne({ _id: userId }).populate('previousPlans');
     if (!user) throw new Error();
     req.user = user;
     next();

@@ -20,6 +20,7 @@ const Dashboard = () => {
     <div className={styles.dashContainer}>
       <header className={styles.dashHeaderContainer}>
         <h1>Hello, {user.firstName}</h1>
+        <p className={styles.weeklyBudget}>Your weekly budget</p>
         <DoughnutChart
         isMain={true}
         />
@@ -30,6 +31,13 @@ const Dashboard = () => {
             className={`${stylesBtn.btn} ${stylesBtn.large}`}
             type='button'
             children="View this week's plan"
+          />
+        </Link>
+        <Link href='/user/plan/history' passHref>
+          <NavButton
+            className={`${stylesBtn.btn} ${stylesBtn.large}`}
+            type='button'
+            children="View past plans"
           />
         </Link>
         <Link href='/user/settings' passHref>

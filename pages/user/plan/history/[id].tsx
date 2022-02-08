@@ -1,15 +1,23 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+import moment from "moment";
 import { usePlan } from "../../../../lib/hooks";
 import Spinner from "../../../../components/Spinner";
-import Link from "next/link";
 import NavButton from "../../../../components/NavButton";
+import RecipeList from "../../../../components/RecipeList";
 import stylesBtn from '../../../../styles/Buttons.module.css';
 import styles from '../../../../styles/History.module.css';
-import RecipeList from "../../../../components/RecipeList";
 
 
 const Plan = () => {
-  const { plan, isPlanLoading } = usePlan();
+  const router = useRouter();
+  const { plan, planError, isPlanLoading } = usePlan();
   if (isPlanLoading) return <Spinner />
+
+  if (planError) {
+    router.push('/user/plan/history');
+    return null
+  }
 
   return (
     <div className={styles.container}>
@@ -20,7 +28,7 @@ const Plan = () => {
           children='⬅'
         />
       </Link>
-      <h1>Week of 1/4</h1>
+      <h1>Week of {moment(plan.createdAt).format('MMM Do')}</h1>
       <div className={styles.cost}>
         <h3>Total cost:</h3>
         <p>${Math.round(plan.totalPlanCost * 100)/100}</p>
