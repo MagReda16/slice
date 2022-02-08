@@ -21,7 +21,7 @@ const Dashboard = () => {
       <header className={styles.dashHeaderContainer}>
         <h1>Hello, {user.firstName}</h1>
         <Link href='/user/plan/breakdown'>
-          <p className={styles.weeklyBudget}>Your weekly breakdown</p>
+          <button className={styles.weeklyBudget}>Your weekly breakdown</button>
         </Link>
         <DoughnutChart
           isMain={true}
