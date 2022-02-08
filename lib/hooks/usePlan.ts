@@ -1,5 +1,6 @@
 import { backendApiClient } from '../clients';
 import useSWR from 'swr';
+import { useRouter } from 'next/router';
 import { updatePlan, createPlan } from '../methods';
 import { Recipe } from '../../db/types';
 
@@ -30,7 +31,8 @@ function calculatePlanCost(recipes: Recipe[]) {
 }
 
 const usePlan = () => {
-  const { data, error, mutate } = useSWR('user/plan', fetcher);
+  const {query: {id} } = useRouter();
+  const { data, error, mutate } = useSWR(id ? `user/plan/${id}` : 'user/plan', fetcher);
 
   const addRecipeToPlan = async (recipe: Recipe) => {
     const existingRecipeIndex = data.recipes.findIndex(

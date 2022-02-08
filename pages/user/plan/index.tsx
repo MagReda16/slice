@@ -16,34 +16,34 @@ const ViewPlan = () => {
   if (planError) return <div>Some crazy stuff went wrong</div>
 
   return (
-
     <div className={styles.container}>
-      <div className={styles.titleBar}>
-        <Link href='/user'>
-          <NavButton
-          className={`${stylesBtn.backArrowBtn} ${styles.arrow}}`}
+      <Link href='/user'>
+        <NavButton
+          className={stylesBtn.backArrowBtn}
           type='button'
           children='⬅'
         />
-        </Link>
-          <h1>This week's plan</h1>
-        </div>
-          <DoughnutChart />
+      </Link>
+      <h1>This week's plan</h1>
+      <DoughnutChart />
       <div className={styles.viewPlanBtnContainer}>
-      <Link href="/user/plan/edit" passHref>
-        <NavButton className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.editPlanBtn}`} type="button" children="Edit" />
-      </Link>
-      <Link href="/user/shoppinglist" passHref>
-        <NavButton
-          className={`${stylesBtn.btn} ${stylesBtn.medium} ${stylesBtn.editPlanBtn}`}
-          type="button"
-          children="View my Shopping List"
-        />
-      </Link>
+        <Link href="/user/plan/edit" passHref>
+          <NavButton className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.narrow}`} type="button" children="Edit" />
+        </Link>
+        <Link href="/user/shoppinglist" passHref>
+          <NavButton
+            className={`${stylesBtn.btn} ${stylesBtn.large} ${stylesBtn.narrow}`}
+            type="button"
+            children="View my Shopping List"
+          />
+        </Link>
       </div>
+      {plan.recipes.length === 0 && <div className={styles.noRecipes}>
+        <p>No recipes yet! Edit your plan to add some</p>
+      </div>}
       <RecipeList recipes={plan.recipes} btnType={''} />
-      <button className={`${stylesBtn.btn} ${stylesBtn.medium} $`} onClick={() => {createNewPlan}}>Finished with this week!</button>
-    </div>
+      <button className={`${stylesBtn.btn} ${stylesBtn.large} ${stylesBtn.narrow} ${stylesBtn.secondary}`} onClick={() => createNewPlan()}>Finished with this week!</button>
+    </div >
   )
 }
 

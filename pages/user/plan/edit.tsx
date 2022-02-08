@@ -14,33 +14,32 @@ const EditPlan = () => {
 
   if (isPlanLoading) return <Spinner />
 
-  const addQuantity = () => {};
-  const subtractQuantity = () => {};
 
   return (
     <div className={styles.container}>
-      <div className={styles.titleBar}>
-        <Link href="/user/plan">
-          <NavButton
-            className={buttonStyles.backArrowBtn}
-            type="button"
-            children="⬅"
-          />
-        </Link>
-        <h1>Edit my Plan</h1>
-      </div>
+      <Link href="/user/plan">
+        <NavButton
+          className={buttonStyles.backArrowBtn}
+          type="button"
+          children="⬅"
+        />
+      </Link>
+      <h1>Edit my Plan</h1>
       <DoughnutChart />
       <button
-        className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}
+        className={`${buttonStyles.btn} ${buttonStyles.small} ${buttonStyles.narrow}`}
         type="button"
         onClick={() => router.push('/user/plan/searchrecipes')}
       >
         Add recipe
       </button>
+      {plan.recipes.length === 0 && <div className={styles.noRecipes}>
+          <p>No recipes yet!</p>
+        </div>}
       <RecipeList recipes={plan.recipes} btnType={'edit'} />
       <Link href="/user/plan" passHref>
         <NavButton
-          className={`${buttonStyles.btn} ${buttonStyles.small} ${styles.btn}`}
+          className={`${buttonStyles.btn} ${buttonStyles.small} ${buttonStyles.secondary} ${styles.btn}`}
           type="button"
           children="Confirm"
         />
