@@ -7,7 +7,7 @@
   font-family: 'Poppins', sans-serif;
   border-radius: 8px;
   border-style: none;
-  transition: 0.3s;
+  /* transition: 0.3s; */
   margin: 5px 0;
   font-family: 'Poppins', sans-serif;
 }
@@ -22,7 +22,8 @@
   background-color: #e75858;
 }
 
-.secondary:hover {
+.secondary:hover,
+.secondary:active {
   background-color: #d41e1e;
 }
 
@@ -31,7 +32,8 @@
   background-color: #ffa927;
 }
 
-.tertiary:hover {
+.tertiary:hover,
+.tertiary:active {
   background-color: #da8300;
 }
 
@@ -103,4 +105,9 @@
   position: absolute;
   top: 0;
   left: 25px;
+}
+
+.backArrowBtn:hover,
+.backArrowBtn:active {
+  color: #da8300;
 }
