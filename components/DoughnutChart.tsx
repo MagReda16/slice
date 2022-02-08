@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, ArcElement,  Tooltip, DoughnutControllerDatasetOptions } from 'chart.js';
+import { Chart, ArcElement,  Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { usePlan, useUser } from '../lib/hooks';
 import styles from '../styles/DoughnutChart.module.css';

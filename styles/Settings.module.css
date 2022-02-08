@@ -51,7 +51,16 @@
   font-size: 20px;
   margin-bottom: 10px;
   font-style: italic;
+  text-decoration-line: underline;
+  color:#FFA927;
+  border-style: none;
+  background-color: transparent;
 } 
+
+.weeklyBudget:active{
+  color: gray;
+
+}
 
 .dashButtonContainer {
   display: flex;

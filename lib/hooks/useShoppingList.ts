@@ -1,6 +1,7 @@
 import useSWR from 'swr';
 import { spoonacularApiClient } from '../clients';
-import { Plan, Recipe } from '../../db/types/';
+import { Plan } from '../../db/types/';
+import { Recipe } from '../types';
 
 const formatSearchString = (plan: Plan) => {
   const recipes: Recipe[] = plan.recipes;

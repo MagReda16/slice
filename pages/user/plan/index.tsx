@@ -42,7 +42,7 @@ const ViewPlan = () => {
         <p>No recipes yet! Edit your plan to add some</p>
       </div>}
       <RecipeList recipes={plan.recipes} btnType={''} />
-      <button className={`${stylesBtn.btn} ${stylesBtn.large} ${stylesBtn.narrow} ${stylesBtn.secondary}`} onClick={() => createNewPlan()}>Finished with this week!</button>
+      {plan.recipes.length !== 0 && <button className={`${stylesBtn.btn} ${stylesBtn.large} ${stylesBtn.narrow} ${stylesBtn.secondary}`} onClick={() => createNewPlan()}>Finished with this week!</button>}
     </div >
   )
 }
