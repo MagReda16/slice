@@ -39,7 +39,7 @@
   margin: 0 2px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
 
 .recipeInfo p {
@@ -48,6 +48,12 @@
   text-overflow: ellipsis;
   margin: 0;
   width: 10rem;
+}
+
+.servings {
+  font-size: 12px;
+  font-style:italic;
+  text-align: left;
 }
 
 .recipeInfo > :first-child {

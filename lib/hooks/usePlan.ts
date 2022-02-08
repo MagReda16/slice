@@ -2,7 +2,7 @@ import { backendApiClient } from '../clients';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { updatePlan, createPlan } from '../methods';
-import { Recipe } from '../../db/types';
+import { Recipe } from '../../lib/types';
 
 const fetcher = async (key: string) => {
   try {
@@ -51,7 +51,7 @@ const usePlan = () => {
 
   const decrementRecipeQuantity = async (recipeIndex: number) => {
     data.recipes[recipeIndex].quantity--;
-
+   
     if (data.recipes[recipeIndex].quantity <= 0) {
       data.recipes.splice(recipeIndex, 1);
     }
@@ -60,9 +60,10 @@ const usePlan = () => {
     mutate();
   };
 
+
   const incrementRecipeQuantity = async (recipeIndex: number) => {
     data.recipes[recipeIndex].quantity++;
-
+  
     await updatePlan(data);
     mutate();
   };

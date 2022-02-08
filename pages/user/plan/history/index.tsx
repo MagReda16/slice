@@ -3,7 +3,7 @@ import moment from 'moment';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useUser } from '../../../../lib/hooks';
-import { Plan } from '../../../../db/types';
+import { Plan } from '../../../../lib/types';
 import Spinner from '../../../../components/Spinner';
 import NavButton from '../../../../components/NavButton';
 import stylesBtn from '../../../../styles/Buttons.module.css';

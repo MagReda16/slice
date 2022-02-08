@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { User } from '../types/';
+import { User } from '../../lib/types';
 
 const userSchema: Schema = new Schema({
   email: {

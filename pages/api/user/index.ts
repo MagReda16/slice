@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
 import { errorHandler, authMiddleware, UserRequest } from '../../../lib/server';
 import { User } from '../../../db/models/';
-import { User as IUser } from '../../../db/types/';
+import { User as IUser } from '../../../lib/types';
 import connectToDb from '../../../db';
 
 const userHandler = nc(errorHandler);

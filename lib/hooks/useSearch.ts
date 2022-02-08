@@ -21,7 +21,8 @@ const fetcher = (key: string, searchTerm: string) => spoonacularApiClient.get(ke
         image: recipe.image,
         totalCost: Math.round(recipe.servings * recipe.pricePerServing)/100,
         quantity: 1,
-        nutrients: recipe.nutrition.nutrients
+        nutrients: recipe.nutrition.nutrients,
+        servings: recipe.servings
       }
     }))
 

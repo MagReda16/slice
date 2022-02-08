@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { Recipe } from '../db/types/Recipe.type';
+import { Recipe } from '../lib/types'
 import { usePlan } from '../lib/hooks/usePlan';
 import Image from 'next/image';
 import { ToastContainer, toast, Slide } from 'react-toastify';
@@ -91,6 +91,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
           />
           <div className={styles.recipeInfo}>
             <p className={styles.title}>{recipe.title}</p>
+            <p className={styles.servings}>Servings: {recipe.servings * recipe.quantity}</p>
             {btnType !== '' && <p>Total cost: $ {Math.round(recipe.totalCost * recipe.quantity * 100) / 100}</p>}
           </div>
         </a>
