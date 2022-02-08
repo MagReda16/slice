@@ -6,15 +6,11 @@ const userSchema: Schema = new Schema({
     type: String,
     required: true,
   },
-  password: {
+  given_name: {
     type: String,
-    required: true,
+    required: false,
   },
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
+  nickname: {
     type: String,
     required: true,
   },

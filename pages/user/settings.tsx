@@ -31,6 +31,7 @@ const Settings = () => {
         </header>
         <CreateBudgetForm />
         <button className={`${stylesBtn.btn} ${stylesBtn.secondary} ${stylesBtn.small}`} onClick={handleLogout}>Logout</button>
+        <a href="/api/auth/logout">Logout</a>
       </div>
     </div>
   )
