@@ -24,7 +24,7 @@ const useUser = () => {
   const ISSERVER = typeof window === "undefined";
   let accessToken: string | null;
   if (!ISSERVER) accessToken = localStorage.getItem('accessToken');
-  else return { user: null, error: null };
+  else return { user: null, error: null, isUserLoading: true };
   const { data, error, mutate } = useSWR(accessToken ? 'user' : null, fetcher)
 
   if (error && error.status === 403) {

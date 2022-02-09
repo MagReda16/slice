@@ -29,6 +29,17 @@
   letter-spacing: .06em;
 }
 
+.updateSettingsHeader h6 {
+  font-size: 20px;
+  margin-top: 10px;
+  letter-spacing: 0;
+  font-weight: 300;
+}
+
+.updateSettingsHeader h6 span{
+  font-weight: 400;
+}
+
 .dashContainer {
   display: flex;
   flex-direction: column;

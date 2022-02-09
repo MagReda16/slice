@@ -14,8 +14,7 @@ const EditPlan = () => {
   const router = useRouter();
 
   if (isPlanLoading) return <Spinner />
-  console.log(plan.recipes)
-
+  
 
   return (
     <div className={styles.container}>
@@ -35,13 +34,14 @@ const EditPlan = () => {
         <p>No recipes yet!</p>
       </div>}
       <RecipeList recipes={plan.recipes} btnType={'edit'} />
+      {plan.recipes.length !== 0 &&
       <Link href="/user/plan" passHref>
         <NavButton
           className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.secondary} ${styles.btn}`}
           type="button"
           children="Confirm"
         />
-      </Link>
+      </Link>}
     </div>
   );
 };
