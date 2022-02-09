@@ -8,8 +8,7 @@ import DoughnutChart from '../../../components/DoughnutChart';
 import Spinner from '../../../components/Spinner';
 import stylesBtn from '../../../styles/Buttons.module.css';
 import styles from '../../../styles/EditPlan.module.css';
-import { ToastContainer, toast, Slide } from 'react-toastify';
-import { useEffect } from 'react'
+import { ToastContainer } from 'react-toastify';
 
 const EditPlan = () => {
   const { plan, isPlanLoading } = usePlan();
@@ -17,24 +16,6 @@ const EditPlan = () => {
 
   if (isPlanLoading) return <Spinner />
   console.log(plan.recipes)
-
-  // useEffect(
-  //   () => {
-  //     if (plan.totalPlanCost > plan.budget) {
-  //       toast.warning('Overbudget!', {
-  //         position: 'top-center',
-  //         theme: 'light',
-  //         autoClose: 200,
-  //         draggable: false,
-  //         hideProgressBar: true,
-  //         closeOnClick: true,
-  //         progress: undefined,
-  //         transition: Slide
-  //       })
-  //     }
-  //   }, [plan]
-  // )
-
 
 
   return (
