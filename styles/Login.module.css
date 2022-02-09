@@ -4,6 +4,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: url('../assets/dollarsign.png'), url('../assets/cheese.png'), url('../assets/strawberry.png'), url('../assets/eggplantforward.png'), url('../assets/sausage.png'), url('../assets/dollarsign.png'), url('../assets/eggplant.png'), url('../assets/cheeseforward.png'), url('../assets/strawberryforward.png'), url('../assets/dollarsign.png');
+  background-size: 17px, 40px, 28px, 40px, 43px, 14px, 38px, 40px, 24px, 15px;
+  background-repeat: no-repeat;
+  background-position-x: 45%, 8%, 72%, 103%, 5%, 5%, -2%, 96%, 92%, 93%;
+  background-position-y: 8%, 4%, 3%, 8%, 28%, 50%, 61%, 58%, 40%, 30%;
+  
 }
 
 .registerHeader {
