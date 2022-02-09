@@ -26,9 +26,9 @@ const fetcher = (key: string, searchTerm: string) => spoonacularApiClient.get(ke
       }
     }))
 
-const useSearch = (searchTerm: string, readyToSubmit: boolean) => {
+const useSearch = (searchTerm: string, readyToSubmit: boolean, fbdata: any) => {
   const { data, error } = useSWR(readyToSubmit ? ['complexSearch', searchTerm] : null, fetcher, {
-    fallbackData: []
+    fallbackData: fbdata
   });
 
   return {

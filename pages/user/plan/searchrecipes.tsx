@@ -18,12 +18,19 @@ import buttonStyles from '../../../styles/Buttons.module.css';
 const SearchRecipes = () => {
   const router = useRouter();
 
+  const ISSERVER = typeof window === "undefined";
+  let searchResults: string | null;
+  if (!ISSERVER) searchResults = localStorage.getItem('searchdata');
+  else return null;
+  if (searchResults) searchResults = JSON.parse(searchResults);
+
   const [querySearch, setQuerySearch] = useState('');
   const [readyToSubmit, setReadyToSubmit] = useState(false);
-  const { data, searchError, isSearchLoading } = useSearch(querySearch, readyToSubmit);
-
+  const { data, searchError, isSearchLoading } = useSearch(querySearch, readyToSubmit, searchResults);
   if (searchError) return <div>Error or something, idk</div>;
-  if (isSearchLoading) return <Spinner/>
+  // if (isSearchLoading) return <Spinner/>
+
+  if (data !== null) localStorage.setItem('searchdata', JSON.stringify(data));
 
   const submitSearch: FormEventHandler = async (e: FormEvent) => {
     e.preventDefault();
@@ -37,6 +44,11 @@ const SearchRecipes = () => {
     setReadyToSubmit(false);
     setQuerySearch(value);
   };
+
+  const displayList = () => {
+    if (!data) return <p>searching</p>;
+    else return <RecipeList btnType={'add'} recipes={data} />
+  }
 
   return (
     <main className={styles.container}>
@@ -56,7 +68,7 @@ const SearchRecipes = () => {
           onChange={changeQuery}
         />
       </form>
-      <RecipeList btnType={'add'} recipes={data} />
+      {displayList()}
     </main>
   );
 };

@@ -47,6 +47,10 @@
   margin-top: 1rem;
 }
 
+.infoContainer ol {
+  list-style: none;
+}
+
 .infoContainer div {
   margin-top: 1rem;
 }
