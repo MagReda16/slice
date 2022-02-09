@@ -20,12 +20,12 @@ const Dashboard = () => {
     <div className={styles.dashContainer}>
       <header className={styles.dashHeaderContainer}>
         <h1>Hello, {user.given_name || user.nickname}</h1>
-        <Link href='/user/plan/breakdown'>
-          <button className={styles.weeklyBudget}>Your weekly breakdown</button>
-        </Link>
         <DoughnutChart
           isMain={true}
         />
+        <Link href='/user/plan/breakdown'>
+          <button className={styles.weeklyBudget}>Your weekly breakdown</button>
+        </Link>
       </header>
       <div className={styles.dashButtonContainer}>
         <Link href='/user/plan' passHref>

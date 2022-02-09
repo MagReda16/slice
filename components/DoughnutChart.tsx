@@ -1,5 +1,6 @@
 import React from 'react';
-import { Chart, ArcElement,  Tooltip } from 'chart.js';
+import Link from 'next/link';
+import { Chart, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { usePlan, useUser } from '../lib/hooks';
 import styles from '../styles/DoughnutChart.module.css';
@@ -31,7 +32,7 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
     ],
   };
 
-  const options: any= {
+  const options: any = {
     cutout: isMain ? 100 : 65,
     plugins: {
       tooltip: {
@@ -45,7 +46,7 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
   }
 
   const containerClasses = `${styles.chart} ${isMain ? styles.main : ''}`
-  const infoClasses = `${styles.chartInfo} ${isMain ? styles.mainInfo: ''}`
+  const infoClasses = `${styles.chartInfo} ${isMain ? styles.mainInfo : ''}`
 
   return (
     <div>
@@ -57,8 +58,12 @@ const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
           options={options}
         />
         <div className={infoClasses}>
-          <p style={remaining < 0 ? { color: "#E75858" } : {} }>${displaySpent}</p>
-          <span><p>${user.budget}</p></span>
+          <Link href='/user/plan/breakdown'>
+            <a>
+              <p style={remaining < 0 ? { color: "#E75858" } : {}}>${displaySpent}</p>
+              <span><p>${user.budget}</p></span>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
