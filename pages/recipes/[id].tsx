@@ -28,7 +28,7 @@ const RecipeDetails = () => {
         <div className={styles.infoContainer}>
           <h3 className={styles.header}>Ingredients</h3>
           <ul>
-            {data.extendedIngredients.map((ingredient: any) => <li key={ingredient.id}>{ingredient.original}</li>)}
+            {data.extendedIngredients.map((ingredient: any, index: number) => <li key={index}>{ingredient.original}</li>)}
           </ul>
         </div>
 
