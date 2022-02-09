@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { Recipe } from '../lib/types'
 import { usePlan } from '../lib/hooks/usePlan';
 import Image from 'next/image';
-import { ToastContainer, toast, Slide } from 'react-toastify';
+import { toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/RecipeList.module.css';
 import buttonStyles from '../styles/Buttons.module.css';
+import { useUser } from '../lib/hooks/useUser';
 
 type RecipeListProps = {
   recipe: Recipe;
@@ -15,7 +16,7 @@ type RecipeListProps = {
 };
 
 const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
-  const { addRecipeToPlan, decrementRecipeQuantity, incrementRecipeQuantity } =
+  const { addRecipeToPlan, decrementRecipeQuantity, incrementRecipeQuantity, plan } =
     usePlan();
 
   const initialState = <Image src='/plus.svg' alt='Add button' width={25} height={25}/>
@@ -24,6 +25,8 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
     setAddBtnText(text);
     setTimeout(()=> setAddBtnText(initialState), 900);
   }
+
+  const { user } = useUser();
 
   const displayButton = () => {
     if (btnType === 'add') {
@@ -57,7 +60,19 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
             type="button"
             onClick={() => {
               incrementRecipeQuantity(index);
+              if (plan.totalPlanCost + recipe.totalCost > user.budget) {
+                toast.warning('STOP! YOU ARE POOR! 🥲 😭', {
+                  position: 'top-center',
+                  theme: 'light',
+                  autoClose: 600,
+                  draggable: false,
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  progress: undefined,
+                  transition: Slide
+                })
             }}
+          }
           />
           <h3>{recipe.quantity}</h3>
           <button

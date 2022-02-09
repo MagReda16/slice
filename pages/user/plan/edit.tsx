@@ -8,6 +8,7 @@ import DoughnutChart from '../../../components/DoughnutChart';
 import Spinner from '../../../components/Spinner';
 import stylesBtn from '../../../styles/Buttons.module.css';
 import styles from '../../../styles/EditPlan.module.css';
+import { ToastContainer } from 'react-toastify';
 
 const EditPlan = () => {
   const { plan, isPlanLoading } = usePlan();
@@ -18,6 +19,7 @@ const EditPlan = () => {
 
   return (
     <div className={styles.container}>
+      <ToastContainer />
       <button onClick={() => { router.push('/user/plan') }} className={stylesBtn.backArrowBtn}>
         <Image src='/back_arrow.svg' alt='Back button' width={45} height={45} />
       </button>
