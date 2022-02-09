@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken';
 import connectToDb from '../../db';
-import { User as IUser } from '../../db/types';
+import { User as IUser } from '../../lib/types';
 import { User } from '../../db/models';
 
 const JWT_SECRET = process.env.JWT_SECRET!;

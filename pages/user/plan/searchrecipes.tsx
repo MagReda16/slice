@@ -46,7 +46,7 @@ const SearchRecipes = () => {
   };
 
   const displayList = () => {
-    if (!data) return <p>searching</p>;
+    if (!data) return <p>....</p>;
     else return <RecipeList btnType={'add'} recipes={data} />
   }
 
