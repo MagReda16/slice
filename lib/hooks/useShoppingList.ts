@@ -5,7 +5,9 @@ import { Recipe } from '../types';
 
 const formatSearchString = (plan: Plan) => {
   const recipes: Recipe[] = plan.recipes;
-  return recipes.map((recipe) => recipe.recipeId).join();
+  return recipes
+    .map((recipe) => Array(recipe.quantity).fill(recipe.recipeId).join())
+    .join();
 };
 
 const fetcher = async (
@@ -36,7 +38,7 @@ const fetcher = async (
       (el: any) => el.id === ingredient.id
     );
 
-    if (existingIngredientIndex > 0) {
+    if (existingIngredientIndex >= 0) {
       acc[existingIngredientIndex].measures.amount +=
         ingredient.measures.amount;
     } else {
@@ -46,24 +48,29 @@ const fetcher = async (
     return acc;
   }, []);
 
-  const filteredIngredients = combinedList.filter((ingredient: any) => {
-    if (ingredient.id) return ingredient;
-  }).map((ingredient: any) => {
-    return {
-      id: ingredient.id,
-      name: ingredient.name[0].toUpperCase() + ingredient.name.substring(1),
-      amount: Math.round(ingredient.measures.amount * 2) / 2,
-      unit: ingredient.measures.unitShort
-    }
-  });
-  return filteredIngredients
+  const filteredIngredients = combinedList
+    .filter((ingredient: any) => {
+      if (ingredient.id) return ingredient;
+    })
+    .map((ingredient: any) => {
+      return {
+        id: ingredient.id,
+        name: ingredient.name[0].toUpperCase() + ingredient.name.substring(1),
+        amount: Math.round(ingredient.measures.amount * 2) / 2,
+        unit: ingredient.measures.unitShort,
+      };
+    });
+  return filteredIngredients;
 };
 
 const useShoppingList = (plan?: Plan) => {
   const { data, error } = useSWR(
-    plan && plan.recipes.length !== 0 ? ['informationBulk', formatSearchString(plan)] : null,
-    fetcher, {
-      fallbackData: []
+    plan && plan.recipes.length !== 0
+      ? ['informationBulk', formatSearchString(plan)]
+      : null,
+    fetcher,
+    {
+      fallbackData: [],
     }
   );
 
