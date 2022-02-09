@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <header className={styles.mainHeader}>
-        <h1>SLICE</h1>
+        <h1>Slice</h1>
         <h4>Meal planning & budgeting</h4>
       </header>
       <div className={styles.mainLoginContainer}>

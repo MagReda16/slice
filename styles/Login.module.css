@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url('../assets/dollarsign.png'), url('../assets/cheese.png'), url('../assets/strawberry.png'), url('../assets/eggplantforward.png'), url('../assets/sausage.png'), url('../assets/dollarsign.png'), url('../assets/eggplant.png'), url('../assets/cheeseforward.png'), url('../assets/strawberryforward.png'), url('../assets/dollarsign.png');
-  background-size: 17px, 40px, 28px, 40px, 43px, 14px, 38px, 40px, 24px, 15px;
+  background: url('../assets/dollarsign1.png'), url('../assets/cheese.png'), url('../assets/strawberry.png'), url('../assets/eggplantforward.png'), url('../assets/sausage.png'), url('../assets/dollarsign2.png'), url('../assets/eggplant.png'), url('../assets/cheeseforward.png'), url('../assets/strawberryforward.png'), url('../assets/dollarsign2.png');
+  background-size: 20px, 40px, 28px, 40px, 43px, 18px, 38px, 40px, 24px, 19px;
   background-repeat: no-repeat;
-  background-position-x: 45%, 8%, 72%, 103%, 5%, 5%, -2%, 96%, 92%, 93%;
-  background-position-y: 8%, 4%, 3%, 8%, 28%, 50%, 61%, 58%, 40%, 30%;
+  background-position-x: 45%, 8%, 72%, 103%, 5%, 8%, -2%, 96%, 92%, 93%;
+  background-position-y: 8%, 4%, 3%, 8%, 25%, 50%, 61%, 58%, 40%, 30%;
   
 }
 
@@ -27,10 +27,12 @@
 
 .mainHeader h1, .registerHeader h1{
   letter-spacing: .23em;
-  font-size: 96px;
+  font-size: 106px;
   font-weight: 400;
-  padding: 10px;
+  padding: 10px 10px 10px 25px;
   font-style: normal;
+  text-shadow: -2px -2px 0px #E75858;
+  color: #da8300;
 }
 
 .mainHeader h4{
