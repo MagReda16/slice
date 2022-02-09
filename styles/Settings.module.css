@@ -64,18 +64,18 @@
 }
 
 .weeklyBudget {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-top: 20px;
   font-style: italic;
   text-decoration-line: underline;
   color:#FFA927;
   border-style: none;
   background-color: transparent;
-} 
+  font-family: 'Poppins', sans-serif;
+}
 
 .weeklyBudget:active{
   color: gray;
-
 }
 
 .dashButtonContainer {

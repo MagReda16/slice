@@ -50,7 +50,7 @@ const Breakdown = () => {
 
   return (
     <div className={styles.container}>
-      <button onClick={() => { router.push('/user') }} className={stylesBtn.backArrowBtn}>
+      <button onClick={() => { router.back() }} className={stylesBtn.backArrowBtn}>
         <Image src='/back_arrow.svg' alt='Back button' width={45} height={45} />
       </button>
       <h1>Plan Breakdown</h1>
