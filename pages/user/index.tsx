@@ -7,52 +7,46 @@ import Spinner from '../../components/Spinner';
 import styles from '../../styles/Settings.module.css';
 import stylesBtn from '../../styles/Buttons.module.css';
 
-
 const Dashboard = () => {
-
   const { user, isUserLoading, isLoggedIn } = useUser();
   const { isPlanLoading } = usePlan();
 
-  if (isUserLoading || isPlanLoading) return <Spinner />
+  if (isUserLoading || isPlanLoading) return <Spinner />;
 
   return (
-
     <div className={styles.dashContainer}>
       <header className={styles.dashHeaderContainer}>
         <h1>Hello, {user.given_name || user.nickname}</h1>
-        <Link href='/user/plan/breakdown'>
+        <DoughnutChart isMain={true} />
+        <Link href="/user/plan/breakdown">
           <button className={styles.weeklyBudget}>Your weekly breakdown</button>
         </Link>
-        <DoughnutChart
-          isMain={true}
-        />
       </header>
       <div className={styles.dashButtonContainer}>
-        <Link href='/user/plan' passHref>
+        <Link href="/user/plan" passHref>
           <NavButton
             className={`${stylesBtn.btn} ${stylesBtn.large}`}
-            type='button'
+            type="button"
             children="View this week's plan"
           />
         </Link>
-        <Link href='/user/plan/history' passHref>
+        <Link href="/user/plan/history" passHref>
           <NavButton
             className={`${stylesBtn.btn} ${stylesBtn.large}`}
-            type='button'
+            type="button"
             children="View past plans"
           />
         </Link>
-        <Link href='/user/settings' passHref>
+        <Link href="/user/settings" passHref>
           <NavButton
             className={`${stylesBtn.btn} ${stylesBtn.large}`}
-            type='button'
-            children='Settings'
+            type="button"
+            children="Settings"
           />
         </Link>
       </div>
     </div>
-
-  )
-}
+  );
+};
 
 export default Dashboard;
