@@ -5,11 +5,6 @@ import { Recipe } from '../types';
 
 const formatSearchString = (plan: Plan) => {
   const recipes: Recipe[] = plan.recipes;
-  console.log(
-    recipes
-      .map((recipe) => Array(recipe.quantity).fill(recipe.recipeId).join())
-      .join()
-  );
   return recipes
     .map((recipe) => Array(recipe.quantity).fill(recipe.recipeId).join())
     .join();
@@ -44,11 +39,6 @@ const fetcher = async (
     );
 
     if (existingIngredientIndex >= 0) {
-      console.log(
-        `INGREDIENT: ${ingredient.name}`,
-        acc[existingIngredientIndex].measures.amount,
-        ingredient.measures.amount
-      );
       acc[existingIngredientIndex].measures.amount +=
         ingredient.measures.amount;
     } else {
