@@ -15,6 +15,10 @@ const EditPlan = () => {
   const router = useRouter();
 
   if (isPlanLoading) return <Spinner />
+
+  const handleClick = () => {
+    localStorage.removeItem('searchdata');
+  }
   
 
   return (
@@ -42,6 +46,7 @@ const EditPlan = () => {
           className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.secondary} ${styles.btn}`}
           type="button"
           children="Confirm"
+          onClick={handleClick}
         />
       </Link>}
     </div>
