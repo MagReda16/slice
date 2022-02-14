@@ -16,8 +16,7 @@
 
 .recipeImg {
   margin-top: 1rem;
-  padding: 15px;
-  width: 100%;
+  max-width: 90%;
   border-radius: 1rem;
 }
 

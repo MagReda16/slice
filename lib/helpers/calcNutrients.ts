@@ -2,8 +2,8 @@ import { Recipe } from '../types';
 
 const calcNutrients = (recipes: Recipe[]) => {
   const res: any = {};
-  recipes.forEach((recipe: Recipe) => {
-    recipe.nutrients.forEach((nutrient) => {
+  recipes.map((recipe: Recipe) => {
+    recipe.nutrients.map((nutrient) => {
       res[nutrient.name] = {
         name: nutrient.name,
         unit: nutrient.unit,
