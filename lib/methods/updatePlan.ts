@@ -1,5 +1,5 @@
 import { backendApiClient } from '../clients';
-import { Plan } from '../../db/types';
+import { Plan } from '../types';
 
 const updatePlan = async (plan: Plan) => {
   return await backendApiClient.put('user/plan', plan, {
