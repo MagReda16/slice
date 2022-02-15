@@ -88,7 +88,7 @@ const RecipeListItem = ({ recipe, btnType, index }: RecipeListProps) => {
       return (
         <div className={styles.costInfo}>
           <p className={styles.totalCost}>Total Cost:</p>
-          <p className={styles.dollarCost}>${Math.round(recipe.totalCost * recipe.quantity * 100) / 100}</p>
+          <p className={styles.dollarCost}>${((recipe.totalCost * recipe.quantity * 100) / 100).toFixed(2)}</p>
           {recipe.quantity > 1 && <p className={styles.quantity}>Qty: {recipe.quantity}</p>}
         </div>
       );
