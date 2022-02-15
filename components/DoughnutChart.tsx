@@ -1,57 +1,73 @@
 import React from 'react';
-import { Chart, ArcElement, Legend, Tooltip } from 'chart.js';
+import Link from 'next/link';
+import { Chart, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { usePlan, useUser } from '../lib/hooks';
+import styles from '../styles/DoughnutChart.module.css';
 
-Chart.register(ArcElement, Legend, Tooltip);
+Chart.register(ArcElement, Tooltip);
 
 type DoughnutChartProps = {
-  remainingBudget: Number,
-  amountSpent: Number
+  isMain?: boolean
 }
-const DoughnutChart = ({remainingBudget, amountSpent}: DoughnutChartProps) => {
+
+const DoughnutChart = ({ isMain }: DoughnutChartProps) => {
+
+  const { plan } = usePlan();
+  const { user } = useUser();
+
+  const remaining = user.budget - plan.totalPlanCost;
+  const displaySpent = plan.totalPlanCost.toFixed(2)
+
   const chartData = {
     labels: ['Amount spent', 'Remaining budget'],
     datasets: [
-        {
-        data: [amountSpent, remainingBudget],
-        backgroundColor: [
+      {
+        data: remaining > 0 ? [plan.totalPlanCost, remaining] : [plan.totalPlanCost],
+        backgroundColor: remaining > 0 ? [
+          "#FFAC3B",
           "#FFD59C",
-          "#FFAC3B"
-        ]
+        ] : ["#E75858"],
       },
     ],
   };
 
-  return(
+  const options: any = {
+    cutout: isMain ? 100 : 65,
+    plugins: {
+      tooltip: {
+        mode: 'nearest',
+        yAlign: 'bottom',
+        padding: 10,
+        caretPadding: 90,
+        caretSize: 0
+      }
+    }
+  }
+
+  const containerClasses = `${styles.chart} ${isMain ? styles.main : ''}`
+  const infoClasses = `${styles.chartInfo} ${isMain ? styles.mainInfo : ''}`
+
+  return (
     <div>
-      <div style={{width: "250px", margin: '0 auto'}}>
-      <Doughnut 
-        height={300}
-        width={300}
-        data={chartData}
+      <div className={containerClasses}>
+        <Doughnut
+          height={300}
+          width={300}
+          data={chartData}
+          options={options}
         />
+        <div className={infoClasses}>
+          <Link href='/user/plan/breakdown'>
+            <a>
+              <p style={remaining < 0 ? { color: "#E75858" } : {}}>${displaySpent}</p>
+              <span><p>${user.budget}</p></span>
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   )
 }
 
 export default DoughnutChart;
-
-
-  //from tutorial, adds text to center of chart 
-  // const plugins = [{
-  //   beforeDraw: function(chart:any) {
-  //    let width = chart.width,
-  //        height = chart.height,
-  //        ctx = chart.ctx;
-  //        ctx.restore();
-  //        let fontSize = (height / 160).toFixed(2);
-  //        ctx.font = fontSize + "em sans-serif";
-  //        ctx.textBaseline = "top";
-  //        let text = "70%",
-  //        textX = Math.round((width - ctx.measureText(text).width) / 2),
-  //        textY = height / 2;
-  //        ctx.fillText(text, textX, textY);
-  //        ctx.save();
-  //   } 
-  // }]

@@ -1,0 +1,60 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcfbf5;
+}
+
+.slice {
+  animation: sliceMoveOut 2.5s infinite;
+}
+
+@keyframes sliceMoveOut {
+  0% {
+    transform: translate(0);
+  }
+
+  33% {
+    transform: translate(5%, 5%);
+  }
+
+  66% {
+    transform: translate(5%, 5%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.pie {
+  animation: pieShake 2.5s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes pieShake {
+  0% {
+    transform: rotate(0);
+  }
+
+  20% {
+    transform: rotate(-4deg);
+  }
+
+  40% {
+    transform: rotate(0);
+  }
+
+  60% {
+    transform: rotate(4deg);
+  }
+
+  80% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}

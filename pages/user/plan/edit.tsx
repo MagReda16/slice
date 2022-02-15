@@ -1,59 +1,56 @@
-import { useState, FormEvent, ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react';
-import DoughnutChart from '../../../components/DoughnutChart';
-import RecipeList from '../../../components/RecipeList';
-import ShowEditPlan from '../../../components/ShowEditPlan';
-import ShowSearch from '../../../components/ShowSearch';
-import styles from '../../../styles/Buttons.module.css';
-import { useSearch, useRecipes } from '../../../lib/hooks';
-
+import { usePlan } from '../../../lib/hooks';
 import Link from 'next/link';
-
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import NavButton from '../../../components/NavButton';
+import RecipeList from '../../../components/RecipeList';
+import DoughnutChart from '../../../components/DoughnutChart';
+import Spinner from '../../../components/Spinner';
+import stylesBtn from '../../../styles/Buttons.module.css';
+import styles from '../../../styles/EditPlan.module.css';
+import { ToastContainer } from 'react-toastify';
 
 const EditPlan = () => {
+  const { plan, isPlanLoading } = usePlan();
+  const router = useRouter();
 
+  if (isPlanLoading) return <Spinner />
 
-  const [querySearch, setQuerySearch] = useState('');
-  const [readyToSubmit, setReadyToSubmit] = useState(false);
-  const [isSearching, setIsSearching] = useState(false);
-  const [recipeResults, setRecipeResults] = useState([]);
-  const { data, error, isLoading } = useSearch(querySearch, readyToSubmit);
-  const { recipes } = useRecipes();
-  console.log('recipes from backend', recipes);
-  // console.log('testestest');
-  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZiMjFlMTUyMmIzNmI4MDAzNjQ1NmUiLCJpYXQiOjE2NDM4NDgxNzZ9.GAZVyB8olCwFAfgD_UQ5FVAbESxmjvCIJnNQi_4sJX8
-
-  const toggleSearch = () => {
-    setIsSearching(!isSearching);
+  const handleClick = () => {
+    localStorage.removeItem('searchdata');
   }
-
-  const submitSearch: FormEventHandler = async (e: FormEvent) => {
-    e.preventDefault();
-    setReadyToSubmit(true);
-  }
-
-  const changeQuery: ChangeEventHandler = (e: ChangeEvent) => {
-    const { value } = e.target as typeof e.target & {
-      value: string;
-    };
-    setReadyToSubmit(false)
-    setQuerySearch(value);
-  };
-
-
-  if (error) return (
-    <div>Error or something, idk</div>
-  )
-
-
+  
 
   return (
-    <div>
-      {!isSearching
-        ? <ShowEditPlan toggleSearch={toggleSearch} recipes={[]} />
-        : <ShowSearch toggleSearch={toggleSearch} data={data} changeQuery={changeQuery} querySearch={querySearch} submitSearch={submitSearch} />}
-
+    <div className={styles.container}>
+      <ToastContainer />
+      <button onClick={() => { router.push('/user/plan') }} className={stylesBtn.backArrowBtn}>
+        <Image src='/back_arrow.svg' alt='Back button' width={45} height={45} />
+      </button>
+      <h1>Edit my Plan</h1>
+      <DoughnutChart />
+      <button
+        className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.narrow}`}
+        type="button"
+        onClick={() => router.push('/user/plan/searchrecipes')}
+      >
+        Add recipe
+      </button>
+      {plan.recipes.length === 0 && <div className={styles.noRecipes}>
+        <p>No recipes yet!</p>
+      </div>}
+      <RecipeList recipes={plan.recipes} btnType={'edit'} />
+      {plan.recipes.length !== 0 &&
+      <Link href="/user/plan" passHref>
+        <NavButton
+          className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.secondary} ${styles.btn}`}
+          type="button"
+          children="Confirm"
+          onClick={handleClick}
+        />
+      </Link>}
     </div>
-  )
-}
+  );
+};
 
 export default EditPlan;

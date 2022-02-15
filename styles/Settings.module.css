@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('../assets/dollarsign1.png'), url('../assets/cheese.png'), url('../assets/strawberry.png'), url('../assets/eggplantforward.png'), url('../assets/sausage.png'), url('../assets/dollarsign2.png'), url('../assets/eggplant.png'), url('../assets/cheeseforward.png'), url('../assets/strawberryforward.png'), url('../assets/dollarsign2.png');
+  background-size: 20px, 40px, 28px, 40px, 43px, 18px, 38px, 40px, 24px, 19px;
+  background-repeat: no-repeat;
+  background-position-x: 45%, 8%, 72%, 103%, 5%, 8%, -2%, 96%, 94%, 93%;
+  background-position-y: 8%, 8%, 3%, 8%, 23%, 50%, 68%, 65%, 48%, 37%;
+}
+
+.createBudgetHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createBudgetHeader h1 {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: .06em;
+}
+
+.container h3 {
+  color: #b5b5b5;
+  font-weight: 400;
+}
+
+.updateSettingsHeader {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: .06em;
+}
+
+.updateSettingsHeader h6 {
+  font-size: 20px;
+  margin-top: 10px;
+  letter-spacing: 0;
+  font-weight: 300;
+}
+
+.updateSettingsHeader h6 span{
+  font-weight: 400;
+}
+
+.dashContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+.dashHeaderContainer h1{
+  margin-bottom: 40px;
+  font-size: 55px;
+}
+
+.weeklyBudget {
+  font-size: 18px;
+  margin-top: 20px;
+  font-style: italic;
+  text-decoration-line: underline;
+  color:#FFA927;
+  border-style: none;
+  background-color: transparent;
+  font-family: 'Poppins', sans-serif;
+}
+
+.weeklyBudget:active{
+  color: gray;
+}
+
+.dashButtonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 20vh;
+  margin-top: 100px;
+}
+

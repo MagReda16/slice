@@ -2,15 +2,13 @@ const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 const dotenv = require('dotenv');
 
-// to make .env work
-
-
 module.exports = withPWA({
   pwa: {
     dest: 'public',
     runtimeCaching,
   },
-  publicRuntimeConfig: {
-    APIKEY: process.env.NEXT_PUBLIC_SPOONACULAR_API
+  env: {
+    spoonKey: process.env.SPOONACULAR_API_KEY,
+    baseApiUrl: process.env.BACKEND_URL
   }
 })

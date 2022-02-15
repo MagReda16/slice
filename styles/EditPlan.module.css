@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 10px;
+}
+
+.container h1 {
+  margin-bottom: 10px;
+}
+
+
+.btn {
+  margin: 1rem 0;
+}
+
+.viewPlanBtnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 15vh;
+}
+
+.noRecipes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.3);
+ 
+}
+
+.emptySearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95vw;
+  height: 80vh;
+  font-style: italic;
+  color:rgba(0, 0, 0, 0.3);
+}
+
+
+

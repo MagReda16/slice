@@ -1,20 +1,16 @@
 import mongoose, { Schema } from 'mongoose';
-import { User } from '../types/';
+import { User } from '../../lib/types';
 
 const userSchema: Schema = new Schema({
   email: {
     type: String,
     required: true,
   },
-  password: {
+  given_name: {
     type: String,
-    required: true,
+    required: false,
   },
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
+  nickname: {
     type: String,
     required: true,
   },

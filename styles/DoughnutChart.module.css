@@ -1,0 +1,47 @@
+.chart {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.main {
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.chartInfo {
+  width: 90px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 73px;
+  left: 52px;
+  text-align: center;
+  font-size: 23px;
+  color: #FFAC3B;
+}
+
+.mainInfo {
+  width: 95px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 115px;
+  left: 100px;
+  text-align: center;
+  font-size: 26px;
+  color: #FFAC3B;
+}
+
+.chartInfo span {
+  font-size: 16px;
+  color: black;
+}
+
+.mainInfo span {
+  font-size: 20px;
+}
+
+

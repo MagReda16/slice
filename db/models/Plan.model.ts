@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { Plan } from '../types/';
+import { Plan } from '../../lib/types';
 
 const planSchema: Schema = new Schema({
   userId: {
@@ -33,8 +33,21 @@ const planSchema: Schema = new Schema({
         type: Number,
         required: true,
       },
+      nutrients: [
+        {
+          name: String,
+          amount: Number,
+          unit: String
+        }
+      ],
+      servings: {
+        type: Number,
+        required: true
+      }
     },
   ],
+}, {
+  timestamps: true
 });
 
 const planModel =

@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
-import { errorHandler, authMiddleware } from '../../../lib/server';
+import { errorHandler, authMiddleware, UserRequest } from '../../../lib/server';
 import { User } from '../../../db/models/';
-import { User as IUser } from '../../../db/types/';
+import { User as IUser } from '../../../lib/types';
 import connectToDb from '../../../db';
 
 const userHandler = nc(errorHandler);
@@ -10,17 +10,17 @@ const userHandler = nc(errorHandler);
 userHandler.use(authMiddleware);
 
 userHandler.get(
-  async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-    res.status(200).json({ user: req.body.user });
+  async (req: UserRequest, res: NextApiResponse): Promise<void> => {
+    res.status(200).json({ user: req.user });
   }
 );
 
 userHandler.put(
-  async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+  async (req: UserRequest, res: NextApiResponse): Promise<void> => {
     await connectToDb();
     try {
       const updatedUser: IUser = await User.findByIdAndUpdate(
-        req.body.user._id,
+        req.user._id,
         {
           budget: req.body.budget
         },
