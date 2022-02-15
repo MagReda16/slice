@@ -107,6 +107,16 @@
   left: 20px;
 }
 
+.addButton {
+  color: #ffa927;
+  background-color: #fcfbf5;
+  border: none;
+
+  position: absolute;
+  top: 8px;
+  right: 20px;
+}
+
 .backArrowBtn:hover,
 .backArrowBtn:active {
   color: #da8300;
