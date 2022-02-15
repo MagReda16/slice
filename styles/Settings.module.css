@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: url('../assets/dollarsign1.png'), url('../assets/cheese.png'), url('../assets/strawberry.png'), url('../assets/eggplantforward.png'), url('../assets/sausage.png'), url('../assets/dollarsign2.png'), url('../assets/eggplant.png'), url('../assets/cheeseforward.png'), url('../assets/strawberryforward.png'), url('../assets/dollarsign2.png');
+  background: url('/dollarsign1.png'), url('/cheese.png'), url('/strawberry.png'), url('/eggplantforward.png'), url('/sausage.png'), url('/dollarsign2.png'), url('/eggplant.png'), url('/cheeseforward.png'), url('/strawberryforward.png'), url('/dollarsign2.png');
   background-size: 20px, 40px, 28px, 40px, 43px, 18px, 38px, 40px, 24px, 19px;
   background-repeat: no-repeat;
   background-position-x: 45%, 8%, 72%, 103%, 5%, 8%, -2%, 96%, 94%, 93%;
