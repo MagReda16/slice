@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import DoughnutChart from '../../../components/DoughnutChart'
 import NavButton from '../../../components/NavButton'
 import RecipeList from '../../../components/RecipeList'
-import { usePlan } from '../../../lib/hooks'
+import { usePlan, useUser } from '../../../lib/hooks'
 import Spinner from '../../../components/Spinner'
 import Image from 'next/image'
 import stylesBtn from '../../../styles/Buttons.module.css';
@@ -11,9 +11,10 @@ import styles from '../../../styles/EditPlan.module.css';
 
 const ViewPlan = () => {
   const router = useRouter()
+  const { isUserLoading } = useUser();
   const { plan, isPlanLoading, planError, createNewPlan } = usePlan()
 
-  if (isPlanLoading) return <Spinner />
+  if (isPlanLoading || isUserLoading) return <Spinner />
 
   if (planError) return <div>Some crazy stuff went wrong</div>
 
