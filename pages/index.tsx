@@ -5,11 +5,12 @@ import NavButton from '../components/NavButton';
 import { useUser } from '@auth0/nextjs-auth0';
 import { login } from '../lib/methods'
 import { useRouter } from 'next/router';
+import Spinner from '../components/Spinner';
 
 const Home = () => {
   const router = useRouter();
   const { user, error, isLoading } = useUser();
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <Spinner />
   if(error) return <div>{error.message}</div>
 
 
