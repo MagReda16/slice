@@ -1,4 +1,4 @@
-import { usePlan } from '../../../lib/hooks';
+import { usePlan, useUser } from '../../../lib/hooks';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -11,15 +11,16 @@ import styles from '../../../styles/EditPlan.module.css';
 import { ToastContainer } from 'react-toastify';
 
 const EditPlan = () => {
+  const { isUserLoading } = useUser()
   const { plan, isPlanLoading } = usePlan();
   const router = useRouter();
 
-  if (isPlanLoading) return <Spinner />
+  if (isPlanLoading || isUserLoading) return <Spinner />
 
   const handleClick = () => {
     localStorage.removeItem('searchdata');
   }
-  
+
 
   return (
     <div className={styles.container}>
@@ -41,14 +42,14 @@ const EditPlan = () => {
       </div>}
       <RecipeList recipes={plan.recipes} btnType={'edit'} />
       {plan.recipes.length !== 0 &&
-      <Link href="/user/plan" passHref>
-        <NavButton
-          className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.secondary} ${styles.btn}`}
-          type="button"
-          children="Confirm"
-          onClick={handleClick}
-        />
-      </Link>}
+        <Link href="/user/plan" passHref>
+          <NavButton
+            className={`${stylesBtn.btn} ${stylesBtn.small} ${stylesBtn.secondary} ${styles.btn}`}
+            type="button"
+            children="Confirm"
+            onClick={handleClick}
+          />
+        </Link>}
     </div>
   );
 };
