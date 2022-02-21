@@ -4,7 +4,7 @@
 Slice is a meal-planning and budgeting app that allows users to select their favorite recipes to prepare for each week. The app creates a summary of the plan's total cost, nutritional summary as well as a shopping list for ingredients.
 
 ## Preview
-* [Website](https://https://slice-henna.vercel.app/)
+* [Website](https://slice-henna.vercel.app/)
 * [Youtube](https://youtu.be/Vu-_ldFzTeM)
 
 ## Installation
